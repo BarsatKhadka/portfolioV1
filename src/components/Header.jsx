@@ -4,23 +4,31 @@ import { FaLandmarkDome } from "react-icons/fa6";
 export const Header = () => {
   return (
     <>
-      <div className="ml-8 mt-8 lg:ml-48">
-        <div className="flex justify-between items-center">
-          <p className="lg:mb-1">
-            <span className="mr-8 text-[#ebffff]">Barsat Khadka</span> <span className="text-sm">Seeking SWE Internships @2025</span>
-          </p>
-          <a href="#" className="text-[#ebffff] underline lg:mr-64 mr-4">
-            Resume
-          </a>
-        </div>
-        <p className="mb-4 text-gray">
-          <span className="text-sm">
-            <IoLocationOutline className="inline" /> USA
-          </span>
-          <span className="ml-24 text-sm italic">
-            Freshman at the University of Southern Mississippi
-          </span>
-        </p>
+     <div className="ml-4 mt-8 lg:ml-48">
+  
+  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+
+    <p className="mb-2 lg:mb-1">
+      <span className="text-[#ebffff]">Barsat Khadka</span>{" "}
+      <span className="text-sm block lg:inline mt-1 lg:mt-0 lg:ml-8 italic">
+        Seeking SWE Internships @2025
+      </span>
+    </p>
+    
+    <a href="#" className="text-[#ebffff] underline mb-4 lg:mb-0 lg:mr-64">
+      Resume
+    </a>
+  </div>
+
+
+  <p className="mb-4 text-gray">
+    <span className="text-sm">
+      <IoLocationOutline className="inline" /> USA
+    </span>
+    <span className="ml-4 lg:ml-24 text-sm italic block lg:inline mt-1 lg:mt-0">
+      Freshman at the University of Southern Mississippi
+    </span>
+  </p>
 
         <p className="text-sm mb-2 sm:mr-8">
           <span className="text-[#eebc86] sm:mr-2">Languages:</span>
