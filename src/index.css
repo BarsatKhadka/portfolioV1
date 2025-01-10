@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: rgb(28,25,23);
+  color: rgb(230 226 225);
+  font-family: "Fira Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
