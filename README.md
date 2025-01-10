@@ -1,8 +1,29 @@
-# React + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio website! This project showcases my skills, projects, and experience as a software developer. 
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **About the Project**
+
+This portfolio website is a modern, responsive, and user-friendly platform designed to highlight my work and skills. It was built using the following technologies:
+
+- **Frontend Framework**: React (with Vite for fast development)
+- **Styling**: Tailwind CSS
+- **Markup**: HTML
+- **Deployment**: Hosted live at https://www.barsat.dev
+
+## **Open to Design Contributions** 🎨
+
+Even this portfolio website is open to contributions! If you have ideas for improving the design, user experience, or accessibility, feel free to contribute. Whether it's a new color scheme, a better layout, or a cool animation, I am happy to review it.
+
+### **How to Contribute**
+1. Fork the repository.
+2. Then:
+   ```bash
+   git checkout -b feature/your-design-idea
+   git commit -m "feat: improve navbar design with better spacing and animations"
+   git push origin feature/your-design-idea
+   ```
+
+   
