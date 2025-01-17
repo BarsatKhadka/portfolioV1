@@ -2,6 +2,7 @@ import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { BsDatabaseFillCheck } from "react-icons/bs";
 import { FaRobot, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Projects = () => {
   return (
@@ -22,11 +23,14 @@ export const Projects = () => {
             </div>
             <div className="flex gap-2">
             <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-                <FaGithub className="inline text-white" /> Source
+            <Link to= "/HowToCLI"><FaGithub className="inline text-white" /> Source</Link>
             </span>
             <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
                 Visit
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
+            </span>
+            <span className="relative bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+                 <Link to= "/HowToCLI">How to CLI guide</Link>
             </span>
             </div>
         </h3>

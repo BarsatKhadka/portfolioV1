@@ -16,10 +16,24 @@ export const HowToCLI = () =>{
         "repo tree <repoName>          | View the repository's tree structure" +
         "\nrepo calendar <repoName>  | View the repository's commit calendar" +
         "\nrepo loc <repoName>            | View the repository's lines of code" +
-        "\nrepo readMe <repoName>    | Retrieve the repository's README file" +
+        "\nrepo readMe <repoName>    | Get the repository's README file" +
         "\nrepo ovs <repoName>           | Open the repository in VS Code" +
         "\nrepo delete <repoName>      | Delete the repository" +
         "\nrepo rename <repoName>    | Rename the repository"
+    }
+    
+      language={"Java"}
+      codeBlock
+      theme={dracula}
+    />
+    </div>
+    <p className='lg:ml-48 ml-4 mt-8'>Collections Commands (Commands to perform actions on collections) </p>
+        <div className='max-w-3xl lg:ml-[175px] lg:p-4 p-2'>
+           <CopyBlock
+     text = {
+        "collections create <collectionName> <<repoName1,repoName2>> (Put repoNames into a <>)" +
+        "\ncollections rename <oldCollectionName> <newCollectionName> " +
+        "\ncollections delete <collectionName>        "
     }
     
       language={"Java"}
