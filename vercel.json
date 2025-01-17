@@ -1,0 +1,5 @@
+{
+    "redirects": [
+      { "source": "/HowToCLI", "destination": "/HowToCLI", "permanent": true }
+    ]
+  }
