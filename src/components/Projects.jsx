@@ -23,12 +23,12 @@ export const Projects = () => {
             </div>
             <div className="flex gap-2">
             <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-            <Link to= "/HowToCLI"><FaGithub className="inline text-white" /> Source</Link>
+            <a href= "https://github.com/BarsatKhadka/Easy-Repo" target="_blank"><FaGithub className="inline text-white" /> Source</a>
             </span>
-            <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+            <a href= "https://easy-repo-six.vercel.app/" target="_blank"> <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group pt-4 lg:pt-2">
                 Visit
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
-            </span>
+            </span></a>
             <span className="relative bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
                  <Link to= "/HowToCLI">How to CLI guide</Link>
             </span>
@@ -65,7 +65,7 @@ export const Projects = () => {
             </div>
             <div className="flex gap-2">
             <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-                <FaGithub className="inline text-white" /> Source
+               <a href="https://github.com/BarsatKhadka/AI-dating-bot" target="_blank"><FaGithub className="inline text-white" /> Source </a> 
             </span>
             <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
                 Read Me
@@ -104,12 +104,12 @@ export const Projects = () => {
     </div>
     <div className="flex gap-2">
       <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-        <FaGithub className="inline text-white" /> Source
+      <a href="https://github.com/BarsatKhadka/SafeStore-DBMS" target="_blank"><FaGithub className="inline text-white" /> Source</a>
       </span>
-      <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+      <a href="https://github.com/BarsatKhadka/SafeStore-DBMS/blob/main/README.md" target="_blank"> <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
         How to Setup
         <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
-      </span>
+      </span></a>
     </div>
   </h3>
   <p className="text-gray-400 text-sm mb-4 cursor-text">
