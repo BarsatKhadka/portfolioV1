@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Projects = () => {
   return (
     <>
-      <div className="ml-8 mt-16 lg:ml-48">
+      <div className="ml-8 mt-16 lg:ml-48 ">
         <p className="text-[#ebffff] mb-6"> 
           <IoFolderOpenOutline className="inline mr-1" /> Projects 
         </p>
@@ -16,7 +16,7 @@ export const Projects = () => {
 
                 {/* First Project Card */}
         <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
+        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
             <div className="flex items-center mb-4 lg:mb-1"> 
             <img src="./EasyRepoLogo.png" alt="Easy Repo Logo" className="w-8 h-8" />
             <span className="cursor-text ml-4">Easy Repo</span>
@@ -57,7 +57,7 @@ export const Projects = () => {
 
           {/* Second Project Card */}
         <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
+        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
             <div className="flex items-center mb-4 lg:mb-1"> 
             <FaRobot className="w-8 h-8 text-pink-500" />
             <FaHeart className="w-4 h-4 text-red-500 -ml-2" />
@@ -97,7 +97,7 @@ export const Projects = () => {
 
        {/* Third Project Card */}
 <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-  <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
+  <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
     <div className="flex items-center mb-4 lg:mb-1"> 
       <BsDatabaseFillCheck className="w-8 h-8" /> 
       <span className="cursor-text ml-4">Safe Store DBMS</span>
