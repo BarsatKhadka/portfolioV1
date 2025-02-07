@@ -29,7 +29,7 @@ export const Projects = () => {
                 Visit
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
             </span></a>
-            <span className="relative bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+            <span className="relatie bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
                  <Link to= "/HowToCLI">How to CLI guide</Link>
             </span>
             </div>
@@ -107,7 +107,7 @@ export const Projects = () => {
       <a href="https://github.com/BarsatKhadka/SafeStore-DBMS" target="_blank"><FaGithub className="inline text-white" /> Source</a>
       </span>
       <a href="https://github.com/BarsatKhadka/SafeStore-DBMS/blob/main/README.md" target="_blank"> <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
-        How to Setup
+        Setup
         <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
       </span></a>
     </div>
