@@ -15,7 +15,7 @@ export const Header = () => {
       </span>
     </p>
     
-    <a href="https://drive.google.com/uc?export=download&id=1TBP5r4pDltIn9bIER1JptvdK0ncZQ5G8" className="text-[#ebffff] underline mb-4 lg:mb-0 lg:mr-64">
+    <a href="https://drive.google.com/uc?export=download&id=1ubUzCBNGE_ovCoD2ExKqsK6laWR4JCfA" className="text-[#ebffff] underline mb-4 lg:mb-0 lg:mr-64">
       Resume
     </a>
   </div>
