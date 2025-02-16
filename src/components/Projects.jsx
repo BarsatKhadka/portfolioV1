@@ -1,7 +1,5 @@
 import { IoFolderOpenOutline } from "react-icons/io5";
-import { FaGithub } from "react-icons/fa";
-import { BsDatabaseFillCheck } from "react-icons/bs";
-import { FaRobot, FaHeart } from "react-icons/fa";
+import { FaGithub, FaClock, FaDatabase } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Projects = () => {
@@ -14,127 +12,114 @@ export const Projects = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mr-8 lg:mr-48">
 
-                {/* First Project Card */}
-        <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
-            <div className="flex items-center mb-4 lg:mb-1"> 
-            <img src="./EasyRepoLogo.png" alt="Easy Repo Logo" className="w-8 h-8" />
-            <span className="cursor-text ml-4">Easy Repo</span>
+          {/* PunchClock Plus Project Card */}
+          <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
+            <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
+              <div className="flex items-center mb-4 lg:mb-1"> 
+                <FaClock className="w-8 h-8 text-blue-500" /> {/* Clock Icon */}
+                <span className="cursor-text ml-4">PunchClock Plus</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
+                  <a href="https://github.com/BarsatKhadka/Punch-Clock-Plus" target="_blank"><FaGithub className="inline text-white" /> Source</a>
+                </span>
+                <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+                  Visit
+                  <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
+                </span>
+              </div>
+            </h3>
+            <p className="text-gray-400 text-sm mb-4 cursor-text">
+              Employee Time-Tracking Application
+            </p>
+            <p className="text-gray-300 text-sm mb-4 cursor-text">
+              PunchClock Plus is a full-stack employee time-tracking application designed to help businesses manage employee attendance and shifts efficiently.
+            </p>
+            <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
+              <li>Built an intuitive punch clock web app with a 75% user satisfaction rate.</li>
+              <li>Developed a PIN-based punch-in/out system with precise server-side time tracking.</li>
+              <li>Implemented a reporting module for admins to generate downloadable punch card reports.</li>
+              <li>Integrated GeoFencing to restrict punch-ins outside designated locations.</li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-[#61DAFB]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">React.js</span>
+              <span className="bg-[#6DB33F]/10 text-[#6DB33F] text-xs px-3 py-1 rounded-full cursor-text">SpringBoot</span>
+              <span className="bg-[#00758F]/10 text-[#00758F] text-xs px-3 py-1 rounded-full cursor-text">MySQL</span>
             </div>
-            <div className="flex gap-2">
-            <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-            <a href= "https://github.com/BarsatKhadka/Easy-Repo" target="_blank"><FaGithub className="inline text-white" /> Source</a>
-            </span>
-            <a href= "https://easy-repo-six.vercel.app/" target="_blank"> <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group pt-4 lg:pt-2">
-                Visit
-                <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
-            </span></a>
-            <span className="relatie bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
-                 <Link to= "/HowToCLI">How to CLI guide</Link>
-            </span>
-            </div>
-        </h3>
-        <p className="text-gray-400 text-sm mb-4 cursor-text">
-            GitHub Repository Management Tool
-        </p>
-        <p className="text-gray-300 text-sm mb-4 cursor-text">
-            Easy Repo is a powerful full-stack web application designed to simplify your GitHub repository management experience. Key features include:
-        </p>
-        <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
-            <li>Secure <span className="font-bold text-[#95B54C]">OAuth2 login </span>with Github for seamless authentication.</li>
-            <li> Organize repositories <span className="font-bold text-[#E58C8A]">into groups, rename or delete them</span> with ease.</li>
-            <li>Open repositories directly in <span className="font-bold text-[#95B54C]">VS Code</span>.</li>
-            <li>Explore repositories in a <span className="font-bold text-[#E58C8A]">detailed tree structure</span> and analyze lines of code.</li>
-            <li>Manage repositories through an <span className="font-bold text-[#95B54C]">integrated CLI</span> available on the website.</li>
-        </ul>
-        <div className="flex flex-wrap gap-2">
-            <span className="bg-[#6DB33F]/10 text-[#6DB33F] text-xs px-3 py-1 rounded-full cursor-text">SpringBoot</span>
-            <span className="bg-[#61DAFB]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">React + Typescript</span>
-            <span className="bg-[#00758F]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">MySQL</span>
-            <span className="bg-[#4EA225]/10 text-[#4EA225] text-xs px-3 py-1 rounded-full cursor-text">Spring Security</span>
-        </div>
-        </div>
+          </div>
 
-          {/* Second Project Card */}
-        <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-        <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
-            <div className="flex items-center mb-4 lg:mb-1"> 
-            <FaRobot className="w-8 h-8 text-pink-500" />
-            <FaHeart className="w-4 h-4 text-red-500 -ml-2" />
-            <span className="cursor-text ml-4">AI Dating Bot</span>
+          {/* JeonSQL Project Card */}
+          <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
+            <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
+              <div className="flex items-center mb-4 lg:mb-1"> 
+                <FaDatabase className="w-8 h-8 text-green-500" /> {/* Database Icon */}
+                <span className="cursor-text ml-4">JsonSQL</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
+                  <a href="https://github.com/BarsatKhadka/JsonSQL" target="_blank"><FaGithub className="inline text-white" /> Source</a>
+                </span>
+              </div>
+            </h3>
+            <p className="text-gray-400 text-sm mb-4 cursor-text">
+              JSON Data Manipulation Library
+            </p>
+            <p className="text-gray-300 text-sm mb-4 cursor-text">
+              JeonSQL is a Java library that allows developers to query JSON data using SQL-like syntax.
+            </p>
+            <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
+              <li>Built a Java library to filter, sort, and extract data from JSON using SQL-like syntax.</li>
+              <li>Packaged as a Maven dependency with a simple API, reducing JSON processing complexity.</li>
+              <li>Saved development time by 30% for JSON data manipulation tasks.</li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-[#E76F00]/10 text-[#E76F00] text-xs px-3 py-1 rounded-full cursor-text">Java</span>
+              <span className="bg-[#6DB33F]/10 text-[#6DB33F] text-xs px-3 py-1 rounded-full cursor-text">Jackson</span>
+              <span className="bg-[#00758F]/10 text-[#00758F] text-xs px-3 py-1 rounded-full cursor-text">Maven</span>
             </div>
-            <div className="flex gap-2">
-            <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-               <a href="https://github.com/BarsatKhadka/AI-dating-bot" target="_blank"><FaGithub className="inline text-white" /> Source </a> 
-            </span>
-            <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
-                Read Me
-                <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
-            </span>
-            </div>
-        </h3>
-        <p className="text-gray-400 text-sm mb-4 cursor-text">
-            AI-Powered Dating Application
-        </p>
-        <p className="text-gray-300 text-sm mb-4 cursor-text">
-            The AI Dating Bot is a full-stack dating application that combines the swipe-and-match mechanics of popular dating apps with advanced AI capabilities. Key features include:
-        </p>
-        <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
-            <li> RESTful API development, <span className="font-bold text-[#6DB33F]">integration of AI services </span> (GPT-4, Stable Diffusion), and efficient data management using MongoDB.</li>
-            <li><span className="font-bold text-[#D22D2B]">Developers can set up their own models or download models </span> from Hugging Face for custom image generation (e.g., creating their own waifu). Detailed instructions are provided for setup.</li>
-            <li><span className="font-bold text-[#E58C8A]">AI-Generated Profiles</span>: GPT-4 generates diverse and interesting fictional profiles, showcasing dynamic content creation.</li>
-            <li>Engage in conversations with AI-driven chatbots, each with a unique personality <span className="font-bold text-[#95B54C]">based on the generated profile.</span></li>
-            <li>Profile pictures created using Stable Diffusion, demonstrating the<span className="font-bold text-[#FFD43B]"> integration of multiple AI models.</span></li>
-        </ul>
-        <div className="flex flex-wrap gap-2">
-            <span className="bg-[#6DB33F]/10 text-[#6DB33F] text-xs px-3 py-1 rounded-full cursor-text">SpringBoot</span>
-            <span className="bg-[#61DAFB]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">React.js</span>
-            <span className="bg-[#FFD43B]/20 text-[#FFD43B] text-xs px-3 py-1 rounded-full cursor-text">Python</span>
-            <span className="bg-[#6E6E6E]/10 text-[#6E6E6E] text-xs px-3 py-1 rounded-full cursor-text">Stable Diffusion</span>
-            <span className="bg-[#47A248]/10 text-[#47A248] text-xs px-3 py-1 rounded-full cursor-text">MongoDB</span>
-        </div>
-        </div>
+          </div>
 
-       {/* Third Project Card */}
-<div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
-  <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
-    <div className="flex items-center mb-4 lg:mb-1"> 
-      <BsDatabaseFillCheck className="w-8 h-8" /> 
-      <span className="cursor-text ml-4">Safe Store DBMS</span>
-    </div>
-    <div className="flex gap-2">
-      <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
-      <a href="https://github.com/BarsatKhadka/SafeStore-DBMS" target="_blank"><FaGithub className="inline text-white" /> Source</a>
-      </span>
-      <a href="https://github.com/BarsatKhadka/SafeStore-DBMS/blob/main/README.md" target="_blank"> <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
-        Setup
-        <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
-      </span></a>
-    </div>
-  </h3>
-  <p className="text-gray-400 text-sm mb-4 cursor-text">
-    Database Backup and Restore Utility
-  </p>
-  <p className="text-gray-300 text-sm mb-4 cursor-text">
-    Safe Store DBMS is a CLI tool for automating database backups and restores. It supports 
-    <span className="font-bold text-[#6DB33F]"> MySQL</span>, 
-    <span className="font-bold text-[#336791]"> PostgreSQL</span>, and 
-    <span className="font-bold text-[#47A248]"> MongoDB</span>. Features include:
-  </p>
-  <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
-    <li>Full, incremental, and differential backups with compression.</li>
-    <li>Local and cloud storage (AWS S3, Google Cloud, Azure Blob).</li>
-    <li>Selective restore for tables or collections.</li>
-    <li>Logging and Slack notifications.</li>
-  </ul>
-  <div className="flex flex-wrap gap-2">
-    <span className="bg-[#E76F00]/10 text-[#E76F00] text-xs px-3 py-1 rounded-full cursor-text">Java</span>
-    <span className="bg-[#61DAFB]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">JDBC</span>
-    <span className="bg-[#00758F]/10 text-[#00758F] text-xs px-3 py-1 rounded-full cursor-text">MySQL</span>
-    <span className="bg-[#336791]/10 text-[#336791] text-xs px-3 py-1 rounded-full cursor-text">PostgreSQL</span>
-    <span className="bg-[#47A248]/10 text-[#47A248] text-xs px-3 py-1 rounded-full cursor-text">MongoDB</span>
-  </div>
-</div>
+          {/* EasyRepo Project Card */}
+          <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
+            <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
+              <div className="flex items-center mb-4 lg:mb-1"> 
+                <img src="./EasyRepoLogo.png" alt="Easy Repo Logo" className="w-8 h-8" />
+                <span className="cursor-text ml-4">Easy Repo</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
+                  <a href="https://github.com/BarsatKhadka/Easy-Repo" target="_blank"><FaGithub className="inline text-white" /> Source</a>
+                </span>
+                <a href="https://easy-repo-six.vercel.app/" target="_blank"> 
+                  <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+                    Visit
+                    <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
+                  </span>
+                </a>
+                <span className="relative bg-[#0A0A0A] text-white text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
+                  <Link to="/HowToCLI">How to CLI guide</Link>
+                </span>
+              </div>
+            </h3>
+            <p className="text-gray-400 text-sm mb-4 cursor-text">
+              GitHub Repository Management Tool
+            </p>
+            <p className="text-gray-300 text-sm mb-4 cursor-text">
+              Easy Repo is a full-stack web application designed to simplify GitHub repository management.
+            </p>
+            <ul className="text-gray-300 text-sm mb-4 list-disc list-inside cursor-text">
+              <li>Secure OAuth2 login with GitHub for seamless authentication.</li>
+              <li>Organize repositories into groups, rename or delete them with ease.</li>
+              <li>Explore repositories in a detailed tree structure and analyze lines of code.</li>
+              <li>Manage repositories through an integrated CLI available on the website.</li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-[#6DB33F]/10 text-[#6DB33F] text-xs px-3 py-1 rounded-full cursor-text">SpringBoot</span>
+              <span className="bg-[#61DAFB]/10 text-[#61DAFB] text-xs px-3 py-1 rounded-full cursor-text">React + Typescript</span>
+              <span className="bg-[#00758F]/10 text-[#00758F] text-xs px-3 py-1 rounded-full cursor-text">PostgreSQL</span>
+              <span className="bg-[#4EA225]/10 text-[#4EA225] text-xs px-3 py-1 rounded-full cursor-text">Spring Security</span>
+            </div>
+          </div>
         </div>
       </div>
     </>
