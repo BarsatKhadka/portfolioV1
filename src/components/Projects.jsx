@@ -122,7 +122,7 @@ export const Projects = () => {
           </div>
 
           
-          <div className="bg-[#1C1917] border border-[#000000]/10 rounded-lg p-6 hover:border-[#eebc86]/50 transition-all duration-300 cursor-pointer">
+          <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-300 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
             <h3 className="text-[#ebffff] text-xl font-semibold mb-8 sm:mb-4 flex flex-col flex-row sm:items-center justify-between">
               <div className="flex items-center mb-4 lg:mb-1"> 
                 <FaRobot className="w-8 h-8 text-purple-500" /> 
