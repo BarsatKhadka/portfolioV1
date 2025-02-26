@@ -26,17 +26,30 @@ export const Header = () => {
           </p>
         </motion.div>
         
-        <motion.a 
-          href="https://drive.google.com/uc?export=download&id=1rWkeP-cbAEC6UAuxhECA63DnggSOfFg3" 
-          className="text-[#ebffff] underline mb-4 lg:mb-0 lg:mr-64 hover:text-[#eebc86] transition-colors duration-300 relative group"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          Resume
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#eebc86] group-hover:w-full transition-all duration-300"></span>
-        </motion.a>
+        <div className="flex gap-3 mb-4 lg:mb-0 lg:mr-64">
+          <a 
+            href="https://drive.google.com/file/d/1rWkeP-cbAEC6UAuxhECA63DnggSOfFg3/view"
+            target="_blank"
+            rel="noopener noreferrer" 
+            className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#eebc86]" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+            </svg>
+            <span>View Resume</span>
+          </a>
+          
+          <a 
+            href="https://drive.google.com/uc?export=download&id=1rWkeP-cbAEC6UAuxhECA63DnggSOfFg3" 
+            className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#eebc86]" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+            <span>Download</span>
+          </a>
+        </div>
       </div>
 
       <motion.p 
