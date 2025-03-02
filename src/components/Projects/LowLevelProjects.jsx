@@ -7,7 +7,7 @@ export const LowLevelProjects = () => {
     <div className="ml-8 mt-16 lg:ml-48">
       {/* Section Title */}
       <div className="flex items-center gap-2 mb-6">
-        <IoFolderOpenOutline className="text-[#6DB33F] w-8 h-8" />
+        <IoFolderOpenOutline className="text-red-500 w-8 h-8" />
         <p className="text-2xl font-bold text-white">Low Level Projects</p>
       </div>
 
@@ -18,6 +18,7 @@ export const LowLevelProjects = () => {
             <FaCode className="w-7 h-7 text-yellow-400" />
             <span className="cursor-text">C Interpreter</span>
           </h3>
+        
 
           <p className="text-gray-400 text-sm mb-4 cursor-text">
             A simple C-like interpreter built while following the{" "}

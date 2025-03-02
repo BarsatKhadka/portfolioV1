@@ -7,7 +7,7 @@ export const WebProjects = () => {
     <>
       <div className="ml-8 mt-16 lg:ml-48">
         <div className="flex items-center gap-2 mb-6">
-          <IoFolderOpenOutline className="text-[#6DB33F] w-8 h-8" />
+          <IoFolderOpenOutline className="text-yellow-500 w-8 h-8" />
           <p className="text-2xl font-bold text-white">Web Projects</p>
         </div>
 
@@ -40,7 +40,7 @@ export const WebProjects = () => {
                       rel="noopener noreferrer"
                       className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group"
                     >
-                      Demo Video
+                      Demo 
                       <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
                     </a>
                   )}
@@ -62,6 +62,7 @@ export const WebProjects = () => {
                   </span>
                 ))}
               </div>
+              
             </div>
           ))}
         </div>
