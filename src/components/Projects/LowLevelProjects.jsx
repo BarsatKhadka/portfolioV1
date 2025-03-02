@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const LowLevelProjects = () => {
   return (
-    <div className="ml-8 mt-16 lg:ml-48">
+    <div className="ml-8 mt-16 ">
       {/* Section Title */}
       <div className="flex items-center gap-2 mb-6">
         <IoFolderOpenOutline className="text-red-500 w-8 h-8" />

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const WebProjects = () => {
   return (
     <>
-      <div className="ml-8 mt-16 lg:ml-48">
+      <div className="ml-8 mt-16 ">
         <div className="flex items-center gap-2 mb-6">
           <IoFolderOpenOutline className="text-yellow-500 w-8 h-8" />
           <p className="text-2xl font-bold text-white">Web Projects</p>
