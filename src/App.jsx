@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
 import { Experience } from "./components/Experience";
-import { Projects } from "./components/Projects";
+import { Projects } from "./components/Projects/Projects";
 import { Footer } from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HowToCLI } from "./components/grmsComponents/HowToCLI";
