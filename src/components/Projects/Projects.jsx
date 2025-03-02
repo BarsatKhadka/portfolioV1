@@ -9,10 +9,15 @@ export const Projects = () => {
           <IoFolderOpenOutline className="inline mr-1" /> Projects 
           <span className="h-[1px] bg-gradient-to-r from-[#eebc86]/50 to-transparent ml-4 flex-grow"></span>
         </p>
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 mr-8 lg:mr-48">
-        <WebProjects />
-        <LowLevelProjects />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mr-4 lg:mr-48">
+        <div className="w-full">
+       <WebProjects />
+     </div>
+      <div className="w-full">
+       <LowLevelProjects />
+      </div>
         </div>
+
     </div>
   );
 };

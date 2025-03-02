@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 export const WebProjects = () =>{
     return(
         <>
-        <div className="ml-8 mt-16 lg:ml-48 ">
+        <div className="ml-8 mt-16 lg:ml-48 "> 
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 mr-8 lg:mr-48">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 mr-8 lg:mr-8">
 
           {/* PunchClock Plus Project Card */}
           <div className="bg-[#] p-6 rounded-lg hover:scale-105 transform transition-all duration-500 hover:shadow-2xl hover:shadow-[#eebc86]/20 cursor-pointer">
