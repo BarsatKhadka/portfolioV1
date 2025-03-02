@@ -6,7 +6,12 @@ export const WebProjects = () =>{
     return(
         <>
         <div className="ml-8 mt-16 lg:ml-48 "> 
-        
+        <div className="flex items-center gap-2 mb-6">
+      <IoFolderOpenOutline className="text-[#6DB33F] w-8 h-8" />
+      <p className="text-2xl font-bold text-white">Web Projects</p>
+        </div>
+
+
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 mr-8 lg:mr-8">
 
@@ -21,8 +26,7 @@ export const WebProjects = () =>{
                 <span className="bg-[#000000]/10 text-white text-xs px-3 py-1 rounded-sm border border-[#95B5] flex items-center gap-1">
                   <a href="https://github.com/BarsatKhadka/Punch-Clock-Plus" target="_blank"><FaGithub className="inline text-white" /> Source</a>
                 </span>
-                <span className="relative bg-gradient-to-r from-[#6DB33F] to-[#8BC34A] text-black text-xs px-4 py-2 rounded-lg border border-[#6DB33F]/50 hover:shadow-lg hover:shadow-[#6DB33F]/40 transition-all duration-300 hover:scale-105 group">
-                  Visit
+                <span>
                   <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></span>
                 </span>
               </div>
