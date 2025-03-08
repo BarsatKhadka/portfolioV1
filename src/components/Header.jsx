@@ -28,7 +28,7 @@ export const Header = () => {
         
         <div className="flex gap-3 mb-4 lg:mb-0 lg:mr-64">
           <a 
-            href="https://drive.google.com/file/d/1rWkeP-cbAEC6UAuxhECA63DnggSOfFg3/view"
+            href="https://drive.google.com/file/d/1v3rmKVU3mFHJZiVmdj2XGWKxvGOrTmVa/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer" 
             className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
@@ -41,7 +41,7 @@ export const Header = () => {
           </a>
           
           <a 
-            href="https://drive.google.com/uc?export=download&id=1rWkeP-cbAEC6UAuxhECA63DnggSOfFg3" 
+            href="https://drive.google.com/uc?export=download&id=1v3rmKVU3mFHJZiVmdj2XGWKxvGOrTmVa" 
             className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#eebc86]" viewBox="0 0 20 20" fill="currentColor">
