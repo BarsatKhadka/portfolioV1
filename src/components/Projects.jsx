@@ -16,7 +16,13 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
     setTimeout(() => setShowToast(false), 1500);
   };
 
-  let cardClass = 'relative group backdrop-blur border rounded-xl p-6 min-h-[320px] flex flex-col justify-between transition-all hover:shadow-lg hover:-translate-y-1 ';
+  let cardClass = `
+    relative group backdrop-blur border rounded-xl 
+    p-4 sm:p-6 
+    min-h-[320px] sm:min-h-[340px] 
+    flex flex-col justify-between 
+    transition-all hover:shadow-lg hover:-translate-y-1
+  `;
   
   if (isDarkMode) {
     cardClass += 'bg-gradient-to-br from-gray-800/60 to-gray-900/60 border-gray-700/50 hover:border-gray-600/50 hover:shadow-blue-500/10 ';
@@ -37,7 +43,7 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
     <div className={cardClass}>
       {/* Featured/Progress Badges */}
       {golden && (
-        <span className={`absolute -top-3 left-4 text-xs font-bold px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
+        <span className={`absolute -top-3 left-2 sm:left-4 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
           isDarkMode 
             ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-black border-amber-400'
             : 'bg-amber-400 text-amber-900 border-black'
@@ -46,7 +52,7 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
         </span>
       )}
       {silverBadge && (
-        <span className={`absolute -top-3 left-4 text-xs font-bold px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
+        <span className={`absolute -top-3 left-2 sm:left-4 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
           isDarkMode
             ? 'bg-gradient-to-r from-gray-400 to-gray-300 text-gray-900 border-gray-300'
             : 'bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 text-gray-800 border-gray-300'
@@ -55,7 +61,7 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
         </span>
       )}
       {inProgress && (
-        <span className={`absolute -top-3 left-4 text-xs font-bold px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
+        <span className={`absolute -top-3 left-2 sm:left-4 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-md border z-10 uppercase tracking-wide ${
           isDarkMode
             ? 'bg-gradient-to-r from-blue-500 to-blue-400 text-white border-blue-400'
             : 'bg-gradient-to-r from-blue-200 via-blue-100 to-blue-300 text-blue-900 border-blue-300'
@@ -71,15 +77,16 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
         </div>
       )}
       
-      <div className="flex justify-between items-start mb-2">
-        <h3 className={`font-mono text-lg font-semibold mb-1 leading-tight ${
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-0 mb-2">
+        <h3 className={`font-mono text-base sm:text-lg font-semibold leading-tight ${
           isDarkMode ? 'text-white' : 'text-black'
         }`}>{title}</h3>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
+          {/* Action buttons */}
           {github && (
             <a 
               href={github} 
-              className={`border rounded px-2 py-1 text-xs font-medium hover:opacity-80 flex items-center gap-1 ${
+              className={`border rounded px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium hover:opacity-80 flex items-center gap-1 ${
                 isDarkMode 
                   ? 'border-gray-600 bg-gray-800 text-gray-200'
                   : 'border-gray-800 bg-[#24292e] text-white hover:bg-[#2c3238]'
@@ -87,9 +94,9 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <FaGithub className="text-sm" />
+              <FaGithub className="text-xs sm:text-sm" />
               <span>GitHub</span>
-              <FaExternalLinkAlt className="text-xs" />
+              <FaExternalLinkAlt className="text-[8px] sm:text-xs" />
             </a>
           )}
           {maven && (
@@ -160,11 +167,13 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
           )}
         </div>
       </div>
+
+      {/* Tech stack tags */}
       <div className="flex flex-wrap gap-1 mb-2">
         {tech.split(',').map((t, i) => (
           <code 
             key={i} 
-            className={`text-xs px-2 py-1 rounded font-mono flex items-center gap-1 ${
+            className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded font-mono flex items-center gap-1 ${
               t.trim() === 'UMiami Horizon AI' 
                 ? isDarkMode
                   ? 'bg-gradient-to-r from-amber-500/20 to-amber-400/20 text-amber-300 border border-amber-500/30'
@@ -186,13 +195,15 @@ function ProjectCard({ title, tech, description, bullets, github, live, demo, ma
           </code>
         ))}
       </div>
-      <p className={`text-sm mb-2 leading-relaxed ${
+
+      <p className={`text-xs sm:text-sm mb-2 leading-relaxed ${
         isDarkMode ? 'text-gray-300' : 'text-gray-700'
       }`}>{description}</p>
-      <ul className={`list-disc list-inside text-xs mb-2 ${
+
+      <ul className={`list-disc list-inside text-[10px] sm:text-xs mb-2 ${
         isDarkMode ? 'text-gray-400' : 'text-gray-700'
       }`}>
-        {bullets.map((b, i) => <li key={i}>{b}</li>)}
+        {bullets.map((b, i) => <li key={i} className="mb-1">{b}</li>)}
       </ul>
     </div>
   );
@@ -300,19 +311,19 @@ export default function Projects({ isDarkMode }) {
 
   return (
     <section className="my-4">
-      <div className="container">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className={`text-2xl font-semibold font-header ${
+      <div className="container px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 mb-6 sm:mb-8">
+          <h2 className={`text-xl sm:text-2xl font-semibold font-header ${
             isDarkMode ? '!text-white' : 'text-black'
           }`}>Projects</h2>
 
           {/* Page Selector Buttons */}
-          <div className="flex gap-2 ml-auto">
+          <div className="flex gap-2">
             {[0, 1, 2].map(idx => (
               <button
                 key={idx}
                 onClick={() => setPage(idx)}
-                className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold transform transition-all duration-200 ease-in-out
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-xs sm:text-sm font-bold transform transition-all duration-200 ease-in-out
                   ${page === idx
                     ? isDarkMode
                       ? 'bg-blue-500 text-white border-blue-500 scale-110 shadow-md shadow-blue-500/30'
@@ -329,8 +340,8 @@ export default function Projects({ isDarkMode }) {
           </div>
         </div>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {pages[page].map((props, i) => (
             <ProjectCard key={props.title + i} {...props} isDarkMode={isDarkMode} />
           ))}
