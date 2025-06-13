@@ -1,25 +1,58 @@
-import { MdOutlineWorkOutline } from "react-icons/md";
+import React from "react";
 
-export const Experience = () => {
+const experiences = [
+  {
+    company: "Crystal ERP",
+    role: "Web/App Developer Intern",
+    date: "May 2024 – Aug 2024",
+    location: "Koshi, Nepal",
+  },
+  {
+    company: "Namo Buddha Computer Service Center",
+    role: "Computer Hardware Repairing Intern",
+    date: "Dec 2023 – Mar 2024",
+    location: "Koshi, Nepal",
+  },
+];
+
+/**
+ * Experience component that adapts between light and dark themes via `isDarkMode` prop.
+ *
+ * @param {Object} props
+ * @param {boolean} props.isDarkMode - When true, renders the dark‑glass style; otherwise, light‑card variant.
+ */
+export default function Experience({ isDarkMode = false }) {
+  const headingClass = `text-2xl font-semibold mb-8 font-header pt-2 ${isDarkMode ? "!text-white" : "text-black"}`;
+  const cardClass = isDarkMode
+    ? "bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:border-gray-600/50 hover:scale-[1.02]"
+    : "bg-white/80 backdrop-blur border border-gray-200 rounded-lg p-6 transition-all hover:shadow-md hover:border-gray-300";
+  const roleClass = isDarkMode
+    ? "text-lg font-semibold text-white group-hover:text-blue-400 transition-colors duration-200"
+    : "text-lg font-semibold text-gray-900";
+  const companyClass = isDarkMode ? "text-sm text-blue-400 font-medium" : "text-sm text-gray-600";
+  const locationClass = isDarkMode ? "text-xs text-gray-400" : "text-xs text-gray-600";
+  const dateClass = isDarkMode
+    ? "text-xs text-gray-500 bg-gray-800/40 px-2 py-1 rounded-md w-fit mt-1"
+    : "text-xs text-gray-500";
+
   return (
-    <div className="ml-3 mt-16 lg:ml-48">
-      <p className="text-[#ebffff] mb-6 ml-1 flex items-center">
-        <MdOutlineWorkOutline className="inline mr-1 text-[#eebc86]"/> Experience
-        <span className="h-[1px] bg-gradient-to-r from-[#eebc86]/50 to-transparent ml-4 flex-grow"></span>
-      </p>
-      
-      <div className="ml-2 lg:ml-6 bg-[#1C1917]/50 p-5 rounded-lg border border-[#000000]/20 shadow-md mr-8 lg:mr-48">
-        <p className="text-[#ebffff]">Java tutor | <span className="italic text-gray-300">Bir Amar Singh Secondary School, Nepal</span></p>
-        <p className="text-sm text-gray-400 mt-1">December 2022 - March 2023</p>
-        
-        <ul className="list-disc list-inside mt-4 text-sm text-gray-300 space-y-2">
-          <li className="mr-2">Tutored 30+ grade 11 Students in mastering core Java concepts including loops, OOP, Collections Framework, JDBC, and Generics.</li>
-          <li className="mr-2">Explained fundamental data structures (e.g., arrays, linked lists, stacks, queues) and their trade-offs to build a strong programming foundation.</li>
-          <li className="mr-2">Introduced students to development tools like IntelliJ IDEA and Eclipse for writing and debugging Java code.</li>
-          <li className="mr-2">Guided students in using version control systems like Git for collaborative coding and project management.</li>
-          <li className="mr-2">Assigned and supervised small-scale projects (e.g., library management systems, student grade calculators) to apply Java concepts in real-world scenarios.</li>
-        </ul>
+    <section className="my-6 w-full pl-4 font-sans">
+      <h2 className={headingClass}>Experience</h2>
+      <div className="grid gap-6">
+        {experiences.map((exp, idx) => (
+          <div key={idx} className={cardClass}>
+            <div className="flex flex-col gap-2 group">
+              <h3 className={roleClass}>{exp.role}</h3>
+              <div className={companyClass}>{exp.company}</div>
+              <div className="flex items-center gap-2">
+                {isDarkMode && <span className="w-1 h-1 bg-gray-500 rounded-full" />} {/* dot only in dark mode */}
+                <span className={locationClass}>{exp.location}</span>
+              </div>
+              <div className={dateClass}>{exp.date}</div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
+}

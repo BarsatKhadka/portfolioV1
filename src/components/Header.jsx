@@ -1,103 +1,136 @@
-import { IoLocationOutline } from "react-icons/io5";
-import { FaLandmarkDome } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { Typewriter } from 'react-simple-typewriter';
+import { FaMoon, FaSun, FaDownload, FaEye, FaTerminal } from 'react-icons/fa';
 
-export const Header = () => {
+export default function Header({ isDarkMode, setIsDarkMode }) {
+  const [showResumeOptions, setShowResumeOptions] = useState(false);
+
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="ml-4 mt-12 lg:ml-48 relative"
-    >
-      <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-[#eebc86]/20 to-transparent rounded-full blur-xl z-0"></div>
-      
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          <p className="mb-2 lg:mb-1">
-            <span className="text-[#ebffff] text-2xl font-semibold">Barsat Khadka</span>{" "}
-            <span className="text-sm block lg:inline mt-1 lg:mt-0 lg:ml-8 italic text-[#eebc86]/80">
-              Seeking SWE Internships @2025
+    <header className="pt-10 pb-8">
+      <div className="container">
+        <div className="flex justify-between items-center mb-4">
+          <div className={`text-base font-medium flex items-center gap-2 group ${
+            isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-gray-900'
+          } transition-colors font-["IBM_Plex_Sans","Figtree",Arial,sans-serif]`}>
+            <FaTerminal className={`text-sm transform transition-transform group-hover:rotate-12 ${
+              isDarkMode ? 'text-blue-400' : 'text-gray-900'
+            }`} />
+            <span className="relative min-w-[90px]">
+              <Typewriter
+                words={['barsat.dev']}
+                loop={1}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={false}
+                delaySpeed={1000}
+              />
             </span>
-          </p>
-        </motion.div>
-        
-        <div className="flex gap-3 mb-4 lg:mb-0 lg:mr-64">
-          <a 
-            href="https://drive.google.com/file/d/1QYvO5gh_ZhmkznUiSRyZrq4x6IKLuecQ/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer" 
-            className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#eebc86]" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-            </svg>
-            <span>View Resume</span>
-          </a>
-          
-          <a 
-            href="https://drive.google.com/uc?export=download&id=1QYvO5gh_ZhmkznUiSRyZrq4x6IKLuecQ" 
-            className="text-[#ebffff] hover:text-[#eebc86] transition-colors duration-300 relative group flex items-center gap-2 bg-[#1C1917]/70 px-3 py-1.5 rounded-md border border-[#000000]/20 hover:border-[#eebc86]/30"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#eebc86]" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-            <span>Download</span>
-          </a>
+          </div>
+          <div className="flex items-center gap-6">
+            <nav className="flex gap-8 text-sm mt-1">
+              <div 
+                className="relative group"
+                onMouseEnter={() => setShowResumeOptions(true)}
+                onMouseLeave={() => setShowResumeOptions(false)}
+              >
+                <a 
+                  href="https://drive.google.com/file/d/1IQBdm9M41ECyJ1Cu7p_tnRBWNHItd6Ep/view?usp=sharing" 
+                  target='_blank'
+                  className={`transition-colors duration-200 hover:underline ${
+                    isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
+                  }`}
+                >
+                  Resume
+                </a>
+                {/* Add padding-top to create a hoverable area between trigger and dropdown */}
+                <div className={`absolute -left-4 pt-2 w-32 ${showResumeOptions ? 'block' : 'hidden'}`}>
+                  <div className={`py-2 rounded-lg shadow-lg ${
+                    isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
+                  }`}>
+                    <a
+                      href="https://drive.google.com/file/d/1IQBdm9M41ECyJ1Cu7p_tnRBWNHItd6Ep/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-2 px-4 py-2 text-sm ${
+                        isDarkMode ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-100 text-gray-700'
+                      }`}
+                    >
+                      <FaEye className="text-xs" /> View
+                    </a>
+                    <a
+                      href="https://drive.google.com/uc?export=download&id=1IQBdm9M41ECyJ1Cu7p_tnRBWNHItd6Ep"
+                      className={`flex items-center gap-2 px-4 py-2 text-sm ${
+                        isDarkMode ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-100 text-gray-700'
+                      }`}
+                    >
+                      <FaDownload className="text-xs" /> Download
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a 
+                href="https://github.com/BarsatKhadka" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`transition-colors duration-200 hover:underline ${
+                  isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
+                }`}
+              >
+                GitHub
+              </a>
+              <a 
+                href="mailto:khadkabarsat598@gmail.com" 
+                className={`transition-colors duration-200 hover:underline ${
+                  isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
+                }`}
+              >
+                Contact
+              </a>
+            </nav>
+            <button
+              className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm font-medium ${
+                isDarkMode
+                  ? 'bg-gray-800/60 border border-gray-700/50 text-gray-200 hover:bg-gray-700/60 hover:border-gray-600/60'
+                  : 'bg-gray-100 border border-gray-200 text-gray-700 hover:bg-gray-200 hover:border-gray-300'
+              }`}
+              onClick={() => setIsDarkMode(!isDarkMode)}
+            >
+              {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
+              {isDarkMode ? 'Light' : 'Dark'}
+            </button>
+          </div>
+        </div>
+        <div className="mt-16 text-left">
+          <h1 className={`text-5xl md:text-6xl font-light mb-4 leading-tight ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`} style={{ fontFamily: 'Inter, Arial, sans-serif' }}>
+            Hi, I'm <span className={isDarkMode 
+              ? 'text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text' 
+              : 'text-blue-800'
+            }>Barsat Khadka</span> – I build<br />
+            AI-powered tools and full-stack systems.
+          </h1>
+          <div className={`text-lg ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`} style={{ fontFamily: 'Inter, Arial, sans-serif' }}>
+            <span className={`inline-block min-h-[2.5rem] ${
+              isDarkMode ? 'text-blue-400' : 'text-gray-900'
+            }`}>
+              <Typewriter
+                words={['Computer Engineering', 'Honors Scholar', "President's List Spring 2025", "Academic Excellence Tuition Award", "Computer Engineering"]}
+                loop={1}
+                cursor
+                cursorStyle="|"
+                typeSpeed={60}
+                deleteSpeed={40}
+                delaySpeed={1200}
+              />
+            </span>
+            {' '}@The University of Southern Mississippi
+          </div>
         </div>
       </div>
-
-      <motion.p 
-        className="mb-6 text-gray flex items-center flex-wrap"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
-        <span className="text-sm flex items-center mr-6">
-          <IoLocationOutline className="inline mr-1 text-[#eebc86]" /> USA
-        </span>
-        <span className="text-sm italic mt-1 lg:mt-0 flex items-center">
-          <FaLandmarkDome className="inline mr-1 text-[#eebc86]" />
-          Bachelor of Science, Computer Engineering
-        </span>
-      </motion.p>
-
-      <div className="bg-[#1C1917]/50 backdrop-blur-sm p-4 rounded-lg border border-[#000000]/20 shadow-lg">
-        <motion.p 
-          className="text-sm mb-3 sm:mr-8 flex flex-wrap items-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.3 }}
-        >
-          <span className="text-[#eebc86] sm:mr-2 font-medium min-w-24">Languages:</span>
-          <span className="text-gray-300">Java, Python, Javascript, Typescript, SQL, C++</span>
-        </motion.p>
-
-        <motion.p 
-          className="text-sm mb-3 sm:mr-8 flex flex-wrap items-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.3 }}
-        >
-          <span className="text-[#eebc86] sm:mr-2 font-medium min-w-24">Frameworks:</span>
-          <span className="text-gray-300">SpringBoot, Spring Security, React.js, Tailwind CSS</span>
-        </motion.p>
-
-        <motion.p 
-          className="text-sm sm:mr-8 flex flex-wrap items-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.3 }}
-        >
-          <span className="text-[#eebc86] sm:mr-2 font-medium min-w-24">Extras:</span>
-          <span className="text-gray-300">JPA, Maven, Postman API, Docker, Git, AWS, Linux</span>
-        </motion.p>
-      </div>
-    </motion.div>
+    </header>
   );
-};
+}
