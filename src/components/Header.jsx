@@ -57,7 +57,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
                 onMouseLeave={() => setShowResumeOptions(false)}
               >
                 <a 
-                  href="https://drive.google.com/file/d/1YHwn14A-SsuskJDsnCOgEUvjK1KQg_I6/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing" 
                   target='_blank'
                   className={`transition-colors duration-200 hover:underline ${
                     isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
@@ -81,7 +81,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
                       <FaEye className="text-xs" /> View
                     </a>
                     <a
-                      href="https://drive.google.com/uc?export=download&id=1YHwn14A-SsuskJDsnCOgEUvjK1KQg_I6"
+                      href="https://drive.google.com/uc?export=download&id=1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8"
                       className={`flex items-center gap-2 px-4 py-2 text-sm ${
                         isDarkMode ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-100 text-gray-700'
                       }`}
