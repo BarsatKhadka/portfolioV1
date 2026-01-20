@@ -2,78 +2,183 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
-  background: #F5F7FA;
-  color: #222;
-  min-height: 100vh;
-  font-family: 'IBM Plex Sans', 'Figtree', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    background-color: #FFFFFF;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0a0a0a;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+    font-weight: 400;
+    color: #0a0a0a;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin-bottom: 1.5em;
+  }
+
+  a {
+    color: #1e40af;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  a:hover {
+    color: #1e3a8a;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+  }
+
+  /* Link underline animation - slides in from left */
+  a.link-slide {
+    position: relative;
+  }
+
+  a.link-slide::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #1e40af;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  a.link-slide:hover::after {
+    width: 100%;
+  }
+
+  /* External link icon */
+  a.external-link::after {
+    content: '↗';
+    font-size: 0.85em;
+    margin-left: 0.3em;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    display: inline-block;
+  }
+
+  a.external-link:hover::after {
+    opacity: 1;
+  }
+
+  /* Card hover effect */
+  .card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Status badge */
+  .status-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+  }
+
+  .status-ongoing {
+    color: #059669;
+  }
+
+  /* Meta text */
+  .meta-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+  }
+
+  /* Tag pill */
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    padding: 0.25em 0.75em;
+    border-radius: 9999px;
+    display: inline-block;
+  }
+
+  /* Baseline grid helper */
+  .baseline-8 {
+    line-height: 1.5;
+  }
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 70% 10%, #22C55E33 0%, #3B82F633 40%, #6366F133 100%);
-  opacity: 0.18;
+@layer utilities {
+  .indent-25 {
+    margin-left: 25%;
+  }
+
+  .indent-30 {
+    margin-left: 30%;
+  }
 }
 
-h1, h2, h3, h4, h5, h6, .font-header {
-  font-family: 'Satoshi', 'Space Grotesk', 'Inter', Arial, sans-serif;
-  font-weight: 700;
-  color: #0F172A;
-}
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
 
-.font-body {
-  font-family: 'IBM Plex Sans', 'Figtree', Arial, sans-serif;
+  .main-content {
+    width: 100%;
+    max-width: 100%;
+  }
 }
-
-a, .link, .accent-blue {
-  color: #3B82F6;
-}
-
-.button, .accent-blue-bg {
-  background-color: #3B82F6;
-  color: #fff;
-}
-
-.accent-green {
-  color: #22C55E;
-}
-
-.accent-green-bg {
-  background-color: #22C55E;
-  color: #fff;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-body{
-  background-color: rgb(28,25,23);
-  color: rgb(230 226 225);
-  font-style: normal;
-  font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-weight: medium;
-  font-style: normal;
-  
-}
-
