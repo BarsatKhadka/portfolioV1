@@ -124,24 +124,25 @@ export default function App() {
     <div className="min-h-screen bg-white text-[#0a0a0a]">
       <Analytics />
 
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         {/* Left Sidebar - Sticky */}
-        <aside className="sidebar w-[420px] flex-shrink-0 border-r border-[#e5e7eb] bg-white sticky top-0 h-screen overflow-y-auto">
-          <div className="p-8">
+        <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[#e5e7eb] bg-white md:sticky md:top-0 md:h-screen overflow-y-auto">
+          <div className="p-4 lg:p-8">
             {/* Name */}
-            <h1 className="mb-2 mt-2 text-6xl">Barsat Khadka</h1>
-            <p className="mb-4 text-sm text-[#6b7280] flex items-center gap-2">
+            <h1 className="mb-2 mt-2 text-3xl sm:text-4xl lg:text-6xl">Barsat Khadka</h1>
+            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
               <FiMapPin size={14} />
-              Greater Hattiesburg Area, Mississippi, USA
+              <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
+              <span className="sm:hidden">Hattiesburg, MS</span>
             </p>
             
             {/* Title/Affiliation */}
-            <div className="mb-8 text-base text-[#6b7280] leading-relaxed">
-              <div className="flex items-start gap-3 mt-4 pt-4">
-                <div className="w-12 h-12 rounded-lg bg-[#FFD700] flex items-center justify-center flex-shrink-0">
-                  <img src={canvasImage} alt="University" className="w-8 h-8 object-contain -mt-0.5" />
+            <div className="mb-6 lg:mb-8 text-sm lg:text-base text-[#6b7280] leading-relaxed">
+              <div className="flex items-start gap-2 lg:gap-3 mt-4 pt-4">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-lg bg-[#FFD700] flex items-center justify-center flex-shrink-0">
+                  <img src={canvasImage} alt="University" className="w-6 h-6 lg:w-8 lg:h-8 object-contain -mt-0.5" />
                 </div>
-                <p className="text-sm leading-[1.1]">
+                <p className="text-xs lg:text-sm leading-[1.1]">
                   {education.school}
                   <br />
                   {education.degree}
@@ -152,8 +153,8 @@ export default function App() {
             </div>
 
             {/* Navigation */}
-            <nav className="mb-8">
-              <ul className="space-y-2 text-lg font-['Inter']">
+            <nav className="mb-6 lg:mb-8">
+              <ul className="space-y-1 lg:space-y-2 text-base lg:text-lg font-['Inter']">
                 <li>
                   <a
                     href="#about"
@@ -226,15 +227,15 @@ export default function App() {
         </aside>
 
         {/* Main Content Area */}
-        <main className="main-content flex-1 max-w-[900px] px-0" style={{ marginLeft: '80px' }}>
+        <main className="main-content flex-1 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-20">
           {/* About Section */}
           <section
             id="about"
             ref={(el) => (sectionsRef.current.about = el)}
-            className="pt-8 mb-[60px] px-8"
+            className="pt-8 mb-12 lg:mb-[60px] px-4 lg:px-8"
           >
-            <div className="text-[16px] leading-[1.9] max-w-none">
-              <h2 className="mb-4">
+            <div className="text-sm lg:text-[16px] leading-[1.9] max-w-none">
+              <h2 className="mb-4 text-2xl lg:text-3xl">
                 Currently
               </h2>
               <p className="mb-4">
@@ -260,7 +261,7 @@ export default function App() {
                   My handles are below. feel free to reach out if something in my work interests you or if you'd like to talk or collaborate.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-6 text-[15px] font-['Inter']">
+              <div className="flex flex-wrap gap-4 lg:gap-6 text-sm lg:text-[15px] font-['Inter']">
                 <a
                   href="mailto:khadkabarsat598@gmail.com"
                   className="link-slide flex items-center gap-2"
@@ -303,14 +304,14 @@ export default function App() {
           <section
             id="research"
             ref={(el) => (sectionsRef.current.research = el)}
-            className="mb-[120px] px-8"
+            className="mb-12 lg:mb-[120px] px-4 lg:px-8"
           >
-            <h2 className="mb-[60px]">Research</h2>
-            <div className="space-y-6">
+            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Research</h2>
+            <div className="space-y-4 lg:space-y-6">
               {research.map((item, index) => (
-                <div key={index} className="card bg-white rounded p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="max-w-3xl text-lg font-normal font-['Inter']">
+                <div key={index} className="card bg-white rounded p-4 lg:p-8">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 mb-4">
+                    <h3 className="max-w-3xl text-base lg:text-lg font-normal font-['Inter']">
                       {item.link ? (
                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-slide external-link">
                           {item.title}
@@ -332,10 +333,10 @@ export default function App() {
           <section
             id="projects"
             ref={(el) => (sectionsRef.current.projects = el)}
-            className="mb-[120px] px-8"
+            className="mb-12 lg:mb-[120px] px-4 lg:px-8"
           >
-            <div className="flex items-center justify-between mb-[60px]">
-              <h2>Projects</h2>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 lg:mb-[60px]">
+              <h2 className="text-2xl lg:text-3xl">Projects</h2>
               <div className="flex gap-4 text-sm font-['Inter']">
                 <button
                   onClick={() => setActiveProjectType('ongoing')}
@@ -361,11 +362,11 @@ export default function App() {
               </div>
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-6 lg:space-y-10">
               {activeProjectType === 'ongoing' && ongoingProjects.map((project, index) => (
-                <article key={index} className="card bg-white rounded p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3>
+                <article key={index} className="card bg-white rounded p-4 lg:p-8">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 mb-4">
+                    <h3 className="text-lg lg:text-xl">
                       {project.link ? (
                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-slide external-link">
                           {project.title}
@@ -379,8 +380,8 @@ export default function App() {
                     </span>
                   </div>
 
-                  <div className="indent-25 mb-6">
-                    <p className="text-[16px] leading-[1.9] text-[#0a0a0a]/70">{project.description}</p>
+                  <div className="indent-25 mb-4 lg:mb-6">
+                    <p className="text-sm lg:text-[16px] leading-[1.9] text-[#0a0a0a]/70">{project.description}</p>
                   </div>
 
                   {project.title === 'Vinaya Journal' && (
@@ -449,8 +450,8 @@ export default function App() {
                     <span className="status-badge">[{project.status}]</span>
                   </div>
 
-                  <div className="indent-25 mb-6">
-                    <p className="text-[16px] leading-[1.9] text-[#0a0a0a]/70">{project.description}</p>
+                  <div className="indent-25 mb-4 lg:mb-6">
+                    <p className="text-sm lg:text-[16px] leading-[1.9] text-[#0a0a0a]/70">{project.description}</p>
                   </div>
 
                   {project.github && (
@@ -474,12 +475,12 @@ export default function App() {
           <section
             id="publications"
             ref={(el) => (sectionsRef.current.publications = el)}
-            className="mb-[120px] px-8"
+            className="mb-12 lg:mb-[120px] px-4 lg:px-8"
           >
-            <h2 className="mb-[60px]">Blogs</h2>
-            <div className="space-y-8">
+            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Blogs</h2>
+            <div className="space-y-6 lg:space-y-8">
               {publications.map((pub, index) => (
-                <div key={index} className="text-[16px] leading-[1.9]">
+                <div key={index} className="text-sm lg:text-[16px] leading-[1.9]">
                   <p className="mb-2 font-medium">{pub.title}</p>
                   <p className="text-[#0a0a0a]/70 mb-2">{pub.description}</p>
                   <p className="meta-text">{pub.type} • {pub.year}</p>
@@ -490,8 +491,8 @@ export default function App() {
         </main>
 
         {/* Right Sidebar - Previously */}
-        <aside className="hidden lg:block w-[260px] flex-shrink-0 ml-16 mr-16 pt-8 text-sm font-['Inter']">
-          <h2 className="mb-4">
+        <aside className="hidden xl:block w-[260px] flex-shrink-0 ml-8 xl:ml-16 mr-8 xl:mr-16 pt-8 text-sm font-['Inter']">
+          <h2 className="mb-4 text-2xl lg:text-3xl">
             Previously
           </h2>
           <div className="space-y-4">
