@@ -10,7 +10,7 @@ export default function App() {
       <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blog />} />
+        <Route path="/blogs/:slug" element={<Blog />} />
       </Routes>
     </BrowserRouter>
   );

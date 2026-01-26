@@ -54,10 +54,11 @@ const research = [
 
 const publications = [
   {
-    title: 'Converting Netlist to VCD and VCD to SAIF Open Source',
+    title: 'Converting_Netlist_to_VCD_and_VCD_to_SAIF_Open_Source',
     description: 'Open source tool for EDA workflows',
     type: 'Tool',
-    year: 'Jan 2026'
+    year: 'Jan 2026',
+    slug: 'converting-netlist-to-vcd-and-vcd-to-saif'
   }
 ];
 
@@ -201,16 +202,20 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <Link
-                    to="/blogs"
-                    className={`block py-2 transition-colors underline ${
+                  <a
+                    href="#publications"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection('publications');
+                    }}
+                    className={`block py-2 transition-colors ${
                       activeSection === 'publications' 
                         ? 'text-[#1e40af] font-medium' 
                         : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
                     }`}
                   >
                     Blogs
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -232,7 +237,7 @@ export default function Home() {
                 Currently
               </h2>
               <p className="mb-4">
-                Research Assistant,{' '}
+                Research Software Engineer,{' '}
                 <a
                   href="https://www.usm.edu/advanced-analytics-security/index.php"
                   target="_blank"
@@ -242,7 +247,7 @@ export default function Home() {
                   Institute of Advanced Analytics and Security
                 </a>
               </p>
-              <p className="mb-8">ML Researcher, Cyber Innovations Lab</p>
+              <p className="mb-8">Research Assistant, Cyber Innovations Lab</p>
               <div className="mb-6 space-y-4">
                 <p>
                   Growing up in Nepal shaped my belief in open source as a way to expand access to knowledge. It's why I'm so invested in projects like <a href="https://vinaya-journal.vercel.app" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">Vinaya</a> and exploring the <a href="https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">OpenLane 2</a> ecosystem. I believe that open source isn't just a way to build software; it's a way to level the playing field.
@@ -474,16 +479,42 @@ export default function Home() {
             <div className="space-y-6 lg:space-y-8">
               {publications.map((pub, index) => (
                 <div key={index} className="text-sm lg:text-[16px] leading-[1.9]">
+                  <span className="text-[#0a0a0a]/30 mr-2">/</span>
                   <Link 
-                    to="/blogs"
-                    className="block mb-2 font-medium text-[#1e40af] hover:text-[#1e3a8a] transition-colors"
+                    to={`/blogs/${pub.slug}`}
+                    className="inline-block mb-2 font-medium text-[#1e40af] hover:text-[#1e3a8a] transition-colors"
                   >
                     {pub.title}
                   </Link>
-                  <p className="text-[#0a0a0a]/70 mb-2">{pub.description}</p>
-                  <p className="meta-text">{pub.type} • {pub.year}</p>
+                  <p className="text-[#0a0a0a]/70 mb-2 ml-4">{pub.description}</p>
+                  <p className="meta-text ml-4">{pub.type} • {pub.year}</p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Research Interests Section */}
+          <section
+            id="research-interests"
+            className="mb-12 lg:mb-[120px] px-4 lg:px-8"
+          >
+            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Research Interests</h2>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
+                Applied Machine Learning
+              </span>
+              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
+                Oceanographic Data Analytics
+              </span>
+              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
+                Graph Neural Networks (GNNs)
+              </span>
+              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
+                Electronic Design Automation (EDA)
+              </span>
+              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
+                ML for Physical Design
+              </span>
             </div>
           </section>
         </main>
