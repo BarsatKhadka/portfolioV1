@@ -140,7 +140,7 @@ export default function Home() {
             </div>
             
             {/* Name */}
-            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl text-center">Barsat Khadka</h1>
+            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl text-center">barsat_khadka</h1>
             <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center justify-center gap-2">
               <FiMapPin size={14} />
               <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
@@ -533,7 +533,7 @@ export default function Home() {
         </main>
 
         {/* Right Sidebar - Previously */}
-        <aside className="hidden xl:block w-[260px] flex-shrink-0 ml-8 xl:ml-16 mr-8 xl:mr-16 pt-8 text-sm font-['Inter']">
+        <aside className="hidden xl:block w-[320px] flex-shrink-0 border-l border-[#e5e7eb] pl-8 xl:pl-12 pt-8 text-sm font-['Inter'] xl:translate-x-8">
           <h2 className="mb-4 text-2xl lg:text-3xl">
             Previously
           </h2>
