@@ -73,6 +73,7 @@ export default function Home() {
   const [activeProjectType, setActiveProjectType] = useState('ongoing');
   const [repoStats, setRepoStats] = useState({ stars: 0, forks: 0 });
   const [activeSection, setActiveSection] = useState('about');
+  const [showMoreIntro, setShowMoreIntro] = useState(false);
   const sectionsRef = useRef({});
 
   useEffect(() => {
@@ -140,12 +141,45 @@ export default function Home() {
             </div>
             
             {/* Name */}
-            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl">barsat_khadka</h1>
-            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
+            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl">Barsat Khadka</h1>
+            <p className="mb-2 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
               <FiMapPin size={14} />
               <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
               <span className="sm:hidden">Hattiesburg, MS</span>
             </p>
+
+            {/* Quick links (profile-style) */}
+            <div className="mb-6">
+              <div className="grid grid-cols-[16px_1fr] gap-x-2 gap-y-2 text-xs lg:text-sm text-[#6b7280]">
+                <FiGithub size={14} className="mt-[2px]" />
+                <a
+                  href="https://github.com/BarsatKhadka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="truncate text-[#6b7280] hover:text-[color:var(--accent)] transition-colors"
+                >
+                  github.com/BarsatKhadka
+                </a>
+
+                <FiMail size={14} className="mt-[2px]" />
+                <a
+                  href="mailto:khadkabarsat598@gmail.com"
+                  className="truncate text-[#6b7280] hover:text-[color:var(--accent)] transition-colors"
+                >
+                  khadkabarsat598@gmail.com
+                </a>
+
+                <FiLinkedin size={14} className="mt-[2px]" />
+                <a
+                  href="https://www.linkedin.com/in/barsat-khadka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="truncate text-[#6b7280] hover:text-[color:var(--accent)] transition-colors"
+                >
+                  in/barsat-khadka
+                </a>
+              </div>
+            </div>
             
             {/* Title/Affiliation */}
             <div className="mb-6 lg:mb-8 text-sm lg:text-base text-[#6b7280] leading-relaxed">
@@ -264,50 +298,66 @@ export default function Home() {
               <div className="mb-6 space-y-4">
                 <p>
                   Growing up in Nepal shaped my belief in open source as a way to expand access to knowledge. It's why I'm so invested in projects like <a href="https://vinaya-journal.vercel.app" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">Vinaya</a> and exploring the <a href="https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">OpenLane 2</a> ecosystem. I believe that open source isn't just a way to build software; it's a way to level the playing field.
+                  <>
+                    {' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowMoreIntro((v) => !v)}
+                      className="font-medium text-[var(--accent)] hover:underline"
+                    >
+                      {showMoreIntro ? 'Click for less' : 'Click for more'}
+                    </button>
+                  </>
                 </p>
-                <p>
-                  I've always had the vision of being a scientist, and I love doing research for the sake of science and the craft. Most of my time is spent between research papers, quiet work, music, commute to university, meetings, cooking, and gaming.
-                </p>
-                <p>
-                  My handles are below. feel free to reach out if something in my work interests you or if you'd like to talk or collaborate.
-                </p>
+                {showMoreIntro && (
+                  <>
+                    <p>
+                      I've always had the vision of being a scientist, and I love doing research for the sake of science and the craft. Most of my time is spent between research papers, quiet work, music, commute to university, meetings, cooking, and gaming.
+                    </p>
+                    <p>
+                      My handles are below. feel free to reach out if something in my work interests you or if you'd like to talk or collaborate.
+                    </p>
+                  </>
+                )}
               </div>
-              <div className="flex flex-wrap gap-4 lg:gap-6 text-sm lg:text-[15px] font-['Inter']">
-                <a
-                  href="mailto:khadkabarsat598@gmail.com"
-                  className="link-slide flex items-center gap-2"
-                >
-                  <FiMail size={16} />
-                  Email
-                </a>
-                <a
-                  href="https://github.com/BarsatKhadka"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-slide flex items-center gap-2"
-                >
-                  <FiGithub size={16} />
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/barsat-khadka"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-slide flex items-center gap-2"
-                >
-                  <FiLinkedin size={16} />
-                  LinkedIn
-                </a>
-                <a
-                  href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-slide flex items-center gap-2"
-                >
-                  <FiFileText size={16} />
-                  Resume
-                </a>
-              </div>
+              {showMoreIntro && (
+                <div className="flex flex-wrap gap-4 lg:gap-6 text-sm lg:text-[15px] font-['Inter']">
+                  <a
+                    href="mailto:khadkabarsat598@gmail.com"
+                    className="link-slide flex items-center gap-2"
+                  >
+                    <FiMail size={16} />
+                    Email
+                  </a>
+                  <a
+                    href="https://github.com/BarsatKhadka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-slide flex items-center gap-2"
+                  >
+                    <FiGithub size={16} />
+                    GitHub
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/barsat-khadka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-slide flex items-center gap-2"
+                  >
+                    <FiLinkedin size={16} />
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-slide flex items-center gap-2"
+                  >
+                    <FiFileText size={16} />
+                    Resume
+                  </a>
+                </div>
+              )}
             </div>
           </section>
 
