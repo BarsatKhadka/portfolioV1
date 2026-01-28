@@ -128,7 +128,7 @@ export default function Home() {
         <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[#e5e7eb] bg-white md:sticky md:top-0 md:h-screen overflow-y-auto">
           <div className="p-4 lg:p-8">
             {/* Profile Image */}
-            <div className="mb-4 flex justify-center">
+            <div className="mb-4 flex justify-start">
               <div className="relative">
                 <img 
                   src={myImage} 
@@ -140,8 +140,8 @@ export default function Home() {
             </div>
             
             {/* Name */}
-            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl text-center">barsat_khadka</h1>
-            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center justify-center gap-2">
+            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl">barsat_khadka</h1>
+            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
               <FiMapPin size={14} />
               <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
               <span className="sm:hidden">Hattiesburg, MS</span>
