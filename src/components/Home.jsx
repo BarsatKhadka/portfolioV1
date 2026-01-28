@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiMail, FiGithub, FiLinkedin, FiFileText, FiMapPin } from 'react-icons/fi';
 import projectImage from '../assets/image.png';
 import canvasImage from './canvas.png';
+import myImage from './MyImage.jpg';
 
 // --- Data ---
 const ongoingProjects = [
@@ -126,9 +127,21 @@ export default function Home() {
         {/* Left Sidebar - Sticky */}
         <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[#e5e7eb] bg-white md:sticky md:top-0 md:h-screen overflow-y-auto">
           <div className="p-4 lg:p-8">
+            {/* Profile Image */}
+            <div className="mb-4 flex justify-center">
+              <div className="relative">
+                <img 
+                  src={myImage} 
+                  alt="Barsat Khadka" 
+                  className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-2 border-[#e5e7eb]"
+                  style={{ objectPosition: 'center 75%' }}
+                />
+              </div>
+            </div>
+            
             {/* Name */}
-            <h1 className="mb-2 mt-2 text-3xl sm:text-4xl lg:text-6xl">Barsat Khadka</h1>
-            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
+            <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl text-center">Barsat Khadka</h1>
+            <p className="mb-4 text-xs lg:text-sm text-[#6b7280] flex items-center justify-center gap-2">
               <FiMapPin size={14} />
               <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
               <span className="sm:hidden">Hattiesburg, MS</span>
