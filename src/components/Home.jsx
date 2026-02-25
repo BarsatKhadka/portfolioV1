@@ -44,12 +44,15 @@ const research = [
   {
     title: 'Multiphase Social Engineering Attack Detection using GNN and BERT',
     status: 'ongoing',
-    link: null
+    link: null,
+    note: null
   },
   {
-    title: 'Comprehensive Graph Dataset for Placement-CTS Interaction in RTL to GSDII Flow',
-    status: 'ongoing',
-    link: null
+    title: 'CTS-Bench: Benchmarking Graph Coarsening Trade-offs for GNNs in Clock Tree Synthesis',
+    status: null,
+    link: 'https://arxiv.org/abs/2602.19330',
+    arxivId: '2602.19330',
+    note: "Accepted to MLBench'26 ASPLOS"
   }
 ];
 
@@ -371,20 +374,33 @@ export default function Home() {
             <div className="space-y-4 lg:space-y-6">
               {research.map((item, index) => (
                 <div key={index} className="card bg-white rounded p-4 lg:p-8">
-                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 mb-4">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 mb-2">
                     <h3 className="max-w-3xl text-base lg:text-lg font-normal font-['Inter']">
                       {item.link ? (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-slide external-link">
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#b31b1b] hover:text-[#8b0000] hover:underline font-medium">
                           {item.title}
                         </a>
                       ) : (
                         item.title
                       )}
                     </h3>
-                    <span className={`status-badge ${item.status === 'ongoing' ? 'status-ongoing' : ''}`}>
-                      [{item.status.toUpperCase()}]
-                    </span>
+                    {item.status && (
+                      <span className={`status-badge ${item.status === 'ongoing' ? 'status-ongoing' : ''}`}>
+                        [{item.status.toUpperCase()}]
+                      </span>
+                    )}
                   </div>
+                  {item.note && (
+                    <p className="text-sm text-[#374151] mt-1">{item.note}</p>
+                  )}
+                  {item.arxivId && item.link && (
+                    <p className="text-sm mt-2">
+                      <span className="text-[#374151]">Read: </span>
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#b31b1b] hover:text-[#8b0000] hover:underline">
+                        arXiv:{item.arxivId}
+                      </a>
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
