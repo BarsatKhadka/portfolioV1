@@ -6,6 +6,215 @@ export default function Blog() {
 
   // Blog content mapping - can be extended for more blogs
   const blogContent = {
+    'why-traditional-rl-will-not-yield-agi': {
+      title: 'Why Traditional Reinforcement Learning Will Not Yield AGI',
+      content: (
+        <div className="text-sm lg:text-[16px] leading-[1.9] space-y-6">
+
+          {/* ── Human intro ── */}
+          <p className="text-[#6b7280] text-sm italic border-l-4 border-[#e5e7eb] pl-4">
+            April 2026 &bull; Essay
+          </p>
+
+          <p>
+            Let me start with something personal. I remember the first time I genuinely asked myself: <em>what would it take for a machine to be as smart as a person?</em> Not smart at chess. Not smart at recognizing cats in photos. Smart the way a curious ten-year-old is smart — able to pick up a new game in five minutes, laugh at a joke they've never heard before, and ask "but <em>why</em>?" about anything.
+          </p>
+
+          <p>
+            That question has orbited my thinking ever since. And lately, as I spend more time in ML research, I keep arriving at the same uncomfortable conclusion: the dominant paradigm we've used to chase machine intelligence — reinforcement learning — is not going to get us there. Not in its traditional form. Not even close.
+          </p>
+
+          <p>
+            This isn't a hot take against RL. It's done extraordinary things. It's also, I think, hitting a wall that no amount of bigger compute or cleverer reward shaping will break through. Here's why.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── What is AGI ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">First, what are we even talking about?</h2>
+
+          <p>
+            AGI — Artificial General Intelligence — is one of those terms that everyone uses and nobody fully agrees on. So let me be honest about what I mean when I use it, because the definition shapes the whole argument.
+          </p>
+
+          <p>
+            I don't mean a machine that scores 100% on every benchmark. Benchmarks are narrow by design. I mean something that can <em>learn to do new things</em> the way humans do: by watching, asking, reading, experimenting — and then actually <em>understanding</em> what it learned well enough to use it somewhere else entirely.
+          </p>
+
+          <p>
+            Think about how you learned to drive. Maybe you watched other people drive for years before you ever touched a steering wheel. You understood, roughly, what the goal was (get to a place without hitting things), what the controls did, and what the consequences of bad decisions looked like. When you finally sat in the driver's seat, you weren't starting from zero. You brought an enormous scaffolding of prior knowledge — physics, social norms, spatial reasoning, self-preservation — and the actual "learning to drive" part was just fitting a thin new layer on top of all of that.
+          </p>
+
+          <p>
+            No RL agent does anything remotely like this. That gap is what I want to examine.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── What RL actually is ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">What traditional RL actually does</h2>
+
+          <p>
+            At its core, reinforcement learning is elegant and simple: an agent acts in an environment, receives a scalar reward signal, and updates its behavior to maximize the expected sum of future rewards. That's it. Everything else — policy gradients, Q-learning, actor-critic methods, PPO — is engineering layered on top of that loop.
+          </p>
+
+          <p>
+            The framework is grounded in a mathematical object called a Markov Decision Process (MDP): states, actions, transitions, and rewards. Solve the MDP, and you've "solved" the task. It's a beautiful abstraction. It's also an abstraction that quietly assumes things about the world that are catastrophically wrong at the scale of general intelligence.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── The problems ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">The problems — one by one</h2>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">1. The reward specification problem</h3>
+
+          <p>
+            Every RL system needs someone to define what "good" looks like as a scalar number. This sounds trivial. It is not. The economist Charles Goodhart captured it in what became Goodhart's Law: <em>when a measure becomes a target, it ceases to be a good measure.</em>
+          </p>
+
+          <p>
+            RL systems find this with ruthless efficiency. Robots trained to run fast find ways to be "tall" (measured as center of mass height) instead. Agents optimized for game scores find exploits the designers never imagined. OpenAI's boat-racing agent, trained to maximize score, learned to spin in circles collecting bonuses rather than finishing the race. It wasn't cheating — it was doing exactly what it was told. The reward was wrong.
+          </p>
+
+          <p>
+            Now scale this problem up. What reward do you specify for "be a good general assistant"? For "understand the world"? For "be curious"? Human values aren't a scalar. They're a tangled, context-dependent, culturally-embedded web of preferences, and we don't know how to compress them into a number without losing everything important.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">2. Sample inefficiency</h3>
+
+          <p>
+            AlphaGo needed roughly 30 million games of self-play before it surpassed world-champion human players. A child can learn the rules of Go in an afternoon and be playing reasonably within a few days. The human brain runs on about 20 watts. A data center runs on megawatts.
+          </p>
+
+          <p>
+            This asymmetry isn't just a hardware problem. It reflects something deep: humans don't learn from raw experience. We learn from <em>structured experience mediated by prior knowledge, language, culture, and rich internal models</em>. When you tell a child "the goal is to surround your opponent's stones," they immediately bring years of spatial reasoning, strategic intuition, and social theory of mind to bear. The RL agent starts from nothing, every time.
+          </p>
+
+          <p>
+            This might improve with better algorithms. But the degree of improvement required isn't incremental — it's many orders of magnitude. That suggests the gap isn't about optimization efficiency. It's architectural.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">3. Brittle generalization</h3>
+
+          <p>
+            Train an RL agent to walk on flat terrain. Change the floor texture slightly — it falls over. Move the goal one meter to the left — it fails. This is not a caricature: it is the consistent, documented result across years of robotics and game-playing RL research.
+          </p>
+
+          <p>
+            The agent learns a function from observations to actions that happens to produce high reward in the training distribution. It doesn't build a model of <em>why</em> its actions worked. It doesn't understand that "walking" is a strategy for navigating physical space given certain biomechanical constraints. It has a very complicated lookup table.
+          </p>
+
+          <p>
+            Humans, meanwhile, generalize effortlessly across contexts that share underlying structure, even when the surface features are completely different. This is because we reason about causes, not just correlations.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">4. No causal understanding</h3>
+
+          <p>
+            Judea Pearl, the computer scientist and philosopher who developed the mathematical theory of causation, draws a hierarchy: association (seeing), intervention (doing), and counterfactual (imagining). Traditional RL operates almost entirely at the first level. It sees correlations between states, actions, and rewards. It can intervene — that's what taking an action is — but it cannot reason about counterfactuals in the way humans naturally do.
+          </p>
+
+          <p>
+            "What would have happened if I had turned left instead?" is a simple question for a human driver. It's structurally outside what a standard RL agent can answer, because answering it requires a causal model of the environment, not just a policy.
+          </p>
+
+          <p>
+            Without causal reasoning, you cannot have genuine planning. You can have lookahead search (which is what tree-search methods like AlphaZero do), but that requires a perfect simulator — another thing the real world doesn't provide.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">5. The transfer problem</h3>
+
+          <p>
+            A system that learns to play Go cannot play chess. A system that learns to manipulate blocks cannot fold laundry. Every new task requires starting from scratch, with millions of samples, and a new reward function.
+          </p>
+
+          <p>
+            AGI, by definition, must transfer knowledge across domains. Humans do this constantly — we apply game theory to salary negotiations, use cooking intuitions in chemistry labs, and understand new languages by analogy to ones we already know. The machinery that enables this transfer is not a reward signal. It's something closer to a structured, compositional, symbolic-ish world model built over a lifetime of embodied experience.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-2">6. The environment stationarity assumption</h3>
+
+          <p>
+            MDPs assume the environment's transition and reward functions are fixed. The real world is not stationary. Other agents are learning and adapting. Social contexts shift. Physical conditions change. Goals evolve. An agent optimizing against a fixed world model will, over time, be optimizing against a fiction.
+          </p>
+
+          <p>
+            Multi-agent RL addresses some of this, but introduces its own problems — emergent coordination failures, Nash equilibria that are locally stable but globally catastrophic, and combinatorial explosions in joint state spaces.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── What AGI requires ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">What AGI actually requires</h2>
+
+          <p>
+            I want to be careful not to just list problems without gesturing at what a solution might look like. My read, after absorbing a lot of research across cognitive science, AI, and philosophy of mind, is something like this:
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>
+              <strong>World models</strong>, not just policies. An agent that builds and maintains an internal model of how the world works — causally, not just statistically — can plan, simulate, and reason about situations it has never encountered.
+            </li>
+            <li>
+              <strong>Compositional, hierarchical representations.</strong> Intelligence seems to rely on the ability to combine concepts into new concepts, and to reason at multiple levels of abstraction simultaneously. Language is the most obvious example of this; so is mathematics.
+            </li>
+            <li>
+              <strong>Intrinsic motivation and curiosity</strong> as primary drives, not as supplementary rewards bolted onto an extrinsic signal. Children explore because exploring is intrinsically interesting, and this exploration builds the foundation from which task-specific skills emerge cheaply.
+            </li>
+            <li>
+              <strong>Few-shot learning from sparse, rich data.</strong> Not millions of rollouts. Reading a paragraph. Watching a demonstration once. Asking a clarifying question.
+            </li>
+            <li>
+              <strong>Social and linguistic grounding.</strong> Human intelligence is not individual. It is deeply embedded in language, culture, and social interaction. Any system that ignores this is building on an impoverished substrate.
+            </li>
+          </ul>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── What might work ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">So what might actually work?</h2>
+
+          <p>
+            I don't have a clean answer here — if I did, I'd be writing a paper, not an essay. But I think the most promising threads combine elements that traditional RL explicitly does not have:
+          </p>
+
+          <p>
+            <strong>Large language models as a substrate.</strong> LLMs encode a vast amount of world knowledge, causal structure, and compositional reasoning in a form that transfers astonishingly well across domains. They are not RL systems. They are compression engines for human thought. The interesting question is whether RL can be used <em>on top of</em> this substrate (as in RLHF) rather than as a foundation — and whether that hybrid can generalize in ways neither component could alone.
+          </p>
+
+          <p>
+            <strong>Causal RL and world models.</strong> Work on model-based RL, particularly systems like Dreamer, and on causal representation learning, points toward agents that build structured internal models rather than memorizing stimulus-response mappings. This is a much harder optimization target, but it may be the right one.
+          </p>
+
+          <p>
+            <strong>Meta-learning.</strong> Learning to learn — rather than learning a fixed policy — is a structural shift that directly targets the sample efficiency and transfer problems. Systems like MAML frame the goal as finding parameter initializations that can adapt rapidly to new tasks from a small number of examples. This is closer in spirit to how biological learning seems to work.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          {/* ── Conclusion ── */}
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-2">The uncomfortable conclusion</h2>
+
+          <p>
+            I want to end with the thing I actually believe, stated plainly: reinforcement learning is a tool for solving well-specified optimization problems in known environments. It is a remarkable tool. It has produced systems that beat the best humans at Go, Dota 2, and StarCraft. It will continue to produce remarkable engineering achievements.
+          </p>
+
+          <p>
+            But AGI — if it's possible at all — is not a well-specified optimization problem. It is not a problem with a fixed reward function, a stationary environment, and an infinite supply of training rollouts. It is the problem of building something that can understand, learn, and reason across the entire messy complexity of the world the way humans do.
+          </p>
+
+          <p>
+            The reason I care about this isn't defeatism. It's the opposite. If we correctly identify why our current tools fall short, we can build better ones. The history of science is mostly the history of finding out that the intuitive framework was wrong, and then building a better one. I think we're at that moment in AI.
+          </p>
+
+          <p>
+            Traditional RL got us here. Getting further will require something different.
+          </p>
+
+        </div>
+      )
+    },
     'converting-netlist-to-vcd-and-vcd-to-saif': {
       title: 'Converting Netlist to VCD and VCD to SAIF: An Open Source Flow',
       content: (

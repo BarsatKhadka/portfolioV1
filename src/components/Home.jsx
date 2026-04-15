@@ -6,6 +6,7 @@ import canvasImage from './canvas.png';
 import myImage from './MyImage.jpg';
 
 // --- Data ---
+
 const ongoingProjects = [
   {
     title: 'Vinaya Journal',
@@ -42,28 +43,52 @@ const previousProjects = [
 
 const research = [
   {
-    title: 'Multiphase Social Engineering Attack Detection using GNN and BERT',
-    status: 'ongoing',
-    link: null,
-    note: null
-  },
-  {
     title: 'CTS-Bench: Benchmarking Graph Coarsening Trade-offs for GNNs in Clock Tree Synthesis',
+    authors: 'Barsat Khadka, et al.',
+    venue: "MLBench'26 @ ASPLOS",
+    venueFull: "Workshop on ML for Computer Architecture and Systems, ASPLOS 2026",
     status: null,
     link: 'https://arxiv.org/abs/2602.19330',
     arxivId: '2602.19330',
-    note: "Accepted to MLBench'26 ASPLOS"
+    links: [
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2602.19330' },
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2602.19330' }
+    ]
+  },
+  {
+    title: 'Multiphase Social Engineering Attack Detection using GNN and BERT',
+    authors: 'Barsat Khadka, et al.',
+    venue: null,
+    status: 'ongoing',
+    link: null,
+    links: []
   }
 ];
 
 const publications = [
   {
-    title: 'Converting_Netlist_to_VCD_and_VCD_to_SAIF_Open_Source',
-    description: 'Open source tool for EDA workflows',
-    type: 'Tool',
+    title: 'Why Traditional Reinforcement Learning Will Not Yield AGI',
+    description: 'An argument for why narrow reward optimization and stationary environments are fundamentally insufficient for general intelligence.',
+    type: 'Essay',
+    year: 'Apr 2026',
+    slug: 'why-traditional-rl-will-not-yield-agi'
+  },
+  {
+    title: 'Converting Netlist to VCD and VCD to SAIF: An Open Source Flow',
+    description: 'Open source toolchain for gate-level power analysis in OpenLane 2 EDA workflows.',
+    type: 'Technical',
     year: 'Jan 2026',
     slug: 'converting-netlist-to-vcd-and-vcd-to-saif'
   }
+];
+
+const researchInterests = [
+  'Graph Neural Networks',
+  'Electronic Design Automation',
+  'ML for Physical Design',
+  'Applied Machine Learning',
+  'Cybersecurity & GNNs',
+  'Oceanographic Data Analytics'
 ];
 
 const education = {
@@ -92,7 +117,6 @@ export default function Home() {
         console.error('Failed to fetch repo stats:', error);
       }
     };
-
     fetchRepoStats();
   }, []);
 
@@ -102,56 +126,65 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
-            if (sectionId) {
-              setActiveSection(sectionId);
-            }
+            if (sectionId) setActiveSection(sectionId);
           }
         });
       },
       { threshold: 0.3, rootMargin: '-100px 0px' }
     );
-
     Object.values(sectionsRef.current).forEach((section) => {
       if (section) observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (sectionId) => {
     const element = sectionsRef.current[sectionId];
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <div className="min-h-screen bg-white text-[#0a0a0a]">
       <div className="flex flex-col md:flex-row">
-        {/* Left Sidebar - Sticky */}
+
+        {/* Left Sidebar */}
         <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[#e5e7eb] bg-white md:sticky md:top-0 md:h-screen overflow-y-auto">
           <div className="p-4 lg:p-8">
+
             {/* Profile Image */}
             <div className="mb-4 flex justify-start">
               <div className="relative">
-                <img 
-                  src={myImage} 
-                  alt="Barsat Khadka" 
+                <img
+                  src={myImage}
+                  alt="Barsat Khadka"
                   className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-2 border-[#e5e7eb]"
                   style={{ objectPosition: 'center 75%' }}
                 />
               </div>
             </div>
-            
+
             {/* Name */}
             <h1 className="mb-2 text-xl sm:text-2xl lg:text-3xl">Barsat Khadka</h1>
-            <p className="mb-2 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
+            <p className="mb-1 text-xs lg:text-sm text-[#6b7280] flex items-center gap-2">
               <FiMapPin size={14} />
               <span className="hidden sm:inline">Greater Hattiesburg Area, Mississippi, USA</span>
               <span className="sm:hidden">Hattiesburg, MS</span>
             </p>
 
-            {/* Quick links (profile-style) */}
+            {/* CV / Resume link */}
+            <div className="mb-4">
+              <a
+                href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-[#1e40af] hover:text-[#1e3a8a] transition-colors font-medium border border-[#1e40af]/30 rounded px-2.5 py-1 hover:bg-[#1e40af]/5"
+              >
+                <FiFileText size={12} />
+                Curriculum Vitae
+              </a>
+            </div>
+
+            {/* Quick links */}
             <div className="mb-6">
               <div className="grid grid-cols-[16px_1fr] gap-x-2 gap-y-2 text-xs lg:text-sm text-[#6b7280]">
                 <FiGithub size={14} className="mt-[2px]" />
@@ -183,10 +216,10 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            
-            {/* Title/Affiliation */}
+
+            {/* Education */}
             <div className="mb-6 lg:mb-8 text-sm lg:text-base text-[#6b7280] leading-relaxed">
-              <div className="flex items-start gap-2 lg:gap-3 mt-4 pt-4">
+              <div className="flex items-start gap-2 lg:gap-3">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-lg bg-[#FFD700] flex items-center justify-center flex-shrink-0">
                   <img src={canvasImage} alt="University" className="w-6 h-6 lg:w-8 lg:h-8 object-contain -mt-0.5" />
                 </div>
@@ -203,79 +236,50 @@ export default function Home() {
             {/* Navigation */}
             <nav className="mb-6 lg:mb-8">
               <ul className="space-y-1 lg:space-y-2 text-base lg:text-lg font-['Inter']">
-                <li>
-                  <a
-                    href="#about"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('about');
-                    }}
-                    className={`block py-2 transition-colors ${
-                      activeSection === 'about' 
-                        ? 'text-[#1e40af] font-medium' 
-                        : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
-                    }`}
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#research"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('research');
-                    }}
-                    className={`block py-2 transition-colors ${
-                      activeSection === 'research' 
-                        ? 'text-[#1e40af] font-medium' 
-                        : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
-                    }`}
-                  >
-                    Research
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#projects"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('projects');
-                    }}
-                    className={`block py-2 transition-colors ${
-                      activeSection === 'projects' 
-                        ? 'text-[#1e40af] font-medium' 
-                        : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
-                    }`}
-                  >
-                    Projects
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#publications"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('publications');
-                    }}
-                    className={`block py-2 transition-colors ${
-                      activeSection === 'publications' 
-                        ? 'text-[#1e40af] font-medium' 
-                        : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
-                    }`}
-                  >
-                    Blogs
-                  </a>
-                </li>
+                {[
+                  { id: 'about', label: 'About' },
+                  { id: 'research', label: 'Research' },
+                  { id: 'projects', label: 'Projects' },
+                  { id: 'publications', label: 'Writing' }
+                ].map(({ id, label }) => (
+                  <li key={id}>
+                    <a
+                      href={`#${id}`}
+                      onClick={(e) => { e.preventDefault(); scrollToSection(id); }}
+                      className={`block py-2 transition-colors ${
+                        activeSection === id
+                          ? 'text-[#1e40af] font-medium'
+                          : 'text-[#0a0a0a]/70 hover:text-[#1e40af]'
+                      }`}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
 
-            {/* Contact Icons moved to About section */}
+            {/* Research Interests (sidebar chips) */}
+            <div className="border-t border-[#e5e7eb] pt-4">
+              <p className="text-xs text-[#6b7280] uppercase tracking-widest mb-3 font-['Inter']">Interests</p>
+              <div className="flex flex-wrap gap-1.5">
+                {researchInterests.map((interest) => (
+                  <span
+                    key={interest}
+                    className="text-[11px] px-2 py-0.5 bg-[#f5f5f5] text-[#374151] rounded border border-[#e5e7eb] font-['Inter']"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </div>
+
           </div>
         </aside>
 
-        {/* Main Content Area */}
+        {/* Main Content */}
         <main className="main-content flex-1 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-20">
+
           {/* About Section */}
           <section
             id="about"
@@ -283,9 +287,7 @@ export default function Home() {
             className="pt-8 mb-12 lg:mb-[60px] px-4 lg:px-8"
           >
             <div className="text-sm lg:text-[16px] leading-[1.9] max-w-none">
-              <h2 className="mb-4 text-2xl lg:text-3xl">
-                Currently
-              </h2>
+              <h2 className="mb-4 text-2xl lg:text-3xl">Currently</h2>
               <p className="mb-4">
                 Research Software Engineer,{' '}
                 <a
@@ -300,7 +302,11 @@ export default function Home() {
               <p className="mb-8">Research Assistant, Cyber Innovations Lab</p>
               <div className="mb-6 space-y-4">
                 <p>
-                  Growing up in Nepal shaped my belief in open source as a way to expand access to knowledge. It's why I'm so invested in projects like <a href="https://vinaya-journal.vercel.app" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">Vinaya</a> and exploring the <a href="https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">OpenLane 2</a> ecosystem. I believe that open source isn't just a way to build software; it's a way to level the playing field.
+                  Growing up in Nepal shaped my belief in open source as a way to expand access to knowledge. It's why I'm invested in projects like{' '}
+                  <a href="https://vinaya-journal.vercel.app" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">Vinaya</a>{' '}
+                  and the{' '}
+                  <a href="https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html" target="_blank" rel="noopener noreferrer" className="link-slide external-link underline">OpenLane 2</a>{' '}
+                  ecosystem. Open source isn't just how we build software — it levels the playing field.
                   <>
                     {' '}
                     <button
@@ -318,37 +324,21 @@ export default function Home() {
                       I've always had the vision of being a scientist, and I love doing research for the sake of science and the craft. Most of my time is spent between research papers, quiet work, music, commute to university, meetings, cooking, and gaming.
                     </p>
                     <p>
-                      My handles are below. feel free to reach out if something in my work interests you or if you'd like to talk or collaborate.
+                      My handles are below. Feel free to reach out if something in my work interests you or if you'd like to talk or collaborate.
                     </p>
                   </>
                 )}
               </div>
               {showMoreIntro && (
                 <div className="flex flex-wrap gap-4 lg:gap-6 text-sm lg:text-[15px] font-['Inter']">
-                  <a
-                    href="mailto:khadkabarsat598@gmail.com"
-                    className="link-slide flex items-center gap-2"
-                  >
-                    <FiMail size={16} />
-                    Email
+                  <a href="mailto:khadkabarsat598@gmail.com" className="link-slide flex items-center gap-2">
+                    <FiMail size={16} /> Email
                   </a>
-                  <a
-                    href="https://github.com/BarsatKhadka"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-slide flex items-center gap-2"
-                  >
-                    <FiGithub size={16} />
-                    GitHub
+                  <a href="https://github.com/BarsatKhadka" target="_blank" rel="noopener noreferrer" className="link-slide flex items-center gap-2">
+                    <FiGithub size={16} /> GitHub
                   </a>
-                  <a
-                    href="https://www.linkedin.com/in/barsat-khadka"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-slide flex items-center gap-2"
-                  >
-                    <FiLinkedin size={16} />
-                    LinkedIn
+                  <a href="https://www.linkedin.com/in/barsat-khadka" target="_blank" rel="noopener noreferrer" className="link-slide flex items-center gap-2">
+                    <FiLinkedin size={16} /> LinkedIn
                   </a>
                   <a
                     href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
@@ -356,13 +346,13 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="link-slide flex items-center gap-2"
                   >
-                    <FiFileText size={16} />
-                    Resume
+                    <FiFileText size={16} /> CV
                   </a>
                 </div>
               )}
             </div>
           </section>
+
 
           {/* Research Section */}
           <section
@@ -370,36 +360,75 @@ export default function Home() {
             ref={(el) => (sectionsRef.current.research = el)}
             className="mb-12 lg:mb-[120px] px-4 lg:px-8"
           >
-            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Research</h2>
-            <div className="space-y-4 lg:space-y-6">
+            <h2 className="mb-2 text-2xl lg:text-3xl">Research</h2>
+            <p className="mb-8 text-xs lg:text-sm text-[#6b7280]">
+              Selected publications and ongoing work. <span className="font-medium">Bold</span> denotes presenting author.
+            </p>
+            <div className="space-y-8">
               {research.map((item, index) => (
-                <div key={index} className="card bg-white rounded p-4 lg:p-8">
-                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 mb-2">
-                    <h3 className="max-w-3xl text-base lg:text-lg font-normal font-['Inter']">
-                      {item.link ? (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#b31b1b] hover:text-[#8b0000] hover:underline font-medium">
-                          {item.title}
-                        </a>
-                      ) : (
-                        item.title
-                      )}
-                    </h3>
-                    {item.status && (
-                      <span className={`status-badge ${item.status === 'ongoing' ? 'status-ongoing' : ''}`}>
-                        [{item.status.toUpperCase()}]
-                      </span>
-                    )}
-                  </div>
-                  {item.note && (
-                    <p className="text-sm text-[#374151] mt-1">{item.note}</p>
-                  )}
-                  {item.arxivId && item.link && (
-                    <p className="text-sm mt-2">
-                      <span className="text-[#374151]">Read: </span>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#b31b1b] hover:text-[#8b0000] hover:underline">
-                        arXiv:{item.arxivId}
+                <div key={index} className="pb-6 border-b border-[color:var(--border)]">
+                  {/* Title */}
+                  <h3 className="text-base lg:text-[17px] font-medium font-['Inter'] leading-snug mb-1.5">
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#b31b1b] hover:text-[#8b0000] hover:underline"
+                      >
+                        {item.title}
                       </a>
+                    ) : (
+                      <span className="text-[#0a0a0a]">{item.title}</span>
+                    )}
+                  </h3>
+
+                  {/* Authors */}
+                  {item.authors && (
+                    <p className="text-sm text-[#6b7280] mb-1 font-['Inter']">
+                      {item.authors.split('Barsat Khadka').map((part, i, arr) => (
+                        <React.Fragment key={i}>
+                          {i > 0 && <strong className="text-[#374151]">Barsat Khadka</strong>}
+                          {part}
+                        </React.Fragment>
+                      ))}
                     </p>
+                  )}
+
+                  {/* Venue */}
+                  {item.venue && (
+                    <p className="text-sm mb-2">
+                      <span className="inline-block bg-[#eff6ff] text-[#1e40af] border border-[#bfdbfe] text-xs px-2 py-0.5 rounded font-['Inter'] font-medium">
+                        {item.venue}
+                      </span>
+                      {item.venueFull && (
+                        <span className="text-[#6b7280] text-xs ml-2">{item.venueFull}</span>
+                      )}
+                    </p>
+                  )}
+
+                  {/* Status */}
+                  {item.status && (
+                    <p className="text-xs text-[#6b7280] mb-2 font-['Inter']">
+                      [{item.status.toUpperCase()}]
+                    </p>
+                  )}
+
+                  {/* Links */}
+                  {item.links && item.links.length > 0 && (
+                    <div className="flex gap-3 mt-2">
+                      {item.links.map((l) => (
+                        <a
+                          key={l.label}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-[#1e40af] hover:text-[#1e3a8a] border border-[#1e40af]/30 rounded px-2 py-0.5 hover:bg-[#1e40af]/5 transition-colors font-['Inter']"
+                        >
+                          {l.label}
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
               ))}
@@ -471,24 +500,14 @@ export default function Home() {
                   <div className="space-y-2 text-[13px] font-['Inter'] text-[#6b7280]">
                     {project.github && (
                       <div>
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link-slide external-link text-[#1e40af]"
-                        >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-slide external-link text-[#1e40af]">
                           {project.github.replace('https://', '')}
                         </a>
                       </div>
                     )}
                     {project.link && (
                       <div>
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link-slide external-link text-[#1e40af]"
-                        >
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-slide external-link text-[#1e40af]">
                           {project.link.replace('https://', '')}
                         </a>
                       </div>
@@ -497,17 +516,8 @@ export default function Home() {
 
                   {project.title === 'Vinaya Journal' && (
                     <div className="mt-8">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                      >
-                        <img
-                          src={projectImage}
-                          alt="Vinaya Journal"
-                          className="w-full rounded border border-[#e5e7eb]"
-                        />
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
+                        <img src={projectImage} alt="Vinaya Journal" className="w-full rounded border border-[#e5e7eb]" />
                       </a>
                     </div>
                   )}
@@ -526,19 +536,12 @@ export default function Home() {
                     </h3>
                     <span className="status-badge">[{project.status}]</span>
                   </div>
-
                   <div className="indent-25 mb-4 lg:mb-6">
                     <p className="text-sm lg:text-[16px] leading-[1.9] text-[#0a0a0a]/70">{project.description}</p>
                   </div>
-
                   {project.github && (
                     <div className="text-[13px] font-['Inter'] text-[#6b7280]">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-slide external-link text-[#1e40af]"
-                      >
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-slide external-link text-[#1e40af]">
                         {project.github.replace('https://', '')}
                       </a>
                     </div>
@@ -548,76 +551,61 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Blogs Section */}
+          {/* Writing / Blogs Section */}
           <section
             id="publications"
             ref={(el) => (sectionsRef.current.publications = el)}
             className="mb-12 lg:mb-[120px] px-4 lg:px-8"
           >
-            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Blogs</h2>
+            <h2 className="mb-2 text-2xl lg:text-3xl">Writing</h2>
+            <p className="mb-8 text-xs lg:text-sm text-[#6b7280]">
+              Technical essays, tools, and notes from the work.
+            </p>
             <div className="space-y-6 lg:space-y-8">
               {publications.map((pub, index) => (
-                <div key={index} className="text-sm lg:text-[16px] leading-[1.9]">
-                  <span className="text-[#0a0a0a]/30 mr-2">/</span>
-                  <Link 
-                    to={`/blogs/${pub.slug}`}
-                    className="inline-block mb-2 font-medium text-[#1e40af] hover:text-[#1e3a8a] transition-colors"
-                  >
-                    {pub.title}
-                  </Link>
-                  <p className="text-[#0a0a0a]/70 mb-2 ml-4">{pub.description}</p>
-                  <p className="meta-text ml-4">{pub.type} • {pub.year}</p>
+                <div key={index} className="pb-5 border-b border-[color:var(--border)]">
+                  <div className="flex items-start gap-3 mb-1">
+                    <span className="text-[#0a0a0a]/30 mt-1 text-lg leading-none">/</span>
+                    <div>
+                      <Link
+                        to={`/blogs/${pub.slug}`}
+                        className="inline-block font-medium text-[#1e40af] hover:text-[#1e3a8a] transition-colors text-sm lg:text-[16px] leading-snug"
+                      >
+                        {pub.title}
+                      </Link>
+                      <p className="text-[#0a0a0a]/60 text-sm mt-1 leading-relaxed">{pub.description}</p>
+                      <p className="meta-text mt-1.5">{pub.type} &bull; {pub.year}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Research Interests Section */}
-          <section
-            id="research-interests"
-            className="mb-12 lg:mb-[120px] px-4 lg:px-8"
-          >
-            <h2 className="mb-8 lg:mb-[60px] text-2xl lg:text-3xl">Research Interests</h2>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
-                Applied Machine Learning
-              </span>
-              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
-                Oceanographic Data Analytics
-              </span>
-              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
-                Graph Neural Networks (GNNs)
-              </span>
-              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
-                Electronic Design Automation (EDA)
-              </span>
-              <span className="px-3 py-1.5 text-xs lg:text-sm bg-[#f5f5f5] text-[#0a0a0a] rounded-md border border-[#e5e7eb] hover:bg-[#e5e7eb] transition-colors">
-                ML for Physical Design
-              </span>
-            </div>
-          </section>
         </main>
 
-        {/* Right Sidebar - Previously */}
+        {/* Right Sidebar */}
         <aside className="hidden xl:block w-[320px] flex-shrink-0 border-l border-[#e5e7eb] pl-8 xl:pl-12 pt-8 text-sm font-['Inter'] xl:translate-x-8">
-          <h2 className="mb-4 text-2xl lg:text-3xl">
-            Previously
-          </h2>
-          <div className="space-y-4">
-            <div>
-              <p className="font-medium mb-1">Software Engineering Intern</p>
-              <p className="text-[#6b7280] text-xs">Sports Media</p>
-            </div>
-            <div>
-              <p className="font-medium mb-1">Web/App Developer Intern</p>
-              <p className="text-[#6b7280] text-xs">Crystal ERP</p>
-            </div>
-            <div>
-              <p className="font-medium mb-1">Computer Hardware Repairing Intern</p>
-              <p className="text-[#6b7280] text-xs">Namo Buddha Computer Service Center</p>
+          <div className="mb-10">
+            <h2 className="mb-4 text-2xl lg:text-3xl">Previously</h2>
+            <div className="space-y-4">
+              <div>
+                <p className="font-medium mb-0.5">Software Engineering Intern</p>
+                <p className="text-[#6b7280] text-xs">Sports Media</p>
+              </div>
+              <div>
+                <p className="font-medium mb-0.5">Web/App Developer Intern</p>
+                <p className="text-[#6b7280] text-xs">Crystal ERP</p>
+              </div>
+              <div>
+                <p className="font-medium mb-0.5">Computer Hardware Repairing Intern</p>
+                <p className="text-[#6b7280] text-xs">Namo Buddha Computer Service Center</p>
+              </div>
             </div>
           </div>
+
         </aside>
+
       </div>
     </div>
   );
