@@ -5,6 +5,7 @@ import projectImage from '../assets/image.png';
 import canvasImage from './canvas.png';
 import myImage from './MyImage.jpg';
 import sidebarImage from './image.png';
+import sidebarImage2 from './image2.png';
 
 // --- Data ---
 
@@ -722,25 +723,34 @@ export default function Home() {
             <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
               Formerly
             </p>
-            <ol className="list-none p-0 m-0 space-y-5">
+            <ol className="list-none p-0 m-0 space-y-4">
               {[
                 { role: 'Software Engineering Intern', org: 'Sports Media' },
                 { role: 'Web / App Developer Intern', org: 'Crystal ERP' },
                 { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
               ].map((x, i) => (
                 <li key={i}>
-                  <p className="font-medium tracking-tight" style={{ fontSize: 15, lineHeight: 1.3, color: 'var(--text)' }}>
+                  <p className="font-medium tracking-tight leading-[1.2]" style={{ fontSize: 14.5, color: 'var(--text)' }}>
                     {x.role}
                   </p>
-                  <p className="text-[12px] mt-0.5" style={{ color: 'var(--muted)' }}>{x.org}</p>
+                  <p className="text-[12px] leading-[1.2]" style={{ color: 'var(--muted)' }}>{x.org}</p>
                 </li>
               ))}
             </ol>
 
-            {/* Image — paper print, vermillion-ghost shadow */}
-            <div className="mt-8">
+            {/* Images — paper prints */}
+            <div className="mt-8 space-y-5">
               <img
                 src={sidebarImage}
+                alt=""
+                className="w-full"
+                style={{
+                  filter: 'grayscale(0.08) contrast(1.02)',
+                  boxShadow: '0 1px 0 rgba(26,26,26,0.10), 10px 10px 0 -1px rgba(181,52,31,0.06)',
+                }}
+              />
+              <img
+                src={sidebarImage2}
                 alt=""
                 className="w-full"
                 style={{
