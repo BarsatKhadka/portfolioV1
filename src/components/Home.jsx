@@ -48,8 +48,8 @@ const research = [
     title: 'CTS-Bench: Benchmarking Graph Coarsening Trade-offs for GNNs in Clock Tree Synthesis',
     authors: 'Barsat Khadka, Kawsher Roxy, Md Rubel Ahmed',
     venue: "MLBench'26 @ ASPLOS",
-    venueFull: "Workshop on ML for Computer Architecture and Systems, ASPLOS 2026",
-    status: null,
+    venueFull: 'MLBench workshop at ASPLOS',
+    status: 'accepted',
     link: 'https://arxiv.org/abs/2602.19330',
     arxivId: '2602.19330',
     links: [
@@ -58,10 +58,23 @@ const research = [
     ]
   },
   {
+    title: 'MechRL: Reinforcement Learning Agents Perform Circuit Discovery for Mechanistic Interpretability',
+    authors: 'Barsat Khadka',
+    venue: 'Ongoing',
+    venueFull: 'Open to suggestions and would love for people to explore this. open source and open science',
+    status: 'ongoing',
+    link: 'https://arxiv.org/abs/2605.26343',
+    arxivId: '2605.26343',
+    links: [
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2605.26343' },
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2605.26343' }
+    ]
+  },
+  {
     title: 'Multiphase Social Engineering Attack Detection using GNN and BERT',
     authors: 'Barsat Khadka, Prasant Koirala, Kshitiz Neupane, Nick Rahimi',
     venue: 'arXiv preprint',
-    venueFull: 'Under review at Elsevier',
+    venueFull: 'Under review at Springer',
     status: 'under review',
     link: 'https://arxiv.org/abs/2605.17201',
     arxivId: '2605.17201',
@@ -431,11 +444,7 @@ export default function Home() {
                 >
                   G
                 </span>
-                rowing up in Nepal shaped my belief in open source as a way to expand access to knowledge. It's why I'm invested in projects like{' '}
-                <a href="https://vinaya-journal.vercel.app" target="_blank" rel="noopener noreferrer" className="link-slide">Vinaya</a>{' '}
-                and the{' '}
-                <a href="https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html" target="_blank" rel="noopener noreferrer" className="link-slide">OpenLane&nbsp;2</a>{' '}
-                ecosystem. Open source isn't just how we build software — it levels the playing field.
+                rowing up in Nepal shaped my belief in open source and open science as a way to expand access to knowledge
               </p>
               {showMoreIntro && (
                 <>
