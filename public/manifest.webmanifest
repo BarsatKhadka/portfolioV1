@@ -1,0 +1,12 @@
+{
+  "name": "Barsat Khadka",
+  "short_name": "Barsat Khadka",
+  "description": "Computer engineer and researcher. Computer science research and philosophy — open source, open science.",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#FAF8F3",
+  "background_color": "#FAF8F3",
+  "display": "browser"
+}

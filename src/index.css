@@ -8,6 +8,11 @@
     scroll-behavior: smooth;
   }
 
+  /* Nav clicks land with breathing room, not flush to the top edge */
+  section[id] {
+    scroll-margin-top: 2rem;
+  }
+
   body {
     /* Sumi ink on washi paper */
     --bg: #FAF8F3;
@@ -91,14 +96,14 @@
   }
 
   a {
-    color: var(--accent);
+    color: var(--text);
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
   }
 
   a:hover {
-    color: color-mix(in srgb, var(--accent) 85%, black);
+    color: var(--accent-2);
   }
 
   #root {
@@ -116,16 +121,17 @@
   a.link-slide::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
+    width: 100%;
+    height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--border);
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   a.link-slide:hover::after {
-    width: 100%;
+    background-color: var(--accent-2);
+    height: 2px;
   }
 
   /* External link icon */
@@ -324,6 +330,25 @@
   color: var(--text);
 }
 
+/* Skip link — first stop for keyboard users, bypassing the hero + gallery */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--accent-2);
+  color: #FAF8F3;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
 /* Quiet, legible focus for keyboard travellers */
 a:focus-visible,
 button:focus-visible {
@@ -367,6 +392,30 @@ button:focus-visible {
   figure:hover img {
     transform: translateY(-3px);
     box-shadow: 0 1px 0 rgba(26, 26, 26, 0.10), 14px 16px 0 -1px rgba(181, 52, 31, 0.10) !important;
+  }
+}
+
+/* Research entries — a quiet vermilion margin-mark slides in on hover */
+.paper {
+  transition: background-color 0.4s ease;
+}
+.paper::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 2px;
+  background: var(--accent-2);
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.45s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .paper:hover::before {
+    transform: scaleY(1);
+    opacity: 0.55;
   }
 }
 

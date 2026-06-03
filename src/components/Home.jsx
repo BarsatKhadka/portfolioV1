@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMail, FiGithub, FiLinkedin, FiFileText, FiMapPin } from 'react-icons/fi';
@@ -40,7 +41,8 @@ const ongoingProjects = [
     description: 'Offline-first AI journaling app with private local LLM and mood analysis.',
     link: 'https://vinaya-journal.vercel.app/',
     github: 'https://github.com/BarsatKhadka/Vinaya-Journal',
-    status: 'ongoing'
+    status: 'ongoing',
+    year: '2025'
   }
 ];
 
@@ -85,8 +87,8 @@ const research = [
   {
     title: 'MechRL: Reinforcement Learning Agents Perform Circuit Discovery for Mechanistic Interpretability',
     authors: 'Barsat Khadka',
-    venue: 'Ongoing',
-    venueFull: 'Open to suggestions and would love for people to explore this. open source and open science',
+    venue: 'Working draft',
+    venueFull: 'Open science — open to collaborators',
     status: 'ongoing',
     link: 'https://arxiv.org/abs/2605.26343',
     arxivId: '2605.26343',
@@ -218,6 +220,13 @@ const education = {
   year: "Class of 2028"
 };
 
+// Honours — rendered as a Distinctions block of vermilion seals
+const honors = [
+  { title: "Honors Scholar" },
+  { title: "Academic Excellence Scholarship", detail: "full tuition" },
+  { title: "President's List", detail: "Spring 2025" },
+];
+
 // Hero gallery wall — an altar of influences: sages, deities, revolutionaries, nature, cosmos, mind.
 const galleryColA = [
   { src: buddhaImg, alt: 'Seated Buddha, Chola bronze' },
@@ -259,6 +268,13 @@ const SERIF = DISPLAY; // italic accents — folio numerals, drop caps, ornament
 const UI = "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif";
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
+
+// Research status stamps — wax-seal vermilion for accepted, quiet outline otherwise
+const STATUS_META = {
+  accepted: { label: 'Accepted', seal: true, fg: VERMILLION, bg: 'rgba(181,52,31,0.06)', bd: 'rgba(181,52,31,0.30)' },
+  ongoing: { label: 'Ongoing', seal: false, fg: 'var(--faint)', bg: 'transparent', bd: 'var(--hairline)' },
+  'under review': { label: 'Under review', seal: false, fg: 'var(--faint)', bg: 'transparent', bd: 'var(--hairline)' },
+};
 
 // Dhammachakra — the wheel of dhamma, drawn minimal to match the ink-on-paper hand
 function DharmaWheel({ size = 24, color = VERMILLION, strokeWidth = 1.4, style }) {
@@ -404,6 +420,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F3] text-[#16140F]">
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* ░░ Cinematic opening — a breath, but the document peeks below ░░ */}
       <header className="hero relative w-full min-h-[90svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
@@ -421,7 +438,7 @@ export default function Home() {
         </div>
 
         {/* Middle — name on the left, the gallery on its side */}
-        <div className="relative z-10 flex items-center justify-between gap-8 xl:gap-16">
+        <div className="relative z-10 flex items-center justify-between gap-8 lg:gap-14 xl:gap-20 2xl:gap-24">
           <div className="min-w-0">
             <h1
               className="hero-name"
@@ -439,7 +456,7 @@ export default function Home() {
             </h1>
 
             <p
-              className="hero-fade mt-7 lg:mt-9"
+              className="hero-fade mt-8 lg:mt-11"
               style={{
                 animationDelay: '0.78s',
                 fontFamily: SERIF,
@@ -464,7 +481,7 @@ export default function Home() {
                 maxWidth: '26ch',
               }}
             >
-              I have no life outside it — literally. And the beautiful part is, I have never wanted one. Hence I live in complete harmony.
+              Not much of my life happens outside it, and I have never wanted it to be otherwise.
             </p>
 
             {/* Mobile — a quiet grid of the wall */}
@@ -480,7 +497,7 @@ export default function Home() {
 
           {/* Gallery wall — four columns drifting in alternating directions, masked at the edges */}
           <div
-            className="gallery-wall hero-fade hidden lg:flex gap-2.5 shrink-0 overflow-hidden h-[clamp(440px,76vh,820px)] w-[clamp(500px,53vw,880px)]"
+            className="gallery-wall hero-fade hidden lg:flex gap-2.5 shrink-0 overflow-hidden h-[clamp(440px,76vh,820px)] w-[clamp(480px,49vw,820px)]"
             style={{ animationDelay: '0.55s' }}
           >
             {[
@@ -512,18 +529,22 @@ export default function Home() {
               { id: 'projects', n: 'iii', label: 'Projects' },
               { id: 'publications', n: 'iv', label: 'Writing' },
               { id: 'philosophy', n: 'v', label: 'Philosophy' },
-            ].map((s) => (
+            ].map((s) => {
+              const active = activeSection === s.id;
+              return (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => scrollToSection(s.id)}
-                className="group inline-flex items-baseline gap-1.5 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
+                aria-current={active ? 'true' : undefined}
+                className="group inline-flex items-baseline gap-2 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
                 style={{ color: 'var(--muted)', fontFamily: UI }}
               >
                 <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, letterSpacing: 0, fontSize: 12 }}>{s.n}</span>
                 <span className="link-slide" style={{ color: 'var(--text)' }}>{s.label}</span>
               </button>
-            ))}
+              );
+            })}
           </nav>
           <button
             type="button"
@@ -549,6 +570,8 @@ export default function Home() {
                 <img
                   src={myImage}
                   alt="Barsat Khadka"
+                  loading="lazy"
+                  decoding="async"
                   className="w-28 h-36 sm:w-32 sm:h-40 lg:w-36 lg:h-44 object-cover"
                   style={{
                     objectPosition: 'center 28%',
@@ -576,8 +599,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Masthead name — Fraunces, two-line, a quiet broadsheet title */}
-            <h1
+            {/* Masthead name — Fraunces, two-line, a quiet broadsheet title (running identity; the hero holds the page's sole h1) */}
+            <p
               className="mb-1 leading-[0.92]"
               style={{
                 fontFamily: DISPLAY,
@@ -589,7 +612,7 @@ export default function Home() {
             >
               Barsat<br />
               <span style={{ fontStyle: 'italic', fontWeight: 360, color: 'var(--muted)' }}>Khadka</span>
-            </h1>
+            </p>
             <p
               className="mt-2 text-[19px] leading-[1.3]"
               style={{ fontFamily: DEVANAGARI, color: VERMILLION }}
@@ -598,10 +621,10 @@ export default function Home() {
               बर्सत खड्का
             </p>
             <p
-              className="mt-3 mb-6 text-[12px] tracking-[0.18em] uppercase"
-              style={{ color: 'var(--muted)' }}
+              className="mt-3 mb-6 text-[10.5px] tracking-[0.26em] uppercase"
+              style={{ color: 'var(--muted)', fontFamily: UI }}
             >
-              Computer engineer · Researcher
+              Computer Engineer · Researcher
             </p>
 
             {/* Letterhead block — icon + text rows */}
@@ -637,26 +660,53 @@ export default function Home() {
 
             {/* Affiliation */}
             <div className="mb-6">
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)' }}>Studying at</p>
+              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: UI }}>Studying at</p>
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-md bg-[#FFD700] flex items-center justify-center flex-shrink-0" style={{ boxShadow: '0 1px 0 rgba(26,26,26,0.10)' }}>
-                  <img src={canvasImage} alt="USM" className="w-7 h-7 lg:w-8 lg:h-8 object-contain" />
+                  <img src={canvasImage} alt="USM" loading="lazy" decoding="async" className="w-7 h-7 lg:w-8 lg:h-8 object-contain" />
                 </div>
                 <div className="leading-snug pt-[1px]">
                   <p className="text-[14px] font-medium tracking-tight" style={{ color: 'var(--text)' }}>
                     {education.school}
                   </p>
-                  <p className="text-[12.5px]" style={{ color: 'var(--muted)' }}>
+                  <p className="text-[12.5px] leading-[1.35]" style={{ color: 'var(--muted)' }}>
                     Bachelor of Science · {education.degree}
                   </p>
-                  <p className="text-[12px] flex items-center gap-1.5" style={{ color: VERMILLION }}>
-                    <span aria-hidden="true" style={{ fontFamily: SERIF, fontStyle: 'italic' }}>✶</span>
-                    Honors Scholar
-                  </p>
-                  <p className="text-[12px]" style={{ color: 'var(--muted)' }}>
+                  <p className="text-[12px] leading-[1.35]" style={{ color: 'var(--faint)' }}>
                     {education.year}
                   </p>
                 </div>
+              </div>
+
+              {/* Distinctions — a quiet column of vermilion seals */}
+              <div className="mt-3.5 pt-3.5" style={{ borderTop: '1px solid var(--hairline)' }}>
+                <p className="text-[9.5px] tracking-[0.3em] uppercase mb-2.5" style={{ color: 'var(--faint)', fontFamily: UI }}>
+                  Distinctions
+                </p>
+                <ul className="space-y-[7px]">
+                  {honors.map((h) => (
+                    <li key={h.title} className="flex items-baseline gap-2">
+                      <span
+                        aria-hidden="true"
+                        className="text-[10px] flex-shrink-0 translate-y-[-0.5px]"
+                        style={{ color: VERMILLION, fontFamily: SERIF, fontStyle: 'italic' }}
+                      >
+                        ✶
+                      </span>
+                      <span className="text-[12.5px] leading-[1.3]" style={{ color: 'var(--text)' }}>
+                        {h.title}
+                        {h.detail && (
+                          <span
+                            className="ml-1.5 text-[12px]"
+                            style={{ color: 'var(--faint)', fontFamily: SERIF, fontStyle: 'italic' }}
+                          >
+                            {h.detail}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
@@ -676,6 +726,7 @@ export default function Home() {
                       <a
                         href={`#${id}`}
                         onClick={(e) => { e.preventDefault(); scrollToSection(id); }}
+                        aria-current={active ? 'true' : undefined}
                         className="group flex items-baseline gap-3 py-1 transition-colors"
                         style={{ color: active ? 'var(--text)' : 'var(--muted)' }}
                       >
@@ -708,7 +759,7 @@ export default function Home() {
 
             {/* Research interests */}
             <div className="pt-5" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)' }}>
+              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: UI }}>
                 Research interests
               </p>
               <p className="text-[13.5px] leading-[1.7] tracking-tight" style={{ color: 'var(--text)' }}>
@@ -720,7 +771,7 @@ export default function Home() {
         </aside>
 
         {/* Main Content */}
-        <main className="main-content flex-1 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-20">
+        <main id="main-content" className="main-content flex-1 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-20">
 
           {/* About Section */}
           <section
@@ -735,7 +786,7 @@ export default function Home() {
 
             {/* Roles — small-caps labels, year-style alignment */}
             <dl className="mb-7 lg:mb-9 grid grid-cols-[6.5rem_1fr] sm:grid-cols-[7.5rem_1fr] gap-x-5 lg:gap-x-8 gap-y-1.5 text-[14.5px]">
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[4px]" style={{ color: 'var(--muted)' }}>Engineer</dt>
+              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Engineer</dt>
               <dd className="leading-[1.5]">
                 Research Software Engineer at{' '}
                 <a
@@ -747,9 +798,9 @@ export default function Home() {
                   Institute of Advanced Analytics &amp; Security
                 </a>
               </dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[4px]" style={{ color: 'var(--muted)' }}>Researcher</dt>
+              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Researcher</dt>
               <dd className="leading-[1.5]">Research Assistant, Cyber Innovations Lab</dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[4px]" style={{ color: 'var(--muted)' }}>Fellow</dt>
+              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Fellow</dt>
               <dd className="leading-[1.5]">
                 AI/ML Fellow,{' '}
                 <a
@@ -761,7 +812,7 @@ export default function Home() {
                   Break Through Tech AI
                 </a>
               </dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[4px]" style={{ color: 'var(--muted)' }}>Secretary</dt>
+              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Secretary</dt>
               <dd className="leading-[1.5]">
                 <a
                   href="https://www.instagram.com/oscusm/"
@@ -799,7 +850,7 @@ export default function Home() {
           </section>
 
           {/* Interlude — a philosophical breath between who I am and the work */}
-          <section data-reveal className="relative px-4 lg:px-8 py-20 lg:py-32 overflow-hidden">
+          <section data-reveal className="relative px-4 lg:px-8 pt-4 pb-20 lg:pt-6 lg:pb-28 overflow-hidden">
             <div className="flex flex-col items-center gap-3.5 mb-10" aria-hidden="true">
               <DharmaWheel size={28} />
               <span style={{ width: 1, height: 40, background: 'linear-gradient(to bottom, rgba(181,52,31,0.5), transparent)' }} />
@@ -845,71 +896,96 @@ export default function Home() {
             <Head kicker="papers & preprints">Research</Head>
             <Rule />
 
-            <ol className="list-none p-0 m-0 space-y-4 mt-2">
-              {research.map((item, index) => (
-                <li key={index} className="relative">
-                  <span
-                    className="absolute -left-7 lg:-left-9 top-[2px] hidden sm:block"
-                    style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 13, color: 'var(--muted)' }}
+            <ol className="list-none p-0 m-0 mt-1">
+              {research.map((item, index) => {
+                const st = STATUS_META[item.status];
+                return (
+                  <li
+                    key={index}
+                    className="paper group relative py-5 lg:py-6"
+                    style={{ borderTop: index === 0 ? 'none' : '1px solid var(--hairline)' }}
                   >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                    {/* margin folio numeral */}
+                    <span
+                      className="absolute -left-9 lg:-left-14 top-[22px] lg:top-[27px] hidden sm:block select-none"
+                      style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 18, color: 'var(--faint)', lineHeight: 1 }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
 
-                  <div className="max-w-[68ch]">
-                    <h3 className="leading-[1.3] tracking-tight" style={{ fontSize: 15.5, fontWeight: 500, letterSpacing: '-0.015em' }}>
-                      {item.link ? (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
-                          {item.title}
-                        </a>
-                      ) : (
-                        <span style={{ color: 'var(--accent)' }}>{item.title}</span>
+                    <div className="max-w-[70ch]">
+                      {/* title + status stamp */}
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="leading-[1.32] tracking-tight" style={{ fontSize: 17, fontWeight: 500, letterSpacing: '-0.018em' }}>
+                          {item.link ? (
+                            <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
+                              {item.title}
+                            </a>
+                          ) : (
+                            <span style={{ color: 'var(--accent)' }}>{item.title}</span>
+                          )}
+                        </h3>
+                        {st && (
+                          <span
+                            className="flex-shrink-0 mt-[3px] inline-flex items-center gap-1.5 whitespace-nowrap"
+                            style={{
+                              fontFamily: UI, fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+                              color: st.fg, background: st.bg, border: `1px solid ${st.bd}`, padding: '3px 9px', borderRadius: '2px',
+                            }}
+                          >
+                            {st.seal && <span aria-hidden="true" style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 10 }}>✶</span>}
+                            {st.label}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* authors */}
+                      {item.authors && (
+                        <p className="text-[13.5px] leading-[1.5] mt-1.5" style={{ color: 'var(--muted)' }}>
+                          {item.authors.split('Barsat Khadka').map((part, i) => (
+                            <React.Fragment key={i}>
+                              {i > 0 && (
+                                <span style={{ color: 'var(--text)', borderBottom: `1px solid ${VERMILLION}`, paddingBottom: 1 }}>
+                                  Barsat Khadka
+                                </span>
+                              )}
+                              {part}
+                            </React.Fragment>
+                          ))}
+                        </p>
                       )}
-                    </h3>
 
-                    {item.authors && (
-                      <p className="text-[13px] leading-[1.45] mt-0.5" style={{ color: 'var(--muted)' }}>
-                        {item.authors.split('Barsat Khadka').map((part, i) => (
-                          <React.Fragment key={i}>
-                            {i > 0 && (
-                              <span style={{ color: 'var(--text)', borderBottom: `1px solid ${VERMILLION}`, paddingBottom: 1 }}>
-                                Barsat Khadka
-                              </span>
-                            )}
-                            {part}
-                          </React.Fragment>
-                        ))}
-                      </p>
-                    )}
-
-                    {(item.venue || item.venueFull || item.status || (item.links && item.links.length)) && (
-                      <p className="text-[12.5px] leading-[1.5] mt-0.5" style={{ color: 'var(--muted)' }}>
-                        {item.venue && (
-                          <span className="font-medium tracking-tight" style={{ color: 'var(--text)' }}>{item.venue}</span>
-                        )}
-                        {item.venueFull && (
-                          <><span className="mx-1.5 opacity-50">·</span><span>{item.venueFull}</span></>
-                        )}
-                        {item.status && (
-                          <><span className="mx-1.5 opacity-50">·</span><span className="uppercase tracking-[0.16em] text-[10px]" style={{ color: VERMILLION }}>{item.status}</span></>
-                        )}
-                        {item.links && item.links.length > 0 && (
-                          <>
-                            <span className="mx-1.5 opacity-50">·</span>
-                            {item.links.map((l, i) => (
-                              <React.Fragment key={l.label}>
-                                {i > 0 && <span className="mx-1 opacity-40">/</span>}
-                                <a href={l.href} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: VERMILLION }}>
-                                  {l.label}
-                                </a>
-                              </React.Fragment>
-                            ))}
-                          </>
-                        )}
-                      </p>
-                    )}
-                  </div>
-                </li>
-              ))}
+                      {/* venue + links */}
+                      {(item.venue || item.venueFull || (item.links && item.links.length)) && (
+                        <div className="mt-2.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-[12.5px]" style={{ color: 'var(--muted)' }}>
+                          {item.venue && (
+                            <span className="font-medium tracking-tight" style={{ color: 'var(--text)' }}>{item.venue}</span>
+                          )}
+                          {item.venueFull && (
+                            <>
+                              {item.venue && <span className="opacity-40">·</span>}
+                              <span className="italic" style={{ fontFamily: SERIF }}>{item.venueFull}</span>
+                            </>
+                          )}
+                          {item.links && item.links.length > 0 && (
+                            <>
+                              <span className="opacity-40">·</span>
+                              {item.links.map((l, i) => (
+                                <React.Fragment key={l.label}>
+                                  {i > 0 && <span className="opacity-30">/</span>}
+                                  <a href={l.href} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
+                                    {l.label}
+                                  </a>
+                                </React.Fragment>
+                              ))}
+                            </>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </section>
 
@@ -957,10 +1033,10 @@ export default function Home() {
                     className="hidden lg:block absolute -left-24 top-[10px] text-right pr-3 uppercase tracking-[0.22em] text-[10px]"
                     style={{ color: 'var(--muted)' }}
                   >
-                    {project.status}
+                    {project.year ? `${project.year} —` : project.status}
                   </span>
 
-                  <div className="flex items-baseline gap-4 mb-3">
+                  <div className="flex items-baseline gap-3 mb-3">
                     <h3 style={{ fontSize: 26, fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                       {project.link ? (
                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--text)' }}>
@@ -971,8 +1047,10 @@ export default function Home() {
                       )}
                     </h3>
                     {project.title === 'Vinaya Journal' && (
-                      <span className="text-[12px] tracking-[0.15em] uppercase" style={{ color: VERMILLION }}>
-                        ★ {repoStats.stars} &nbsp; ⑂ {repoStats.forks}
+                      <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                        {repoStats.stars} stars
+                        <span className="opacity-40">·</span>
+                        {repoStats.forks} forks
                       </span>
                     )}
                   </div>
@@ -1006,6 +1084,8 @@ export default function Home() {
                         <img
                           src={projectImage}
                           alt="Vinaya Journal — offline-first AI journaling app"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full block"
                           style={{ filter: 'grayscale(0.06) contrast(0.99)' }}
                         />
@@ -1043,7 +1123,7 @@ export default function Home() {
           </section>
 
           {/* Second interlude — a quieter breath, distinct from the first */}
-          <section data-reveal className="relative px-4 lg:px-8 py-16 lg:py-24 text-center">
+          <section data-reveal className="relative px-4 lg:px-8 pt-2 pb-14 lg:pt-4 lg:pb-20 text-center">
             <div className="flex justify-center" aria-hidden="true">
               <DharmaWheel size={24} />
             </div>
@@ -1127,15 +1207,35 @@ export default function Home() {
             <Head kicker="the other half of the day">Philosophy</Head>
             <Rule />
 
+            {/* Lead aphorism — opens the chapter at full scale */}
+            <div className="max-w-[26ch] mb-12 lg:mb-14">
+              <p
+                style={{
+                  fontFamily: DISPLAY,
+                  fontStyle: 'italic',
+                  fontWeight: 360,
+                  fontSize: 'clamp(24px, 3vw, 38px)',
+                  lineHeight: 1.18,
+                  letterSpacing: '-0.015em',
+                  color: 'var(--text)',
+                }}
+              >
+                {philosophyNotes[0].en}
+              </p>
+              <p className="mt-3.5 text-[16px] lg:text-[17px] leading-[1.7]" style={{ fontFamily: DEVANAGARI, color: 'var(--muted)' }} lang="ne">
+                {philosophyNotes[0].ne}
+              </p>
+            </div>
+
             {/* Notes — English with Nepali beneath */}
             <div className="space-y-8 max-w-[64ch]">
-              {philosophyNotes.map((note, index) => (
-                <div key={index} className="relative">
+              {philosophyNotes.slice(1).map((note, i) => (
+                <div key={i} className="relative">
                   <span
                     className="absolute -left-7 lg:-left-9 top-[6px] hidden sm:block"
                     style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 13, color: 'var(--muted)' }}
                   >
-                    §{index + 1}
+                    §{i + 1}
                   </span>
                   <p className="text-[16px] leading-[1.8]" style={{ color: 'var(--text)' }}>
                     {note.en}
@@ -1213,10 +1313,12 @@ export default function Home() {
                   <p
                     key={si}
                     style={{
-                      fontFamily: SERIF,
+                      fontFamily: DISPLAY,
                       fontStyle: 'italic',
-                      fontSize: '18px',
-                      lineHeight: 1.7,
+                      fontWeight: 360,
+                      fontSize: 'clamp(20px, 2.4vw, 30px)',
+                      lineHeight: 1.5,
+                      letterSpacing: '-0.015em',
                       color: 'var(--text)',
                     }}
                   >
@@ -1230,7 +1332,7 @@ export default function Home() {
                 ))}
               </div>
               <footer className="mt-9 text-[11px] tracking-[0.22em] uppercase" style={{ color: 'var(--muted)' }}>
-                <span style={{ color: VERMILLION }}>—</span>&nbsp;&nbsp;{closingVerse.attribution}
+                <span style={{ color: VERMILLION }}>—</span>{' '}{closingVerse.attribution}
               </footer>
             </blockquote>
           </section>
@@ -1241,7 +1343,7 @@ export default function Home() {
               <div aria-hidden="true" className="mb-6 flex justify-center">
                 <span style={{ width: 36, height: 36, background: VERMILLION, color: '#FAF8F3', fontFamily: SERIF, fontSize: 17, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'rotate(-4deg)', boxShadow: '0 2px 6px rgba(181,52,31,0.25)' }}>印</span>
               </div>
-              <p style={{ fontFamily: DISPLAY, fontSize: 24, fontWeight: 400, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+              <p style={{ fontFamily: DISPLAY, fontSize: 20, fontWeight: 400, letterSpacing: '-0.015em', lineHeight: 1.2, color: 'var(--muted)' }}>
                 Barsat Khadka
                 <span style={{ fontFamily: DEVANAGARI, color: VERMILLION, marginLeft: 10, fontSize: 19 }} lang="ne">बर्सत खड्का</span>
               </p>
