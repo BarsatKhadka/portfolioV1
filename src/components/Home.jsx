@@ -194,7 +194,9 @@ const education = {
   year: "Class of 2028"
 };
 
-const SERIF = "'Playfair Display', 'Cormorant Garamond', Georgia, serif";
+const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
+const SERIF = DISPLAY; // italic accents — folio numerals, drop caps, ornaments — in Fraunces italic
+const UI = "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif";
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
 
@@ -211,11 +213,12 @@ function Folio({ numeral }) {
 function Head({ children }) {
   return (
     <h2
-      className="relative inline-block mb-1 text-[30px] lg:text-[38px] leading-[1.05]"
+      className="relative inline-block mb-1 text-[34px] lg:text-[46px] leading-[1.0]"
       style={{
-        fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif",
-        fontWeight: 500,
-        letterSpacing: '-0.035em',
+        fontFamily: DISPLAY,
+        fontWeight: 400,
+        letterSpacing: '-0.02em',
+        fontVariationSettings: "'SOFT' 4, 'opsz' 60",
         color: 'var(--text)',
       }}
     >
@@ -307,7 +310,90 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#0a0a0a]">
+    <div className="min-h-screen bg-[#FAF8F3] text-[#16140F]">
+
+      {/* ░░ Cinematic opening — a breath, but the document peeks below ░░ */}
+      <header className="hero relative w-full min-h-[82svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-14 pb-7 lg:pb-9">
+        <div aria-hidden="true" className="hero-aura" />
+        <div aria-hidden="true" className="hero-seal" style={{ fontFamily: SERIF }}>印</div>
+
+        {/* Top line */}
+        <div className="hero-fade relative z-10 flex items-center justify-between" style={{ animationDelay: '0.15s' }}>
+          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+            बर्सत खड्का
+          </span>
+          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+            Hattiesburg · MMXXVI
+          </span>
+        </div>
+
+        {/* The name */}
+        <div className="relative z-10">
+          <h1
+            className="hero-name"
+            style={{
+              fontFamily: DISPLAY,
+              lineHeight: 0.84,
+              letterSpacing: '-0.035em',
+              fontVariationSettings: "'SOFT' 4, 'opsz' 144",
+              fontWeight: 360,
+              fontSize: 'clamp(68px, 14vw, 196px)',
+            }}
+          >
+            <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.25s' }}>Barsat</span></span>
+            <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.4s', fontStyle: 'italic', color: 'var(--muted)' }}>Khadka</span></span>
+          </h1>
+
+          <p
+            className="hero-fade mt-7 lg:mt-10"
+            style={{
+              animationDelay: '0.78s',
+              fontFamily: SERIF,
+              fontStyle: 'italic',
+              color: 'var(--text)',
+              fontSize: 'clamp(20px, 2.4vw, 32px)',
+              lineHeight: 1.4,
+              maxWidth: '22ch',
+            }}
+          >
+            Two things occupy my being — computer&nbsp;science research, and philosophy.
+          </p>
+        </div>
+
+        {/* Bottom — a contents index so nothing below is missed */}
+        <div className="hero-fade relative z-10 flex flex-wrap items-end justify-between gap-y-4 gap-x-8" style={{ animationDelay: '1s' }}>
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {[
+              { id: 'about', n: 'i', label: 'Currently' },
+              { id: 'research', n: 'ii', label: 'Research' },
+              { id: 'projects', n: 'iii', label: 'Projects' },
+              { id: 'publications', n: 'iv', label: 'Writing' },
+              { id: 'philosophy', n: 'v', label: 'Philosophy' },
+            ].map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => scrollToSection(s.id)}
+                className="group inline-flex items-baseline gap-1.5 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
+                style={{ color: 'var(--muted)', fontFamily: UI }}
+              >
+                <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, letterSpacing: 0, fontSize: 12 }}>{s.n}</span>
+                <span className="link-slide" style={{ color: 'var(--text)' }}>{s.label}</span>
+              </button>
+            ))}
+          </nav>
+          <button
+            type="button"
+            onClick={() => scrollToSection('about')}
+            className="flex items-center gap-3 text-[10.5px] sm:text-[11px] tracking-[0.3em] uppercase"
+            style={{ color: 'var(--muted)', fontFamily: UI }}
+          >
+            <span className="hero-scrollline" aria-hidden="true" />
+            Scroll
+          </button>
+        </div>
+      </header>
+
       <div className="flex flex-col md:flex-row">
 
         {/* Left Sidebar */}
@@ -347,18 +433,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Masthead name — Inter, two-line, confident */}
+            {/* Masthead name — Fraunces, two-line, a quiet broadsheet title */}
             <h1
-              className="mb-1 leading-[1] tracking-tight"
+              className="mb-1 leading-[0.92]"
               style={{
-                fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif",
-                fontWeight: 500,
-                fontSize: 'clamp(32px, 4vw, 42px)',
-                letterSpacing: '-0.035em',
+                fontFamily: DISPLAY,
+                fontWeight: 380,
+                fontSize: 'clamp(44px, 5.4vw, 62px)',
+                letterSpacing: '-0.025em',
+                fontVariationSettings: "'SOFT' 6, 'opsz' 120",
               }}
             >
               Barsat<br />
-              <span style={{ fontWeight: 400, color: 'var(--muted)' }}>Khadka</span>
+              <span style={{ fontStyle: 'italic', fontWeight: 360, color: 'var(--muted)' }}>Khadka</span>
             </h1>
             <p
               className="mt-2 text-[19px] leading-[1.3]"

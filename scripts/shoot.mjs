@@ -18,7 +18,7 @@ for (const vp of viewports) {
   await page.goto(URL, { waitUntil: 'networkidle' });
   // Force every reveal element visible so full-page shots aren't blank
   await page.addStyleTag({ content: '[data-reveal]{opacity:1!important;transform:none!important;}' });
-  await page.waitForTimeout(1200); // let fonts settle
+  await page.waitForTimeout(2600); // let fonts + hero entrance settle
   // full page
   await page.screenshot({ path: join(shotDir, `${vp.name}-full.png`), fullPage: true });
   // above-the-fold
