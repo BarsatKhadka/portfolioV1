@@ -189,6 +189,65 @@
   }
 }
 
+/* Warm ink selection — a small, soothing detail */
+::selection {
+  background: rgba(181, 52, 31, 0.16);
+  color: var(--text);
+}
+
+/* Quiet, legible focus for keyboard travellers */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(181, 52, 31, 0.55);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Devanagari — let it breathe and stay crisp */
+[lang="ne"] {
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+}
+
+/* Gentle reveal-on-scroll. Only arms once JS adds .reveal-ready,
+   so content is never hidden if JS or motion is unavailable. */
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    will-change: opacity, transform;
+  }
+
+  html.reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+}
+
+/* Plates lift gently on hover — tactile, like lifting a print */
+@media (prefers-reduced-motion: no-preference) {
+  figure img {
+    transition:
+      transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+      box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  figure:hover img {
+    transform: translateY(-3px);
+    box-shadow: 0 1px 0 rgba(26, 26, 26, 0.10), 14px 16px 0 -1px rgba(181, 52, 31, 0.10) !important;
+  }
+}
+
+/* Honour those who ask for stillness */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .sidebar {
