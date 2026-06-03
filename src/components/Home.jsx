@@ -7,6 +7,30 @@ import canvasImage from './canvas.png';
 import myImage from './MyImage.webp';
 import sidebarImage from './image.webp';
 import sidebarImage2 from './image2.webp';
+import buddhaImg from '../assets/gallery/buddha.webp';
+import kabirImg from '../assets/gallery/kabir.webp';
+import waveImg from '../assets/gallery/wave.webp';
+import neuronImg from '../assets/gallery/neuron.webp';
+import spinozaImg from '../assets/gallery/spinoza.webp';
+import redFujiImg from '../assets/gallery/redfuji.webp';
+import nebulaImg from '../assets/gallery/nebula.webp';
+import mahakaliImg from '../assets/gallery/mahakali.webp';
+import natarajaImg from '../assets/gallery/nataraja.webp';
+import mandalaImg from '../assets/gallery/mandala.webp';
+import blakeImg from '../assets/gallery/blake.webp';
+import rlImg from '../assets/gallery/rl.webp';
+import peaceImg from '../assets/gallery/peace.webp';
+import socratesImg from '../assets/gallery/socrates.webp';
+import christImg from '../assets/gallery/christ.webp';
+import einsteinImg from '../assets/gallery/einstein.webp';
+import darwinImg from '../assets/gallery/darwin.webp';
+import ramanujanImg from '../assets/gallery/ramanujan.webp';
+import galileoImg from '../assets/gallery/galileo.webp';
+import newtonPortraitImg from '../assets/gallery/newton.webp';
+import antikytheraImg from '../assets/gallery/antikythera.webp';
+import eniacImg from '../assets/gallery/eniac.webp';
+import mandelImg from '../assets/gallery/mandel.webp';
+import friesImg from '../assets/gallery/fries.webp';
 
 // --- Data ---
 
@@ -194,11 +218,73 @@ const education = {
   year: "Class of 2028"
 };
 
+// Hero gallery wall — an altar of influences: sages, deities, revolutionaries, nature, cosmos, mind.
+const galleryColA = [
+  { src: buddhaImg, alt: 'Seated Buddha, Chola bronze' },
+  { src: christImg, alt: 'Christ Pantocrator, Sinai icon' },
+  { src: spinozaImg, alt: 'Baruch Spinoza' },
+  { src: waveImg, alt: 'Hokusai, The Great Wave' },
+  { src: neuronImg, alt: 'Cajal, cortical neurons' },
+  { src: darwinImg, alt: 'Charles Darwin' },
+];
+const galleryColB = [
+  { src: mahakaliImg, alt: 'Mahakali, by Raja Ravi Varma' },
+  { src: natarajaImg, alt: 'Shiva Nataraja, lord of the cosmic dance' },
+  { src: rlImg, alt: 'A policy over a gridworld — reinforcement learning' },
+  { src: peaceImg, alt: 'A warrior who laid down his sword — the turn toward peace' },
+  { src: nebulaImg, alt: 'Pillars of Creation, Eagle Nebula' },
+  { src: einsteinImg, alt: 'Albert Einstein' },
+];
+const galleryColC = [
+  { src: kabirImg, alt: 'Kabir weaving, Mughal painting' },
+  { src: socratesImg, alt: 'Socrates, marble bust' },
+  { src: mandalaImg, alt: 'Amitayus mandala' },
+  { src: ramanujanImg, alt: 'Srinivasa Ramanujan' },
+  { src: redFujiImg, alt: 'Hokusai, Red Fuji' },
+  { src: blakeImg, alt: 'William Blake, Newton' },
+];
+// Fourth column — the revolutionaries of reason and matter (and one honest snack)
+const galleryColD = [
+  { src: newtonPortraitImg, alt: 'Sir Isaac Newton' },
+  { src: galileoImg, alt: 'Galileo Galilei' },
+  { src: mandelImg, alt: 'The Mandelbrot set' },
+  { src: antikytheraImg, alt: 'The Antikythera mechanism — the ancient analogue computer' },
+  { src: friesImg, alt: 'Fries — because a life of complete harmony still needs fries' },
+  { src: eniacImg, alt: 'Programming the ENIAC' },
+];
+const galleryMobile = [...galleryColA, ...galleryColB, ...galleryColC, ...galleryColD];
+
 const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
 const SERIF = DISPLAY; // italic accents — folio numerals, drop caps, ornaments — in Fraunces italic
 const UI = "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif";
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
+
+// Dhammachakra — the wheel of dhamma, drawn minimal to match the ink-on-paper hand
+function DharmaWheel({ size = 24, color = VERMILLION, strokeWidth = 1.4, style }) {
+  const spokes = [0, 45, 90, 135, 180, 225, 270, 315];
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true" style={style}>
+      <circle cx="24" cy="24" r="21" fill="none" stroke={color} strokeWidth={strokeWidth} />
+      <circle cx="24" cy="24" r="6.5" fill="none" stroke={color} strokeWidth={strokeWidth} />
+      {spokes.map((a) => {
+        const r = (a * Math.PI) / 180;
+        return (
+          <line
+            key={a}
+            x1={24 + 6.5 * Math.cos(r)}
+            y1={24 + 6.5 * Math.sin(r)}
+            x2={24 + 21 * Math.cos(r)}
+            y2={24 + 21 * Math.sin(r)}
+            stroke={color}
+            strokeWidth={strokeWidth}
+          />
+        );
+      })}
+      <circle cx="24" cy="24" r="2.1" fill={color} />
+    </svg>
+  );
+}
 
 function Folio({ numeral }) {
   return (
@@ -210,21 +296,28 @@ function Folio({ numeral }) {
   );
 }
 
-function Head({ children }) {
+function Head({ children, kicker }) {
   return (
-    <h2
-      className="relative inline-block mb-1 text-[34px] lg:text-[46px] leading-[1.0]"
-      style={{
-        fontFamily: DISPLAY,
-        fontWeight: 400,
-        letterSpacing: '-0.02em',
-        fontVariationSettings: "'SOFT' 4, 'opsz' 60",
-        color: 'var(--text)',
-      }}
-    >
-      {children}
-      <span aria-hidden="true" style={{ color: VERMILLION, marginLeft: '0.12em', fontSize: '0.42em', verticalAlign: '0.85em', letterSpacing: 0, fontFamily: SERIF }}>†</span>
-    </h2>
+    <div className="mb-1">
+      {kicker && (
+        <p className="mb-2.5 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
+          <span aria-hidden="true" style={{ width: 22, height: 1, background: VERMILLION, display: 'inline-block' }} />
+          {kicker}
+        </p>
+      )}
+      <h2
+        className="text-[42px] lg:text-[60px] leading-[0.96]"
+        style={{
+          fontFamily: DISPLAY,
+          fontWeight: 380,
+          letterSpacing: '-0.025em',
+          fontVariationSettings: "'SOFT' 5, 'opsz' 96",
+          color: 'var(--text)',
+        }}
+      >
+        {children}
+      </h2>
+    </div>
   );
 }
 
@@ -313,7 +406,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#FAF8F3] text-[#16140F]">
 
       {/* ░░ Cinematic opening — a breath, but the document peeks below ░░ */}
-      <header className="hero relative w-full min-h-[82svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-14 pb-7 lg:pb-9">
+      <header className="hero relative w-full min-h-[90svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
         <div aria-hidden="true" className="hero-aura" />
         <div aria-hidden="true" className="hero-seal" style={{ fontFamily: SERIF }}>印</div>
 
@@ -327,37 +420,87 @@ export default function Home() {
           </span>
         </div>
 
-        {/* The name */}
-        <div className="relative z-10">
-          <h1
-            className="hero-name"
-            style={{
-              fontFamily: DISPLAY,
-              lineHeight: 0.84,
-              letterSpacing: '-0.035em',
-              fontVariationSettings: "'SOFT' 4, 'opsz' 144",
-              fontWeight: 360,
-              fontSize: 'clamp(68px, 14vw, 196px)',
-            }}
-          >
-            <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.25s' }}>Barsat</span></span>
-            <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.4s', fontStyle: 'italic', color: 'var(--muted)' }}>Khadka</span></span>
-          </h1>
+        {/* Middle — name on the left, the gallery on its side */}
+        <div className="relative z-10 flex items-center justify-between gap-8 xl:gap-16">
+          <div className="min-w-0">
+            <h1
+              className="hero-name"
+              style={{
+                fontFamily: DISPLAY,
+                lineHeight: 0.84,
+                letterSpacing: '-0.035em',
+                fontVariationSettings: "'SOFT' 4, 'opsz' 144",
+                fontWeight: 360,
+                fontSize: 'clamp(52px, 8vw, 132px)',
+              }}
+            >
+              <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.25s' }}>Barsat</span></span>
+              <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.4s', fontStyle: 'italic', color: 'var(--muted)' }}>Khadka</span></span>
+            </h1>
 
-          <p
-            className="hero-fade mt-7 lg:mt-10"
-            style={{
-              animationDelay: '0.78s',
-              fontFamily: SERIF,
-              fontStyle: 'italic',
-              color: 'var(--text)',
-              fontSize: 'clamp(20px, 2.4vw, 32px)',
-              lineHeight: 1.4,
-              maxWidth: '22ch',
-            }}
+            <p
+              className="hero-fade mt-7 lg:mt-9"
+              style={{
+                animationDelay: '0.78s',
+                fontFamily: SERIF,
+                fontStyle: 'italic',
+                color: 'var(--text)',
+                fontSize: 'clamp(20px, 2.2vw, 30px)',
+                lineHeight: 1.4,
+                maxWidth: '22ch',
+              }}
+            >
+              Two things occupy my being — computer&nbsp;science research, and philosophy.
+            </p>
+            <p
+              className="hero-fade mt-3.5"
+              style={{
+                animationDelay: '0.9s',
+                fontFamily: SERIF,
+                fontStyle: 'italic',
+                color: 'var(--muted)',
+                fontSize: 'clamp(15.5px, 1.6vw, 21px)',
+                lineHeight: 1.45,
+                maxWidth: '26ch',
+              }}
+            >
+              I have no life outside it — literally. And the beautiful part is, I have never wanted one. Hence I live in complete harmony.
+            </p>
+
+            {/* Mobile — a quiet grid of the wall */}
+            <div className="hero-fade grid grid-cols-3 gap-2 mt-8 max-w-[380px] lg:hidden" style={{ animationDelay: '0.95s' }}>
+              {galleryMobile.map((p, i) => (
+                <div key={i} className="relative overflow-hidden aspect-square" style={{ boxShadow: '0 6px 16px -10px rgba(22,20,15,0.4)' }}>
+                  <img src={p.src} alt={p.alt} loading="lazy" decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'grayscale(0.05) saturate(0.97)' }} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Gallery wall — four columns drifting in alternating directions, masked at the edges */}
+          <div
+            className="gallery-wall hero-fade hidden lg:flex gap-2.5 shrink-0 overflow-hidden h-[clamp(440px,76vh,820px)] w-[clamp(500px,53vw,880px)]"
+            style={{ animationDelay: '0.55s' }}
           >
-            Two things occupy my being — computer&nbsp;science research, and philosophy.
-          </p>
+            {[
+              { col: galleryColA, cls: 'gallery-col', delay: '0s' },
+              { col: galleryColB, cls: 'gallery-col gallery-col--down', delay: '-21s' },
+              { col: galleryColC, cls: 'gallery-col', delay: '-33s' },
+              { col: galleryColD, cls: 'gallery-col gallery-col--down', delay: '-27s' },
+            ].map((c, ci) => (
+              <div key={ci} className="flex-1 overflow-hidden">
+                {/* width-slot stays put; the track inside is content-height so -50% loops seamlessly */}
+                <div className={c.cls} style={{ animationDelay: c.delay }}>
+                  {[...c.col, ...c.col].map((p, i) => (
+                    <img key={i} src={p.src} alt={i < c.col.length ? p.alt : ''} aria-hidden={i >= c.col.length}
+                      loading="eager" decoding="async" className="w-full h-auto block"
+                      style={{ marginBottom: '12px', filter: 'grayscale(0.05) saturate(0.96) contrast(1.01)', boxShadow: '0 14px 30px -16px rgba(22,20,15,0.4)', border: '1px solid rgba(22,20,15,0.06)' }} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom — a contents index so nothing below is missed */}
@@ -506,6 +649,10 @@ export default function Home() {
                   <p className="text-[12.5px]" style={{ color: 'var(--muted)' }}>
                     Bachelor of Science · {education.degree}
                   </p>
+                  <p className="text-[12px] flex items-center gap-1.5" style={{ color: VERMILLION }}>
+                    <span aria-hidden="true" style={{ fontFamily: SERIF, fontStyle: 'italic' }}>✶</span>
+                    Honors Scholar
+                  </p>
                   <p className="text-[12px]" style={{ color: 'var(--muted)' }}>
                     {education.year}
                   </p>
@@ -580,10 +727,10 @@ export default function Home() {
             id="about"
             data-reveal
             ref={(el) => (sectionsRef.current.about = el)}
-            className="relative pt-10 lg:pt-14 mb-10 lg:mb-16 px-4 lg:px-8"
+            className="relative pt-10 lg:pt-14 mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="i" label="Currently" />
-            <Head>Currently</Head>
+            <Head kicker="at the moment">Currently</Head>
             <Rule />
 
             {/* Roles — small-caps labels, year-style alignment */}
@@ -651,16 +798,51 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Interlude — a philosophical breath between who I am and the work */}
+          <section data-reveal className="relative px-4 lg:px-8 py-20 lg:py-32 overflow-hidden">
+            <div className="flex flex-col items-center gap-3.5 mb-10" aria-hidden="true">
+              <DharmaWheel size={28} />
+              <span style={{ width: 1, height: 40, background: 'linear-gradient(to bottom, rgba(181,52,31,0.5), transparent)' }} />
+            </div>
+            <blockquote className="mx-auto text-center m-0 px-2" style={{ maxWidth: 'min(720px, 92vw)' }}>
+              {[
+                'I am no hunter\nof reality —',
+                'I have surrendered\nto its vastness.',
+              ].map((stanza, si) => (
+                <p
+                  key={si}
+                  className={si === 0 ? '' : 'mt-5 lg:mt-7'}
+                  style={{
+                    fontFamily: DISPLAY,
+                    fontStyle: 'italic',
+                    fontWeight: 360,
+                    fontSize: 'clamp(29px, 4.6vw, 58px)',
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.02em',
+                    fontVariationSettings: "'SOFT' 6, 'opsz' 110",
+                    color: 'var(--text)',
+                  }}
+                >
+                  {stanza.split('\n').map((line, li) => (
+                    <React.Fragment key={li}>{line}{li === 0 && <br />}</React.Fragment>
+                  ))}
+                </p>
+              ))}
+              <p className="mt-8 text-[17px] lg:text-[19px] leading-[1.5]" style={{ fontFamily: DEVANAGARI, color: VERMILLION }} lang="ne">
+                आमा प्रकृति, तिमी साँच्चै अनन्त छौ।
+              </p>
+            </blockquote>
+          </section>
 
           {/* Research Section */}
           <section
             id="research"
             data-reveal
             ref={(el) => (sectionsRef.current.research = el)}
-            className="relative mb-10 lg:mb-16 px-4 lg:px-8"
+            className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="ii" label="Research" />
-            <Head>Research</Head>
+            <Head kicker="papers & preprints">Research</Head>
             <Rule />
 
             <ol className="list-none p-0 m-0 space-y-4 mt-2">
@@ -736,10 +918,10 @@ export default function Home() {
             id="projects"
             data-reveal
             ref={(el) => (sectionsRef.current.projects = el)}
-            className="relative mb-10 lg:mb-16 px-4 lg:px-8"
+            className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="iii" label="Projects" />
-            <Head>Projects</Head>
+            <Head kicker="built & building">Projects</Head>
             <Rule />
 
             {/* Filter */}
@@ -811,19 +993,24 @@ export default function Home() {
                   </div>
 
                   {project.title === 'Vinaya Journal' && (
-                    <div className="mt-8 max-w-[640px]">
+                    <figure className="mt-8 max-w-[600px] m-0 overflow-hidden" style={{ border: '1px solid var(--border)', background: 'var(--bg)', boxShadow: '0 26px 52px -30px rgba(22,20,15,0.42), 14px 16px 0 -1px rgba(181,52,31,0.06)' }}>
+                      <div className="flex items-center gap-1.5 px-3.5 py-2.5" style={{ borderBottom: '1px solid var(--border)' }}>
+                        <span style={{ width: 8, height: 8, borderRadius: '50%', background: VERMILLION, display: 'inline-block' }} />
+                        <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
+                        <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
+                        <span className="ml-3 text-[10.5px] tracking-[0.14em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                          vinaya-journal.vercel.app
+                        </span>
+                      </div>
                       <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                         <img
                           src={projectImage}
-                          alt="Vinaya Journal"
-                          className="w-full"
-                          style={{
-                            filter: 'grayscale(0.05)',
-                            boxShadow: '0 1px 0 rgba(26,26,26,0.12), 14px 14px 0 -1px rgba(181,52,31,0.06)',
-                          }}
+                          alt="Vinaya Journal — offline-first AI journaling app"
+                          className="w-full block"
+                          style={{ filter: 'grayscale(0.06) contrast(0.99)' }}
                         />
                       </a>
-                    </div>
+                    </figure>
                   )}
                 </li>
               ))}
@@ -855,19 +1042,41 @@ export default function Home() {
             </ol>
           </section>
 
+          {/* Second interlude — a quieter breath, distinct from the first */}
+          <section data-reveal className="relative px-4 lg:px-8 py-16 lg:py-24 text-center">
+            <div className="flex justify-center" aria-hidden="true">
+              <DharmaWheel size={24} />
+            </div>
+            <p
+              className="mt-5 mx-auto"
+              style={{
+                fontFamily: DISPLAY,
+                fontStyle: 'italic',
+                fontWeight: 360,
+                fontSize: 'clamp(22px, 2.9vw, 40px)',
+                lineHeight: 1.22,
+                letterSpacing: '-0.015em',
+                color: 'var(--text)',
+                maxWidth: '22ch',
+              }}
+            >
+              The pursuit of it is madness — and it is beautiful.
+            </p>
+          </section>
+
           {/* Writing / Blogs Section */}
           <section
             id="publications"
             data-reveal
             ref={(el) => (sectionsRef.current.publications = el)}
-            className="relative mb-10 lg:mb-16 px-4 lg:px-8"
+            className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="iv" label="Writing" />
-            <Head>Writing</Head>
+            <Head kicker="from the notebook">Writing</Head>
             <Rule />
 
             <p className="mb-7 text-[14px] max-w-[58ch] leading-[1.7]" style={{ color: 'var(--muted)' }}>
-              Essays and notebooks. Title at left, date at right.
+              Essays and notebooks — thinking out loud, in public.
             </p>
 
             <ol className="list-none p-0 m-0 space-y-3.5">
@@ -912,10 +1121,10 @@ export default function Home() {
             id="philosophy"
             data-reveal
             ref={(el) => (sectionsRef.current.philosophy = el)}
-            className="relative mb-10 lg:mb-16 px-4 lg:px-8"
+            className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="v" label="Philosophy" />
-            <Head>Philosophy</Head>
+            <Head kicker="the other half of the day">Philosophy</Head>
             <Rule />
 
             {/* Notes — English with Nepali beneath */}
@@ -989,10 +1198,13 @@ export default function Home() {
           </section>
 
           {/* Closing epigraph — the vow the whole page rests on */}
-          <section data-reveal className="relative mb-16 lg:mb-24 px-4 lg:px-8">
-            <div className="flex items-center gap-3 mb-10 max-w-[64ch] mx-auto" aria-hidden="true">
+          <section data-reveal className="relative mb-16 lg:mb-24 px-4 lg:px-8 overflow-hidden">
+            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.045 }}>
+              <DharmaWheel size={420} strokeWidth={0.7} />
+            </div>
+            <div className="relative flex items-center justify-center gap-4 mb-10 max-w-[64ch] mx-auto" aria-hidden="true">
               <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.14)' }} />
-              <span style={{ color: VERMILLION, fontFamily: SERIF, fontStyle: 'italic', fontSize: 15 }}>❧</span>
+              <DharmaWheel size={24} />
               <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.14)' }} />
             </div>
             <blockquote className="max-w-[58ch] mx-auto text-center">
@@ -1022,6 +1234,34 @@ export default function Home() {
               </footer>
             </blockquote>
           </section>
+
+          {/* Colophon — the imprint page */}
+          <footer data-reveal className="relative px-4 lg:px-8 pb-20 lg:pb-28">
+            <div className="max-w-[60ch] mx-auto pt-12 text-center" style={{ borderTop: '1px solid var(--hairline)' }}>
+              <div aria-hidden="true" className="mb-6 flex justify-center">
+                <span style={{ width: 36, height: 36, background: VERMILLION, color: '#FAF8F3', fontFamily: SERIF, fontSize: 17, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'rotate(-4deg)', boxShadow: '0 2px 6px rgba(181,52,31,0.25)' }}>印</span>
+              </div>
+              <p style={{ fontFamily: DISPLAY, fontSize: 24, fontWeight: 400, letterSpacing: '-0.015em', lineHeight: 1.2 }}>
+                Barsat Khadka
+                <span style={{ fontFamily: DEVANAGARI, color: VERMILLION, marginLeft: 10, fontSize: 19 }} lang="ne">बर्सत खड्का</span>
+              </p>
+              <nav className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12.5px]" style={{ fontFamily: UI, color: 'var(--text)' }}>
+                <a href="mailto:khadkabarsat598@gmail.com" className="link-slide">Email</a>
+                <span style={{ color: 'var(--faint)' }}>·</span>
+                <a href="https://github.com/BarsatKhadka" target="_blank" rel="noopener noreferrer" className="link-slide">GitHub</a>
+                <span style={{ color: 'var(--faint)' }}>·</span>
+                <a href="https://scholar.google.com/citations?user=S0sDm5IAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="link-slide">Scholar</a>
+                <span style={{ color: 'var(--faint)' }}>·</span>
+                <a href="https://www.linkedin.com/in/barsat-khadka" target="_blank" rel="noopener noreferrer" className="link-slide">LinkedIn</a>
+              </nav>
+              <p className="mt-7 text-[10.5px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                Grew up in Nepal · made in Hattiesburg · open source, open science · MMXXVI
+              </p>
+              <p className="mt-2 text-[11px] italic" style={{ color: 'var(--faint)', fontFamily: SERIF }}>
+                Set in Fraunces &amp; Newsreader, on warm paper.
+              </p>
+            </div>
+          </footer>
 
         </main>
 

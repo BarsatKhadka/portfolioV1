@@ -237,6 +237,38 @@
   margin: 0;
 }
 
+/* Gallery wall — a living altar of influences */
+.gallery-wall {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 90%, transparent 100%);
+}
+
+.gallery-col {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-col {
+    animation: wallUp 42s linear infinite;
+  }
+  .gallery-col--down {
+    animation: wallDown 42s linear infinite;
+  }
+  .gallery-wall:hover .gallery-col {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes wallUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes wallDown {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
 .hero-line {
   display: block;
   overflow: hidden;
