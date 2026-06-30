@@ -6,39 +6,13 @@ import { SiGooglescholar } from 'react-icons/si';
 import projectImage from '../assets/image.png';
 import canvasImage from './canvas.png';
 import myImage from './MyImage.webp';
-import sidebarImage from './image.webp';
-import sidebarImage2 from './image2.webp';
-import buddhaImg from '../assets/gallery/buddha.webp';
-import kabirImg from '../assets/gallery/kabir.webp';
-import waveImg from '../assets/gallery/wave.webp';
-import neuronImg from '../assets/gallery/neuron.webp';
-import spinozaImg from '../assets/gallery/spinoza.webp';
-import redFujiImg from '../assets/gallery/redfuji.webp';
-import nebulaImg from '../assets/gallery/nebula.webp';
-import mahakaliImg from '../assets/gallery/mahakali.webp';
-import natarajaImg from '../assets/gallery/nataraja.webp';
-import mandalaImg from '../assets/gallery/mandala.webp';
-import blakeImg from '../assets/gallery/blake.webp';
-import rlImg from '../assets/gallery/rl.webp';
-import peaceImg from '../assets/gallery/peace.webp';
-import socratesImg from '../assets/gallery/socrates.webp';
-import christImg from '../assets/gallery/christ.webp';
-import einsteinImg from '../assets/gallery/einstein.webp';
-import darwinImg from '../assets/gallery/darwin.webp';
-import ramanujanImg from '../assets/gallery/ramanujan.webp';
-import galileoImg from '../assets/gallery/galileo.webp';
-import newtonPortraitImg from '../assets/gallery/newton.webp';
-import antikytheraImg from '../assets/gallery/antikythera.webp';
-import eniacImg from '../assets/gallery/eniac.webp';
-import mandelImg from '../assets/gallery/mandel.webp';
-import friesImg from '../assets/gallery/fries.webp';
 
 // --- Data ---
 
 const ongoingProjects = [
   {
     title: 'Vinaya Journal',
-    description: 'Offline-first AI journaling app with private local LLM and mood analysis.',
+    description: 'Offline-first AI journaling app with a private local LLM and mood analysis.',
     link: 'https://vinaya-journal.vercel.app/',
     github: 'https://github.com/BarsatKhadka/Vinaya-Journal',
     status: 'ongoing',
@@ -49,66 +23,80 @@ const ongoingProjects = [
 const previousProjects = [
   {
     title: 'Wordbuddy.ai',
-    description: 'Voice-driven, gamified learning for kids with dyslexia support.',
+    description: 'Voice-driven, gamified learning for kids, with dyslexia support.',
     github: 'https://github.com/BarsatKhadka/WordBuddy.ai',
     status: '2024',
     year: '2024'
   },
   {
     title: 'EasyRepo',
-    description: 'GitHub Repository Management System with OAuth and interactive graphs.',
+    description: 'GitHub repository management system with OAuth and interactive commit graphs.',
     github: 'https://github.com/BarsatKhadka/Easy-Repo',
-    status: '2023',
-    year: '2023'
+    status: '2024',
+    year: '2024'
   },
   {
     title: 'PrepAI',
-    description: 'AI-powered assistant that turns PDFs into quizzes, flashcards, and study plans.',
+    description: 'Turns PDFs into quizzes, flashcards, and study plans. 1st runner-up, VOXO Hackathon.',
     github: 'https://github.com/BarsatKhadka/PrepAI',
     status: '2024',
     year: '2024'
   }
 ];
 
+// Research — accepted first, then preprints under review.
 const research = [
   {
     title: 'CTS-Bench: Benchmarking Graph Coarsening Trade-offs for GNNs in Clock Tree Synthesis',
     authors: 'Barsat Khadka, Kawsher Roxy, Md Rubel Ahmed',
-    venue: "MLBench'26 @ ASPLOS",
-    venueFull: 'MLBench workshop at ASPLOS',
+    venue: 'MLBench @ ASPLOS 2026',
     status: 'accepted',
     link: 'https://arxiv.org/abs/2602.19330',
-    arxivId: '2602.19330',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2602.19330' },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2602.19330' }
     ]
   },
   {
+    title: 'SwiftCTS: Fast Cross-Design Prediction and Pareto Optimization of Clock Tree Metrics via Few-Shot Calibration',
+    authors: 'Barsat Khadka, Md Rubel Ahmed',
+    venue: 'ICCAD 2026',
+    status: 'under review',
+    link: 'https://arxiv.org/abs/2606.11348',
+    links: [
+      { label: 'arXiv', href: 'https://arxiv.org/abs/2606.11348' },
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2606.11348' }
+    ]
+  },
+  {
     title: 'MechRL: Reinforcement Learning Agents Perform Circuit Discovery for Mechanistic Interpretability',
     authors: 'Barsat Khadka',
-    venue: 'Working draft',
-    venueFull: 'Open science — open to collaborators',
-    status: 'ongoing',
+    venue: 'TMLR',
+    status: 'under review',
     link: 'https://arxiv.org/abs/2605.26343',
-    arxivId: '2605.26343',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2605.26343' },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2605.26343' }
     ]
   },
   {
-    title: 'Multiphase Social Engineering Attack Detection using GNN and BERT',
+    title: 'Filter then Verify: Multiphase Social Engineering Attack Detection using GNN and BERT',
     authors: 'Barsat Khadka, Prasant Koirala, Kshitiz Neupane, Nick Rahimi',
-    venue: 'arXiv preprint',
-    venueFull: 'Under review at Springer',
+    venue: 'Springer',
     status: 'under review',
     link: 'https://arxiv.org/abs/2605.17201',
-    arxivId: '2605.17201',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2605.17201' },
       { label: 'PDF', href: 'https://arxiv.org/pdf/2605.17201' }
     ]
+  },
+  {
+    title: 'SEU: Siloed Exact Machine Unlearning for Fine-Tuned Models',
+    authors: 'Nhoojah Maharjan, Barsat Khadka, Rabeya Abdelfattah',
+    venue: 'Preprint',
+    status: 'under review',
+    link: null,
+    links: []
   }
 ];
 
@@ -122,88 +110,36 @@ const publications = [
   },
   {
     title: 'Converting Netlist to VCD and VCD to SAIF: An Open Source Flow',
-    description: 'Open source toolchain for gate-level power analysis in OpenLane 2 EDA workflows.',
+    description: 'An open-source toolchain for gate-level power analysis in OpenLane 2 EDA workflows.',
     type: 'Technical',
     year: 'Jan 2026',
     slug: 'converting-netlist-to-vcd-and-vcd-to-saif'
   }
 ];
 
+// A few notes I keep — kept short on purpose.
 const philosophyNotes = [
-  {
-    en: 'Mother nature, you are truly incomprehensible. Mother nature, you are truly infinite.',
-    ne: 'आमा प्रकृति, तिमी साँच्चै बुझ्न नसकिने छौ। आमा प्रकृति, तिमी साँच्चै अनन्त छौ।'
-  },
-  {
-    en: 'We must remember that we do not observe nature as it really exists but nature exposed to our methods of perception.',
-    ne: 'हामीले यो कुरा सम्झनुपर्छ कि हामी प्रकृतिलाई जस्तो छ त्यस्तै रूपमा देख्दैनौँ, बरु हाम्रो अनुभूति र बुझाइका तरिकाहरूबाट छानिएर देखिएको प्रकृतिलाई मात्र देख्छौँ।'
-  },
-  {
-    en: 'The manifestation of mother nature and reality is infinite and we are finite by design. Any attempt to explain the nature of reality is foolish.',
-    ne: 'आमा प्रकृति र वास्तविकताको प्रकट रूप अनन्त छ, र हामी सीमित भएर बनाइएका छौँ। वास्तविकताको प्रकृतिलाई पूर्ण रूपमा व्याख्या गर्ने कुनै पनि प्रयास मूर्खता जस्तो लाग्न सक्छ।'
-  },
-  {
-    en: 'Experience is not reality and reality cannot be experienced as it is. If I don’t know reality, the unknown, how can I search for it?',
-    ne: 'अनुभव स्वयं वास्तविकता होइन, र वास्तविकतालाई जस्तो छ त्यस्तै रूपमा अनुभव गर्न सकिँदैन। यदि मलाई वास्तविकता, त्यो अज्ञात कुरा, थाहा छैन भने म त्यसलाई कसरी खोज्न सक्छु?'
-  },
-  {
-    en: 'A man who is understanding life does not want beliefs, and I don’t know if it is possible for the human mind to understand the whole working of reality — but the pursuit of it is madness, and it is beautiful.',
-    ne: 'जीवनलाई साँच्चै बुझ्ने मानिसलाई केवल विश्वासहरू चाहिँदैन। मलाई थाहा छैन कि मानव मस्तिष्कले वास्तविकताको सम्पूर्ण कार्यलाई बुझ्न सक्छ कि सक्दैन, तर त्यसको खोजी पागलपन जस्तो पनि छ र सुन्दर पनि।'
-  },
-  {
-    en: 'This is philosophy at its most honest. Not the academic kind.',
-    ne: 'यो दर्शन हो—सबैभन्दा इमानदार रूपमा। शैक्षिक प्रकारको होइन।'
-  },
-  {
-    en: 'And I am no hunter of reality. I have completely surrendered to the vastness of it. These are just a couple of words on my relationship with whom I consider my most beloved: mother reality.',
-    ne: 'र म वास्तविकताको शिकार गर्ने कोही होइन। मैले पूर्ण रूपमा यसको विशालतामा आत्मसमर्पण गरेको छु। यी केवल केही शब्दहरू हुन्—मेरो सम्बन्धका, जसलाई म मेरो सबैभन्दा प्रिय मान्छु: आमा वास्तविकता।'
-  }
+  'We do not observe nature as it really is, but nature exposed to our methods of perception.',
+  'Reality is vast, and we are finite by design. I am not trying to solve it — only to sit with it honestly.',
+  'A mind that wants to understand life does not run on belief. The questions are worth keeping open.'
 ];
 
-const philosophyPassage = {
-  source: 'Yoga Vāsiṣṭha · Vairāgya Prakaraṇa',
-  paragraphs: [
-    'I grew up happily in my family’s abode; I was instructed by worthy teachers. Recently I went on a pilgrimage. During this period a trend of thought has taken hold of me, robbing me of all hope in this world. My heart begins to question: what do people call happiness, and can it be had in the ever-changing objects of this world?',
-    'All beings in this world take birth but to die, and they die to be born! I do not perceive any meaning in all these transient phenomena which are the roots of suffering and sin. Unrelated beings come together; and the mind conjures up a relationship between them. Everything in this world is dependent upon the mind, upon one’s mental attitude. On examination, the mind itself appears to be unreal! But we are bewitched by it. We seem to be running after a mirage in the desert to slake our thirst!',
-    'Sirs, surely we are not bond slaves sold to a master; yet we live a life of slavery, without any freedom whatever. Ignorant of the truth, we have been aimlessly wandering in this dense forest called the world. What is this world? What comes into being, grows, and dies? How does this suffering come to an end? My heart bleeds with sorrow, though I do not shed tears, in deference to these feelings, my friend.',
-    'Equally useless, O sage, is wealth which deludes the ignorant. Unsteady and fleeting, this wealth gives birth to numerous worries and generates an insatiable craving for more. Wealth is no respecter of persons: both the good and the wicked can become wealthy. However, people are good, compassionate and friendly only till their hearts are hardened by the passionate pursuit of wealth. Wealth taints the heart even of the wise scholar, a hero, a man of gratitude and a dexterous and soft-spoken person. Wealth and happiness do not dwell together. Rare is that wealthy man who does not have rivals and enemies who scandalise him.',
-    'To the lotus of right action, wealth is the night; to the white lotus of sorrow, it is the moonlight; to the lamp of clear insight, it is the wind; to the wave of enmity, it is the flood; to the cloud of confusion, it is the favourable wind; to the poison of despondency, it is the aggravating agent. It is like the serpent of evil thoughts and it adds fear to one’s distress; it is destructive snowfall to the creeper of dispassion; it is the nightfall to the owl of evil desires; it is the eclipse of the moon of wisdom. In its presence a person’s good nature shrivels. Indeed, wealth seeks him who has already been chosen by death.',
-    'Even so is the lifespan, O sage. Its duration is like that of a water droplet on a leaf. The lifespan is fruitful only to those who have self-knowledge. We may encompass the wind, we may break up space, we may string waves into a garland, but we cannot pin our faith on the lifespan. Man vainly seeks to extend his lifespan, and thereby he earns more sorrow and extends the period of suffering. Only he lives who strives to gain self-knowledge, which alone is worth gaining in this world, thereby putting an end to future births; others exist here like donkeys.',
-    'To the unwise, knowledge of scriptures is a burden; to one who is full of desires, even wisdom is a burden; to one who is restless, his own mind is a burden; and to one who has no self-knowledge, the body is a burden. The rat of time gnaws at the lifespan without respite. The termite of disease destroys the very vitals of the living being. Just as a cat intent on catching a rat looks at it with great alertness and readiness, death is ever keeping a watch over this lifespan.',
-    'Holy sirs, I am bewildered and scared when I contemplate the coming into being of the dreadful enemy of wisdom known as egotism. It comes into being in the darkness of ignorance, and flourishes in ignorance. It generates endless sinful tendencies and sinful actions. All suffering surely revolves around egotism (it is the “I” who suffers); and egotism is the sole cause of mental distress.',
-    'I feel that egotism is my worst disease! Spreading the net of worldly objects of pleasure, it is this egotism that traps living beings. Indeed, all the terrible calamities in this world are born of egotism. Egotism eclipses self-control, destroys virtue and dissipates equanimity. Giving up the egotistic notion and giving up all desires, I wish to rest in the self. I realise that whatever I have done with an egotistic notion is vain: non-egotism alone is truth. When I am under the influence of egotism, I am unhappy; when I am free from egotism I am happy. Egotism promotes cravings; without it they perish. It is this egotism alone, without rhyme or reason, that has spread the net of family and social relationships, to catch the unwary soul. I think I am free from egotism; yet, I am miserable. Pray, enlighten me.',
-    'In his youth, man is a slave of sexual attraction. In the body which is no more than the aggregate of flesh, blood, bone, hair and skin, he perceives beauty and charm. If this beauty were permanent, there would be some justification to the imagination; but, alas, it does not last very long. On the contrary, very soon the very flesh that contributed to the attractiveness, the charm and the beauty of the beloved is transformed first into the shrivelled ugliness of old age, and later consumed by fire, or by worms, or by vultures. Yet, while it lasts this attraction consumes the heart and the wisdom of the man. By this is the creation maintained; when this attraction ceases, this samsara also ceases.',
-    'When the child is dissatisfied with its childhood, youth takes over; when youth is plagued by dissatisfaction and frustration, old age overpowers it — how cruel is life. Even as wind tosses a dew-drop from a leaf, old age destroys the body. Even as a drop of poison when it enters the system soon pervades it, senility soon pervades the entire body and breaks it down, and makes it the laughing stock of other people.',
-    'All enjoyments in this world are delusion, like the lunatic’s enjoyment of the taste of fruits reflected in a mirror. All the hopes of man in this world are consistently destroyed by Time. Time alone, O sage, wears everything out in this world; there is nothing in creation which is beyond its reach. Time alone creates innumerable universes, and in a very short time Time destroys everything. Time allows a glimpse of itself through its partial manifestation as the year, the age, and the epoch; but its essential nature is hidden.',
-    'This Time overpowers everything. Time is merciless, inexorable, cruel, greedy and insatiable. Time is the greatest magician, full of deceptive tricks. This Time cannot be analysed; for however much it is divided it still survives indestructible. It has an insatiable appetite for everything — it consumes the smallest insects, the biggest mountains, and even the king of heaven! Even as a young boy plays with a ball for his pastime, Time uses the two balls known as the sun and the moon for his pastime. It is indeed Time alone that appears as the destroyer of the universe, the creator of the world, the king of heaven, the lord of wealth, and the nothingness of cosmic dissolution. It is indeed this Time that successively creates and dissolves the universe again and again. Just as even the great and mighty mountain is rooted on earth, this mighty Time is also established in the absolute being. Even though Time creates endless universes, it is not wearied, nor does it rejoice; it does not come, nor does it go; it does not rise, nor does it set.',
-    'All beings in this world are tainted with evil; all relationships are bondage; all enjoyments are great diseases; and desire for happiness is only a mirage. One’s own senses are one’s enemies; the reality has become unreal; one’s own mind has become one’s worst enemy. Egotism is the foremost cause of evil; wisdom is weak; all actions lead to unpleasantness. One’s intelligence is governed by egotism, instead of being the other way round. Hence there is no peace nor happiness in one’s mind.',
-    'Youth is fading. Company of holy ones is rare. There is no way out of this suffering. The realisation of truth is not to be seen in anyone. No one is happy at the prosperity and happiness of others, nor is compassion to be found in anyone’s heart. People are getting baser and baser by the day. Weakness has overcome strength, cowardice has overpowered courage. Evil company is easily had, good company is hard to come by. I wonder whither Time is driving humanity.'
-  ]
-};
-
-const closingVerse = {
-  attribution: 'Nāgārjuna · Ratnāvalī',
-  stanzas: [
-    [
-      'Like the earth, water, wind, and fire,',
-      'medicinal herbs, and the trees of the wilderness,',
-      'may I always freely be an object of enjoyment,',
-      'by all beings as they wish.'
-    ],
-    [
-      'May I be beloved of beings, and may they',
-      'be more beloved to me than myself.',
-      'May I bear the results of their negativity,',
-      'and may they have the results of all my virtue.'
-    ],
-    [
-      'As long as there is even some single',
-      'sentient being somewhere who is not yet free,',
-      'may I remain in the world for that being’s sake,',
-      'even if I have attained unexcelled awakening.'
-    ]
-  ]
-};
+// Hero news — newest first.
+const news = [
+  {
+    date: 'Now',
+    text: 'Currently working on self-supervised world models.'
+  },
+  {
+    date: 'Jun 30',
+    text: 'Updated MechRL — full version now on arXiv.',
+    href: 'https://arxiv.org/abs/2605.26343'
+  },
+  {
+    date: 'Jun 23 – 26',
+    text: 'SDSC CIML Summer Institute, UC San Diego.'
+  }
+];
 
 const researchInterests = [
   'Graph Neural Networks',
@@ -215,92 +151,28 @@ const researchInterests = [
 ];
 
 const education = {
-  school: "The University of Southern Mississippi",
-  degree: "Computer Engineering",
-  year: "Class of 2028"
+  school: 'The University of Southern Mississippi',
+  degree: 'B.S., Computer Engineering',
+  year: '2024 – Present · GPA 3.92'
 };
 
-// Honours — rendered as a Distinctions block of vermilion seals
 const honors = [
-  { title: "Honors Scholar" },
-  { title: "Academic Excellence Scholarship", detail: "full tuition" },
-  { title: "President's List", detail: "Spring 2025" },
+  { title: 'Honors Scholar' },
+  { title: 'Academic Excellence Scholarship', detail: 'full tuition' },
+  { title: "President's List", detail: 'Spring 2025' },
 ];
-
-// Hero gallery wall — an altar of influences: sages, deities, revolutionaries, nature, cosmos, mind.
-const galleryColA = [
-  { src: buddhaImg, alt: 'Seated Buddha, Chola bronze' },
-  { src: christImg, alt: 'Christ Pantocrator, Sinai icon' },
-  { src: spinozaImg, alt: 'Baruch Spinoza' },
-  { src: waveImg, alt: 'Hokusai, The Great Wave' },
-  { src: neuronImg, alt: 'Cajal, cortical neurons' },
-  { src: darwinImg, alt: 'Charles Darwin' },
-];
-const galleryColB = [
-  { src: mahakaliImg, alt: 'Mahakali, by Raja Ravi Varma' },
-  { src: natarajaImg, alt: 'Shiva Nataraja, lord of the cosmic dance' },
-  { src: rlImg, alt: 'A policy over a gridworld — reinforcement learning' },
-  { src: peaceImg, alt: 'A warrior who laid down his sword — the turn toward peace' },
-  { src: nebulaImg, alt: 'Pillars of Creation, Eagle Nebula' },
-  { src: einsteinImg, alt: 'Albert Einstein' },
-];
-const galleryColC = [
-  { src: kabirImg, alt: 'Kabir weaving, Mughal painting' },
-  { src: socratesImg, alt: 'Socrates, marble bust' },
-  { src: mandalaImg, alt: 'Amitayus mandala' },
-  { src: ramanujanImg, alt: 'Srinivasa Ramanujan' },
-  { src: redFujiImg, alt: 'Hokusai, Red Fuji' },
-  { src: blakeImg, alt: 'William Blake, Newton' },
-];
-// Fourth column — the revolutionaries of reason and matter (and one honest snack)
-const galleryColD = [
-  { src: newtonPortraitImg, alt: 'Sir Isaac Newton' },
-  { src: galileoImg, alt: 'Galileo Galilei' },
-  { src: mandelImg, alt: 'The Mandelbrot set' },
-  { src: antikytheraImg, alt: 'The Antikythera mechanism — the ancient analogue computer' },
-  { src: friesImg, alt: 'Fries — because a life of complete harmony still needs fries' },
-  { src: eniacImg, alt: 'Programming the ENIAC' },
-];
-const galleryMobile = [...galleryColA, ...galleryColB, ...galleryColC, ...galleryColD];
 
 const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
-const SERIF = DISPLAY; // italic accents — folio numerals, drop caps, ornaments — in Fraunces italic
+const SERIF = DISPLAY;
 const UI = "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif";
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
 
-// Research status stamps — wax-seal vermilion for accepted, quiet outline otherwise
+// Status stamps — quiet outlines; accepted gets a small mark.
 const STATUS_META = {
   accepted: { label: 'Accepted', seal: true, fg: VERMILLION, bg: 'rgba(181,52,31,0.06)', bd: 'rgba(181,52,31,0.30)' },
-  ongoing: { label: 'Ongoing', seal: false, fg: 'var(--faint)', bg: 'transparent', bd: 'var(--hairline)' },
   'under review': { label: 'Under review', seal: false, fg: 'var(--faint)', bg: 'transparent', bd: 'var(--hairline)' },
 };
-
-// Dhammachakra — the wheel of dhamma, drawn minimal to match the ink-on-paper hand
-function DharmaWheel({ size = 24, color = VERMILLION, strokeWidth = 1.4, style }) {
-  const spokes = [0, 45, 90, 135, 180, 225, 270, 315];
-  return (
-    <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true" style={style}>
-      <circle cx="24" cy="24" r="21" fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <circle cx="24" cy="24" r="6.5" fill="none" stroke={color} strokeWidth={strokeWidth} />
-      {spokes.map((a) => {
-        const r = (a * Math.PI) / 180;
-        return (
-          <line
-            key={a}
-            x1={24 + 6.5 * Math.cos(r)}
-            y1={24 + 6.5 * Math.sin(r)}
-            x2={24 + 21 * Math.cos(r)}
-            y2={24 + 21 * Math.sin(r)}
-            stroke={color}
-            strokeWidth={strokeWidth}
-          />
-        );
-      })}
-      <circle cx="24" cy="24" r="2.1" fill={color} />
-    </svg>
-  );
-}
 
 function Folio({ numeral }) {
   return (
@@ -322,7 +194,7 @@ function Head({ children, kicker }) {
         </p>
       )}
       <h2
-        className="text-[42px] lg:text-[60px] leading-[0.96]"
+        className="text-[40px] lg:text-[54px] leading-[0.98]"
         style={{
           fontFamily: DISPLAY,
           fontWeight: 380,
@@ -349,7 +221,6 @@ function Rule() {
 
 export default function Home() {
   const [activeProjectType, setActiveProjectType] = useState('ongoing');
-  const [showPassage, setShowPassage] = useState(false);
   const [repoStats, setRepoStats] = useState({ stars: 0, forks: 0 });
   const [activeSection, setActiveSection] = useState('about');
   const sectionsRef = useRef({});
@@ -422,10 +293,9 @@ export default function Home() {
     <div className="min-h-screen bg-[#FAF8F3] text-[#16140F]">
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      {/* ░░ Cinematic opening — a breath, but the document peeks below ░░ */}
-      <header className="hero relative w-full min-h-[90svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
+      {/* ░░ Hero — a clean typographic masthead ░░ */}
+      <header className="hero relative w-full min-h-[78svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
         <div aria-hidden="true" className="hero-aura" />
-        <div aria-hidden="true" className="hero-seal" style={{ fontFamily: SERIF }}>印</div>
 
         {/* Top line */}
         <div className="hero-fade relative z-10 flex items-center justify-between" style={{ animationDelay: '0.15s' }}>
@@ -433,22 +303,22 @@ export default function Home() {
             बर्सत खड्का
           </span>
           <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
-            Hattiesburg · MMXXVI
+            Hattiesburg, Mississippi
           </span>
         </div>
 
-        {/* Middle — name on the left, the gallery on its side */}
-        <div className="relative z-10 flex items-center justify-between gap-8 lg:gap-14 xl:gap-20 2xl:gap-24">
+        {/* Middle — name + intro on the left, news on the right */}
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-12">
           <div className="min-w-0">
             <h1
               className="hero-name"
               style={{
                 fontFamily: DISPLAY,
-                lineHeight: 0.84,
+                lineHeight: 0.86,
                 letterSpacing: '-0.035em',
                 fontVariationSettings: "'SOFT' 4, 'opsz' 144",
                 fontWeight: 360,
-                fontSize: 'clamp(52px, 8vw, 132px)',
+                fontSize: 'clamp(52px, 8vw, 124px)',
               }}
             >
               <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.25s' }}>Barsat</span></span>
@@ -456,71 +326,46 @@ export default function Home() {
             </h1>
 
             <p
-              className="hero-fade mt-8 lg:mt-11"
-              style={{
-                animationDelay: '0.78s',
-                fontFamily: SERIF,
-                fontStyle: 'italic',
-                color: 'var(--text)',
-                fontSize: 'clamp(20px, 2.2vw, 30px)',
-                lineHeight: 1.4,
-                maxWidth: '22ch',
-              }}
+              className="hero-fade mt-7 lg:mt-9 text-[17px] lg:text-[20px] leading-[1.6]"
+              style={{ animationDelay: '0.78s', fontFamily: UI, color: 'var(--text)', maxWidth: '46ch' }}
             >
-              Two things occupy my being — computer&nbsp;science research, and philosophy.
+              Computer engineering student and researcher. I work on machine learning for
+              chip design, reinforcement learning, world models, and interpretability and I
+              read philosophy with the other half of my time.
             </p>
-            <p
-              className="hero-fade mt-3.5"
-              style={{
-                animationDelay: '0.9s',
-                fontFamily: SERIF,
-                fontStyle: 'italic',
-                color: 'var(--muted)',
-                fontSize: 'clamp(15.5px, 1.6vw, 21px)',
-                lineHeight: 1.45,
-                maxWidth: '26ch',
-              }}
-            >
-              Not much of my life happens outside it, and I have never wanted it to be otherwise.
-            </p>
-
-            {/* Mobile — a quiet grid of the wall */}
-            <div className="hero-fade grid grid-cols-3 gap-2 mt-8 max-w-[380px] lg:hidden" style={{ animationDelay: '0.95s' }}>
-              {galleryMobile.map((p, i) => (
-                <div key={i} className="relative overflow-hidden aspect-square" style={{ boxShadow: '0 6px 16px -10px rgba(22,20,15,0.4)' }}>
-                  <img src={p.src} alt={p.alt} loading="lazy" decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'grayscale(0.05) saturate(0.97)' }} />
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Gallery wall — four columns drifting in alternating directions, masked at the edges */}
-          <div
-            className="gallery-wall hero-fade hidden lg:flex gap-2.5 shrink-0 overflow-hidden h-[clamp(440px,76vh,820px)] w-[clamp(480px,49vw,820px)]"
-            style={{ animationDelay: '0.55s' }}
+          {/* News */}
+          <aside
+            className="hero-fade w-full lg:w-[300px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-6 lg:pt-1 lg:pl-8"
+            style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
-            {[
-              { col: galleryColA, cls: 'gallery-col', delay: '0s' },
-              { col: galleryColB, cls: 'gallery-col gallery-col--down', delay: '-21s' },
-              { col: galleryColC, cls: 'gallery-col', delay: '-33s' },
-              { col: galleryColD, cls: 'gallery-col gallery-col--down', delay: '-27s' },
-            ].map((c, ci) => (
-              <div key={ci} className="flex-1 overflow-hidden">
-                {/* width-slot stays put; the track inside is content-height so -50% loops seamlessly */}
-                <div className={c.cls} style={{ animationDelay: c.delay }}>
-                  {[...c.col, ...c.col].map((p, i) => (
-                    <img key={i} src={p.src} alt={i < c.col.length ? p.alt : ''} aria-hidden={i >= c.col.length}
-                      loading="eager" decoding="async" className="w-full h-auto block"
-                      style={{ marginBottom: '12px', filter: 'grayscale(0.05) saturate(0.96) contrast(1.01)', boxShadow: '0 14px 30px -16px rgba(22,20,15,0.4)', border: '1px solid rgba(22,20,15,0.06)' }} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+            <p className="mb-4 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
+              <span aria-hidden="true" style={{ width: 22, height: 1, background: VERMILLION, display: 'inline-block' }} />
+              News
+            </p>
+            <ol className="list-none p-0 m-0 space-y-4">
+              {news.map((item, i) => (
+                <li key={i} className="flex flex-col">
+                  <span className="text-[10px] tracking-[0.18em] uppercase mb-1" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                    {item.date}
+                  </span>
+                  <span className="text-[13.5px] leading-[1.5]" style={{ color: 'var(--text)' }}>
+                    {item.href ? (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
+                        {item.text}
+                      </a>
+                    ) : (
+                      item.text
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </aside>
         </div>
 
-        {/* Bottom — a contents index so nothing below is missed */}
+        {/* Bottom — contents index */}
         <div className="hero-fade relative z-10 flex flex-wrap items-end justify-between gap-y-4 gap-x-8" style={{ animationDelay: '1s' }}>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {[
@@ -564,42 +409,23 @@ export default function Home() {
         <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[color:var(--hairline)] md:sticky md:top-0 md:h-screen overflow-y-auto">
           <div className="p-4 lg:p-8">
 
-            {/* Portrait — quiet, off-center, no ringed badge feel */}
+            {/* Portrait */}
             <div className="mb-8 flex justify-start">
-              <div className="relative">
-                <img
-                  src={myImage}
-                  alt="Barsat Khadka"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-28 h-36 sm:w-32 sm:h-40 lg:w-36 lg:h-44 object-cover"
-                  style={{
-                    objectPosition: 'center 28%',
-                    filter: 'grayscale(0.15) contrast(1.02)',
-                    boxShadow: '0 1px 0 rgba(26,26,26,0.10), 18px 18px 0 -2px rgba(181,52,31,0.08)'
-                  }}
-                />
-                {/* Hanko seal — single point of color, hand-set position */}
-                <div
-                  aria-hidden="true"
-                  className="absolute -bottom-3 -right-3 flex items-center justify-center"
-                  style={{
-                    width: 38, height: 38,
-                    background: VERMILLION,
-                    color: '#FAF8F3',
-                    fontFamily: SERIF,
-                    fontSize: 18,
-                    letterSpacing: 0,
-                    transform: 'rotate(-4deg)',
-                    boxShadow: '0 2px 6px rgba(181,52,31,0.25)',
-                  }}
-                >
-                  印
-                </div>
-              </div>
+              <img
+                src={myImage}
+                alt="Barsat Khadka"
+                loading="lazy"
+                decoding="async"
+                className="w-28 h-36 sm:w-32 sm:h-40 lg:w-36 lg:h-44 object-cover"
+                style={{
+                  objectPosition: 'center 28%',
+                  filter: 'grayscale(0.15) contrast(1.02)',
+                  boxShadow: '0 1px 0 rgba(26,26,26,0.10)'
+                }}
+              />
             </div>
 
-            {/* Masthead name — Fraunces, two-line, a quiet broadsheet title (running identity; the hero holds the page's sole h1) */}
+            {/* Masthead name */}
             <p
               className="mb-1 leading-[0.92]"
               style={{
@@ -627,7 +453,7 @@ export default function Home() {
               Computer Engineer · Researcher
             </p>
 
-            {/* Letterhead block — icon + text rows */}
+            {/* Letterhead block */}
             <address className="not-italic mb-6 text-[13px] leading-[1.5]" style={{ color: 'var(--text)' }}>
               <div className="grid grid-cols-[14px_1fr] gap-x-2.5 gap-y-[5px] items-center">
                 <FiMapPin size={13} style={{ color: 'var(--muted)' }} />
@@ -647,7 +473,7 @@ export default function Home() {
 
                 <FiFileText size={13} style={{ color: 'var(--muted)' }} />
                 <a
-                  href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
+                  href="/Barsat-Khadka-CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-slide"
@@ -670,7 +496,7 @@ export default function Home() {
                     {education.school}
                   </p>
                   <p className="text-[12.5px] leading-[1.35]" style={{ color: 'var(--muted)' }}>
-                    Bachelor of Science · {education.degree}
+                    {education.degree}
                   </p>
                   <p className="text-[12px] leading-[1.35]" style={{ color: 'var(--faint)' }}>
                     {education.year}
@@ -678,7 +504,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Distinctions — a quiet column of vermilion seals */}
+              {/* Distinctions */}
               <div className="mt-3.5 pt-3.5" style={{ borderTop: '1px solid var(--hairline)' }}>
                 <p className="text-[9.5px] tracking-[0.3em] uppercase mb-2.5" style={{ color: 'var(--faint)', fontFamily: UI }}>
                   Distinctions
@@ -710,7 +536,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Navigation — Roman numeral marginalia, weight-shift on active */}
+            {/* Navigation */}
             <nav className="mb-8">
               <ul className="space-y-[6px]">
                 {[
@@ -780,11 +606,11 @@ export default function Home() {
             ref={(el) => (sectionsRef.current.about = el)}
             className="relative pt-10 lg:pt-14 mb-16 lg:mb-24 px-4 lg:px-8"
           >
-            <Folio numeral="i" label="Currently" />
+            <Folio numeral="i" />
             <Head kicker="at the moment">Currently</Head>
             <Rule />
 
-            {/* Roles — small-caps labels, year-style alignment */}
+            {/* Roles */}
             <dl className="mb-7 lg:mb-9 grid grid-cols-[6.5rem_1fr] sm:grid-cols-[7.5rem_1fr] gap-x-5 lg:gap-x-8 gap-y-1.5 text-[14.5px]">
               <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Engineer</dt>
               <dd className="leading-[1.5]">
@@ -827,62 +653,13 @@ export default function Home() {
 
             {/* Opener */}
             <div className="text-[15.5px] lg:text-[16px] leading-[1.75] max-w-[62ch]">
-              <p className="mb-3" style={{ textIndent: 0 }}>
-                <span
-                  aria-hidden="true"
-                  style={{
-                    fontFamily: SERIF,
-                    fontStyle: 'italic',
-                    fontSize: '3.2em',
-                    lineHeight: 0.85,
-                    float: 'left',
-                    marginRight: '0.1em',
-                    marginTop: '0.05em',
-                    marginBottom: '-0.05em',
-                    color: VERMILLION,
-                  }}
-                >
-                  T
-                </span>
-                wo things take up almost all my time: computer science research and philosophy — mostly early Buddhism, Krishnamurti, Spinoza, and the like.
+              <p className="mb-3">
+                I split my time between computer-science research and philosophy. The research
+                is mostly machine learning for chip design and interpretability; the reading is
+                mostly early Buddhism, Krishnamurti, and Spinoza. I like work that stays honest
+                about what it does and doesn&apos;t know.
               </p>
             </div>
-          </section>
-
-          {/* Interlude — a philosophical breath between who I am and the work */}
-          <section data-reveal className="relative px-4 lg:px-8 pt-4 pb-20 lg:pt-6 lg:pb-28 overflow-hidden">
-            <div className="flex flex-col items-center gap-3.5 mb-10" aria-hidden="true">
-              <DharmaWheel size={28} />
-              <span style={{ width: 1, height: 40, background: 'linear-gradient(to bottom, rgba(181,52,31,0.5), transparent)' }} />
-            </div>
-            <blockquote className="mx-auto text-center m-0 px-2" style={{ maxWidth: 'min(720px, 92vw)' }}>
-              {[
-                'I am no hunter\nof reality —',
-                'I have surrendered\nto its vastness.',
-              ].map((stanza, si) => (
-                <p
-                  key={si}
-                  className={si === 0 ? '' : 'mt-5 lg:mt-7'}
-                  style={{
-                    fontFamily: DISPLAY,
-                    fontStyle: 'italic',
-                    fontWeight: 360,
-                    fontSize: 'clamp(29px, 4.6vw, 58px)',
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.02em',
-                    fontVariationSettings: "'SOFT' 6, 'opsz' 110",
-                    color: 'var(--text)',
-                  }}
-                >
-                  {stanza.split('\n').map((line, li) => (
-                    <React.Fragment key={li}>{line}{li === 0 && <br />}</React.Fragment>
-                  ))}
-                </p>
-              ))}
-              <p className="mt-8 text-[17px] lg:text-[19px] leading-[1.5]" style={{ fontFamily: DEVANAGARI, color: VERMILLION }} lang="ne">
-                आमा प्रकृति, तिमी साँच्चै अनन्त छौ।
-              </p>
-            </blockquote>
           </section>
 
           {/* Research Section */}
@@ -892,7 +669,7 @@ export default function Home() {
             ref={(el) => (sectionsRef.current.research = el)}
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
-            <Folio numeral="ii" label="Research" />
+            <Folio numeral="ii" />
             <Head kicker="papers & preprints">Research</Head>
             <Rule />
 
@@ -956,16 +733,10 @@ export default function Home() {
                       )}
 
                       {/* venue + links */}
-                      {(item.venue || item.venueFull || (item.links && item.links.length)) && (
+                      {(item.venue || (item.links && item.links.length)) && (
                         <div className="mt-2.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-[12.5px]" style={{ color: 'var(--muted)' }}>
                           {item.venue && (
                             <span className="font-medium tracking-tight" style={{ color: 'var(--text)' }}>{item.venue}</span>
-                          )}
-                          {item.venueFull && (
-                            <>
-                              {item.venue && <span className="opacity-40">·</span>}
-                              <span className="italic" style={{ fontFamily: SERIF }}>{item.venueFull}</span>
-                            </>
                           )}
                           {item.links && item.links.length > 0 && (
                             <>
@@ -996,7 +767,7 @@ export default function Home() {
             ref={(el) => (sectionsRef.current.projects = el)}
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
-            <Folio numeral="iii" label="Projects" />
+            <Folio numeral="iii" />
             <Head kicker="built & building">Projects</Head>
             <Rule />
 
@@ -1071,7 +842,7 @@ export default function Home() {
                   </div>
 
                   {project.title === 'Vinaya Journal' && (
-                    <figure className="mt-8 max-w-[600px] m-0 overflow-hidden" style={{ border: '1px solid var(--border)', background: 'var(--bg)', boxShadow: '0 26px 52px -30px rgba(22,20,15,0.42), 14px 16px 0 -1px rgba(181,52,31,0.06)' }}>
+                    <figure className="mt-8 max-w-[600px] m-0 overflow-hidden" style={{ border: '1px solid var(--border)', background: 'var(--bg)', boxShadow: '0 26px 52px -30px rgba(22,20,15,0.42)' }}>
                       <div className="flex items-center gap-1.5 px-3.5 py-2.5" style={{ borderBottom: '1px solid var(--border)' }}>
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: VERMILLION, display: 'inline-block' }} />
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
@@ -1122,28 +893,6 @@ export default function Home() {
             </ol>
           </section>
 
-          {/* Second interlude — a quieter breath, distinct from the first */}
-          <section data-reveal className="relative px-4 lg:px-8 pt-2 pb-14 lg:pt-4 lg:pb-20 text-center">
-            <div className="flex justify-center" aria-hidden="true">
-              <DharmaWheel size={24} />
-            </div>
-            <p
-              className="mt-5 mx-auto"
-              style={{
-                fontFamily: DISPLAY,
-                fontStyle: 'italic',
-                fontWeight: 360,
-                fontSize: 'clamp(22px, 2.9vw, 40px)',
-                lineHeight: 1.22,
-                letterSpacing: '-0.015em',
-                color: 'var(--text)',
-                maxWidth: '22ch',
-              }}
-            >
-              The pursuit of it is madness — and it is beautiful.
-            </p>
-          </section>
-
           {/* Writing / Blogs Section */}
           <section
             id="publications"
@@ -1151,12 +900,12 @@ export default function Home() {
             ref={(el) => (sectionsRef.current.publications = el)}
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
-            <Folio numeral="iv" label="Writing" />
+            <Folio numeral="iv" />
             <Head kicker="from the notebook">Writing</Head>
             <Rule />
 
             <p className="mb-7 text-[14px] max-w-[58ch] leading-[1.7]" style={{ color: 'var(--muted)' }}>
-              Essays and notebooks — thinking out loud, in public.
+              Essays and technical notes — thinking out loud, in public.
             </p>
 
             <ol className="list-none p-0 m-0 space-y-3.5">
@@ -1196,153 +945,38 @@ export default function Home() {
             </ol>
           </section>
 
-          {/* Philosophy Section */}
+          {/* Philosophy Section — kept brief and plain */}
           <section
             id="philosophy"
             data-reveal
             ref={(el) => (sectionsRef.current.philosophy = el)}
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
-            <Folio numeral="v" label="Philosophy" />
+            <Folio numeral="v" />
             <Head kicker="the other half of the day">Philosophy</Head>
             <Rule />
 
-            {/* Lead aphorism — opens the chapter at full scale */}
-            <div className="max-w-[26ch] mb-12 lg:mb-14">
-              <p
-                style={{
-                  fontFamily: DISPLAY,
-                  fontStyle: 'italic',
-                  fontWeight: 360,
-                  fontSize: 'clamp(24px, 3vw, 38px)',
-                  lineHeight: 1.18,
-                  letterSpacing: '-0.015em',
-                  color: 'var(--text)',
-                }}
-              >
-                {philosophyNotes[0].en}
-              </p>
-              <p className="mt-3.5 text-[16px] lg:text-[17px] leading-[1.7]" style={{ fontFamily: DEVANAGARI, color: 'var(--muted)' }} lang="ne">
-                {philosophyNotes[0].ne}
-              </p>
-            </div>
+            <p className="max-w-[62ch] text-[15.5px] lg:text-[16px] leading-[1.8] mb-9" style={{ color: 'var(--text)' }}>
+              When I&apos;m not doing research, I read philosophy — mostly early Buddhism,
+              Krishnamurti, and Spinoza. I&apos;m not looking for a system that explains
+              everything. I&apos;m more interested in keeping the oldest questions open and
+              being honest about how little we actually see.
+            </p>
 
-            {/* Notes — English with Nepali beneath */}
-            <div className="space-y-8 max-w-[64ch]">
-              {philosophyNotes.slice(1).map((note, i) => (
-                <div key={i} className="relative">
-                  <span
-                    className="absolute -left-7 lg:-left-9 top-[6px] hidden sm:block"
-                    style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: 13, color: 'var(--muted)' }}
-                  >
-                    §{i + 1}
-                  </span>
-                  <p className="text-[16px] leading-[1.8]" style={{ color: 'var(--text)' }}>
-                    {note.en}
+            <ul className="list-none p-0 m-0 space-y-5 max-w-[64ch]">
+              {philosophyNotes.map((note, i) => (
+                <li key={i} className="relative pl-5" style={{ borderLeft: `2px solid ${VERMILLION}` }}>
+                  <p className="text-[15px] leading-[1.75]" style={{ color: 'var(--text)' }}>
+                    {note}
                   </p>
-                  <p
-                    className="mt-1.5 text-[14.5px] leading-[2]"
-                    style={{ fontFamily: DEVANAGARI, color: 'var(--muted)' }}
-                    lang="ne"
-                  >
-                    {note.ne}
-                  </p>
-                </div>
+                </li>
               ))}
-            </div>
-
-            {/* Extended passage — a text returned to */}
-            <div className="mt-14 max-w-[64ch]">
-              <div className="flex items-center gap-3 mb-5" aria-hidden="true">
-                <span style={{ width: 4, height: 4, background: VERMILLION, borderRadius: '50%' }} />
-                <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.16)' }} />
-              </div>
-              <p className="mb-6 text-[11px] tracking-[0.22em] uppercase" style={{ color: 'var(--muted)' }}>
-                A passage I return to
-                <span className="mx-2 opacity-40">—</span>
-                <span style={{ fontFamily: SERIF, fontStyle: 'italic', textTransform: 'none', letterSpacing: 0, fontSize: 13.5 }}>
-                  {philosophyPassage.source}
-                </span>
-              </p>
-              <div
-                className="relative pl-5 lg:pl-6"
-                style={{ borderLeft: `2px solid ${VERMILLION}` }}
-              >
-                <div className="space-y-4">
-                  {(showPassage ? philosophyPassage.paragraphs : philosophyPassage.paragraphs.slice(0, 2)).map((para, index) => (
-                    <p key={index} className="text-[15px] leading-[1.85]" style={{ color: 'var(--text)' }}>
-                      {para}
-                    </p>
-                  ))}
-                </div>
-                {!showPassage && (
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-                    style={{ background: 'linear-gradient(to bottom, rgba(250,248,243,0), var(--bg))' }}
-                  />
-                )}
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowPassage((v) => !v)}
-                className="mt-5 inline-flex items-baseline gap-2 group text-[12px] tracking-[0.16em] uppercase"
-                style={{ color: 'var(--muted)' }}
-              >
-                <span className="link-slide" style={{ color: 'var(--text)' }}>
-                  {showPassage ? 'Collapse passage' : 'Read the full passage'}
-                </span>
-                <span style={{ color: VERMILLION }}>{showPassage ? '↑' : '↓'}</span>
-              </button>
-            </div>
+            </ul>
           </section>
 
-          {/* Closing epigraph — the vow the whole page rests on */}
-          <section data-reveal className="relative mb-16 lg:mb-24 px-4 lg:px-8 overflow-hidden">
-            <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.045 }}>
-              <DharmaWheel size={420} strokeWidth={0.7} />
-            </div>
-            <div className="relative flex items-center justify-center gap-4 mb-10 max-w-[64ch] mx-auto" aria-hidden="true">
-              <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.14)' }} />
-              <DharmaWheel size={24} />
-              <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.14)' }} />
-            </div>
-            <blockquote className="max-w-[58ch] mx-auto text-center">
-              <div className="space-y-6">
-                {closingVerse.stanzas.map((stanza, si) => (
-                  <p
-                    key={si}
-                    style={{
-                      fontFamily: DISPLAY,
-                      fontStyle: 'italic',
-                      fontWeight: 360,
-                      fontSize: 'clamp(20px, 2.4vw, 30px)',
-                      lineHeight: 1.5,
-                      letterSpacing: '-0.015em',
-                      color: 'var(--text)',
-                    }}
-                  >
-                    {stanza.map((line, li) => (
-                      <React.Fragment key={li}>
-                        {line}
-                        {li < stanza.length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
-                  </p>
-                ))}
-              </div>
-              <footer className="mt-9 text-[11px] tracking-[0.22em] uppercase" style={{ color: 'var(--muted)' }}>
-                <span style={{ color: VERMILLION }}>—</span>{' '}{closingVerse.attribution}
-              </footer>
-            </blockquote>
-          </section>
-
-          {/* Colophon — the imprint page */}
+          {/* Footer */}
           <footer data-reveal className="relative px-4 lg:px-8 pb-20 lg:pb-28">
             <div className="max-w-[60ch] mx-auto pt-12 text-center" style={{ borderTop: '1px solid var(--hairline)' }}>
-              <div aria-hidden="true" className="mb-6 flex justify-center">
-                <span style={{ width: 36, height: 36, background: VERMILLION, color: '#FAF8F3', fontFamily: SERIF, fontSize: 17, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'rotate(-4deg)', boxShadow: '0 2px 6px rgba(181,52,31,0.25)' }}>印</span>
-              </div>
               <p style={{ fontFamily: DISPLAY, fontSize: 20, fontWeight: 400, letterSpacing: '-0.015em', lineHeight: 1.2, color: 'var(--muted)' }}>
                 Barsat Khadka
                 <span style={{ fontFamily: DEVANAGARI, color: VERMILLION, marginLeft: 10, fontSize: 19 }} lang="ne">बर्सत खड्का</span>
@@ -1357,17 +991,14 @@ export default function Home() {
                 <a href="https://www.linkedin.com/in/barsat-khadka" target="_blank" rel="noopener noreferrer" className="link-slide">LinkedIn</a>
               </nav>
               <p className="mt-7 text-[10.5px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
-                Grew up in Nepal · made in Hattiesburg · open source, open science · MMXXVI
-              </p>
-              <p className="mt-2 text-[11px] italic" style={{ color: 'var(--faint)', fontFamily: SERIF }}>
-                Set in Fraunces &amp; Newsreader, on warm paper.
+                Grew up in Nepal · based in Hattiesburg · open source, open science
               </p>
             </div>
           </footer>
 
         </main>
 
-        {/* Right Sidebar — colophon / marginalia */}
+        {/* Right Sidebar — marginalia */}
         <aside
           className="hidden xl:block w-[280px] flex-shrink-0 pl-12 pt-32 text-sm xl:translate-x-8"
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
@@ -1378,7 +1009,7 @@ export default function Home() {
             </p>
             <ol className="list-none p-0 m-0 space-y-4">
               {[
-                { role: 'Software Engineering Intern', org: 'Sports Media' },
+                { role: 'Software Engineering Intern', org: 'Sports Media (Dakdan Worldwide)' },
                 { role: 'Web / App Developer Intern', org: 'Crystal ERP' },
                 { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
               ].map((x, i) => (
@@ -1391,67 +1022,13 @@ export default function Home() {
               ))}
             </ol>
 
-            {/* Away from the desk — the human texture */}
             <div className="mt-9 pt-6" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
               <p className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: 'var(--muted)' }}>
                 Away from the desk
               </p>
               <p className="text-[13px] leading-[1.75]" style={{ color: 'var(--text)' }}>
-                Music in the headphones, something on the stove, long commutes to read on, and the occasional late-night game.
-              </p>
-              <p className="text-[13px] leading-[1.75] mt-2.5" style={{ color: 'var(--muted)' }}>
-                The rest of the day belongs to a quieter thing — sitting with the oldest questions and not minding that they stay open.
-              </p>
-            </div>
-
-            {/* Plates — framed marginalia, captioned like a book */}
-            <div className="mt-9 pt-6" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
-                Plates
-              </p>
-              <div className="space-y-7">
-                {[
-                  { src: sidebarImage, num: 'i', caption: '“do something”' },
-                  { src: sidebarImage2, num: 'ii', caption: 'nature, in a box of our own equations' },
-                ].map((plate) => (
-                  <figure key={plate.num} className="m-0">
-                    <img
-                      src={plate.src}
-                      alt={plate.caption}
-                      width={640}
-                      height={427}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto"
-                      style={{
-                        filter: 'grayscale(0.12) saturate(0.9) contrast(1.01)',
-                        boxShadow: '0 1px 0 rgba(26,26,26,0.10), 10px 10px 0 -1px rgba(181,52,31,0.06)',
-                      }}
-                    />
-                    <figcaption
-                      className="mt-2.5 text-[11.5px] leading-[1.45]"
-                      style={{ color: 'var(--muted)' }}
-                    >
-                      <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, marginRight: 6 }}>
-                        {plate.num}
-                      </span>
-                      {plate.caption}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10 pt-6" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p
-                className="text-[11px] leading-[1.75] tracking-tight"
-                style={{ color: 'var(--muted)' }}
-              >
-                A long way from where it began — <br />
-                grew up in Nepal, writing this from Hattiesburg. <br />
-                Kept open on principle: <br />
-                open source, open science. <br />
-                <span style={{ color: VERMILLION }}>印</span> &nbsp; Made on warm paper.
+                Music in the headphones, something on the stove, and long reads on the commute.
+                The rest of the day goes to sitting with the older questions.
               </p>
             </div>
           </div>

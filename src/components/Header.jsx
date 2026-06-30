@@ -56,9 +56,10 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
                 onMouseEnter={() => setShowResumeOptions(true)}
                 onMouseLeave={() => setShowResumeOptions(false)}
               >
-                <a 
-                  href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing" 
+                <a
+                  href="/Barsat-Khadka-CV.pdf"
                   target='_blank'
+                  rel="noopener noreferrer"
                   className={`transition-colors duration-200 hover:underline ${
                     isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
                   }`}
@@ -71,7 +72,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
                     isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
                   }`}>
                     <a
-                      href="https://drive.google.com/file/d/1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8/view?usp=sharing"
+                      href="/Barsat-Khadka-CV.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`flex items-center gap-2 px-4 py-2 text-sm ${
@@ -81,7 +82,8 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
                       <FaEye className="text-xs" /> View
                     </a>
                     <a
-                      href="https://drive.google.com/uc?export=download&id=1wOP0CS3UARHHvoPbmoC4Q2dHNSnyMDn8"
+                      href="/Barsat-Khadka-CV.pdf"
+                      download
                       className={`flex items-center gap-2 px-4 py-2 text-sm ${
                         isDarkMode ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-100 text-gray-700'
                       }`}
