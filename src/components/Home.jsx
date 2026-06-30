@@ -6,6 +6,8 @@ import { SiGooglescholar } from 'react-icons/si';
 import projectImage from '../assets/image.png';
 import canvasImage from './canvas.png';
 import myImage from './MyImage.webp';
+import plateImage from './image.webp';
+import plateImage2 from './image2.webp';
 
 // --- Data ---
 
@@ -48,7 +50,7 @@ const previousProjects = [
 const research = [
   {
     title: 'CTS-Bench: Benchmarking Graph Coarsening Trade-offs for GNNs in Clock Tree Synthesis',
-    authors: 'Barsat Khadka, Kawsher Roxy, Md Rubel Ahmed',
+    authors: 'Barsat Khadka, Dr. Kawsher Roxy, Dr. Md Rubel Ahmed',
     venue: 'MLBench @ ASPLOS 2026',
     status: 'accepted',
     link: 'https://arxiv.org/abs/2602.19330',
@@ -59,7 +61,7 @@ const research = [
   },
   {
     title: 'SwiftCTS: Fast Cross-Design Prediction and Pareto Optimization of Clock Tree Metrics via Few-Shot Calibration',
-    authors: 'Barsat Khadka, Md Rubel Ahmed',
+    authors: 'Barsat Khadka, Dr. Kawsher Roxy, Dr. Md Rubel Ahmed',
     venue: 'ICCAD 2026',
     status: 'under review',
     link: 'https://arxiv.org/abs/2606.11348',
@@ -81,7 +83,7 @@ const research = [
   },
   {
     title: 'Filter then Verify: Multiphase Social Engineering Attack Detection using GNN and BERT',
-    authors: 'Barsat Khadka, Prasant Koirala, Kshitiz Neupane, Nick Rahimi',
+    authors: 'Barsat Khadka, Prasant Koirala, Kshitiz Neupane, Dr. Nick Rahimi',
     venue: 'Springer',
     status: 'under review',
     link: 'https://arxiv.org/abs/2605.17201',
@@ -92,7 +94,7 @@ const research = [
   },
   {
     title: 'SEU: Siloed Exact Machine Unlearning for Fine-Tuned Models',
-    authors: 'Nhoojah Maharjan, Barsat Khadka, Rabeya Abdelfattah',
+    authors: 'Nhoojah Maharjan, Barsat Khadka, Dr. Rabab Abdelfattah',
     venue: 'Preprint',
     status: 'under review',
     link: null,
@@ -119,9 +121,7 @@ const publications = [
 
 // A few notes I keep — kept short on purpose.
 const philosophyNotes = [
-  'We do not observe nature as it really is, but nature exposed to our methods of perception.',
-  'Reality is vast, and we are finite by design. I am not trying to solve it — only to sit with it honestly.',
-  'A mind that wants to understand life does not run on belief. The questions are worth keeping open.'
+  'We do not observe nature as it really is, but nature exposed to our methods of perception.'
 ];
 
 // Hero news — newest first.
@@ -138,6 +138,16 @@ const news = [
   {
     date: 'Jun 23 – 26',
     text: 'SDSC CIML Summer Institute, UC San Diego.'
+  },
+  {
+    date: 'May – Jul',
+    text: 'Enrolled in the UR2PhD program (CRA).',
+    href: 'https://cra.org/ur2phd/'
+  },
+  {
+    date: 'Apr',
+    text: 'Joined Open Source Club, USM as Secretary.',
+    href: 'https://www.instagram.com/oscusm/'
   }
 ];
 
@@ -307,9 +317,9 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Middle — name + intro on the left, news on the right */}
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-12">
-          <div className="min-w-0">
+        {/* Middle — name + intro on the left, plates in the center, news on the right */}
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-10">
+          <div className="min-w-0 lg:flex-1">
             <h1
               className="hero-name"
               style={{
@@ -335,22 +345,51 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Plates — between the name and the news */}
+          <div
+            className="hero-fade hidden lg:flex flex-col gap-6 w-[180px] xl:w-[200px] flex-shrink-0 pt-1"
+            style={{ animationDelay: '0.85s' }}
+          >
+            {[
+              { src: plateImage, num: 'i', caption: '“do something”' },
+              { src: plateImage2, num: 'ii', caption: 'nature, in a box of our own equations' },
+            ].map((plate) => (
+              <figure key={plate.num} className="m-0">
+                <img
+                  src={plate.src}
+                  alt={plate.caption}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto block"
+                  style={{
+                    filter: 'grayscale(0.1) saturate(0.92) contrast(1.01)',
+                    boxShadow: '0 14px 30px -16px rgba(22,20,15,0.42), 1px 1px 0 rgba(26,26,26,0.08)',
+                  }}
+                />
+                <figcaption className="mt-2 text-[11px] leading-[1.4]" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                  <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, marginRight: 6 }}>{plate.num}</span>
+                  {plate.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
           {/* News */}
           <aside
-            className="hero-fade w-full lg:w-[300px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-6 lg:pt-1 lg:pl-8"
+            className="hero-fade w-full lg:w-[400px] xl:w-[440px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-7 lg:pt-1 lg:pl-10"
             style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
-            <p className="mb-4 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
-              <span aria-hidden="true" style={{ width: 22, height: 1, background: VERMILLION, display: 'inline-block' }} />
+            <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
+              <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
             </p>
-            <ol className="list-none p-0 m-0 space-y-4">
+            <ol className="list-none p-0 m-0 space-y-6">
               {news.map((item, i) => (
                 <li key={i} className="flex flex-col">
-                  <span className="text-[10px] tracking-[0.18em] uppercase mb-1" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                  <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: UI }}>
                     {item.date}
                   </span>
-                  <span className="text-[13.5px] leading-[1.5]" style={{ color: 'var(--text)' }}>
+                  <span className="text-[16px] lg:text-[17px] leading-[1.5]" style={{ color: 'var(--text)' }}>
                     {item.href ? (
                       <a href={item.href} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
                         {item.text}
