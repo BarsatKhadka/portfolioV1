@@ -462,11 +462,13 @@ export default function Home() {
                 type="button"
                 onClick={() => setShowCollab((v) => !v)}
                 aria-expanded={showCollab}
-                className="inline-flex items-baseline gap-2 text-[13px] tracking-wide link-slide"
+                className="inline-flex items-baseline gap-2 text-[13px] tracking-wide"
                 style={{ fontFamily: UI, color: 'var(--muted)' }}
               >
                 <span style={{ color: VERMILLION }}>{showCollab ? '−' : '+'}</span>
-                Interested in collaborating?
+                <span style={{ textDecoration: 'underline', textUnderlineOffset: 3, textDecorationColor: 'var(--faint)' }}>
+                  Interested in collaborating?
+                </span>
               </button>
               {showCollab && (
                 <div className="mt-4 max-w-[46ch]">
