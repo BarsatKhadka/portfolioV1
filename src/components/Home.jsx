@@ -92,14 +92,6 @@ const research = [
       { label: 'PDF', href: 'https://arxiv.org/pdf/2605.17201' }
     ]
   },
-  {
-    title: 'SEU: Siloed Exact Machine Unlearning for Fine-Tuned Models',
-    authors: 'Nhoojah Maharjan, Barsat Khadka, Dr. Rabab Abdelfattah',
-    venue: 'Preprint',
-    status: 'under review',
-    link: null,
-    links: []
-  }
 ];
 
 const publications = [
@@ -128,7 +120,7 @@ const philosophyNotes = [
 const news = [
   {
     date: 'Now',
-    text: 'Currently working on self-supervised world models.'
+    text: 'Currently working on world model for chip design.'
   },
   {
     date: 'Jun 30',
@@ -137,7 +129,8 @@ const news = [
   },
   {
     date: 'Jun 23 – 26',
-    text: 'SDSC CIML Summer Institute, UC San Diego.'
+    text: 'SDSC CIML Summer Institute, UC San Diego.',
+    href: '/Barsat-Khadka-COA.pdf'
   },
   {
     date: 'May – Jul',
@@ -229,10 +222,130 @@ function Rule() {
   );
 }
 
+// Sends straight to Web3Forms — no backend of our own to run.
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+function CollaborateForm() {
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [values, setValues] = useState({ name: '', email: '', message: '' });
+
+  const inputStyle = {
+    fontFamily: UI,
+    color: 'var(--text)',
+    background: 'transparent',
+    border: '1px solid var(--hairline)',
+    outline: 'none',
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((v) => ({ ...v, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setStatus('error');
+      return;
+    }
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Collaboration note from ${values.name} — barsatkhadka.com`,
+          from_name: values.name,
+          ...values,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('sent');
+        setValues({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  if (status === 'sent') {
+    return (
+      <p className="text-[15px] leading-[1.7]" style={{ color: 'var(--text)' }}>
+        Thanks — that landed in my inbox. I&apos;ll get back to you.
+      </p>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-[480px]">
+      {/* Honeypot — hidden from people, tempting to bots */}
+      <input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" style={{ display: 'none' }} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder="Name"
+          value={values.name}
+          onChange={handleChange}
+          className="w-full px-3 py-2.5 text-[14px]"
+          style={inputStyle}
+        />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2.5 text-[14px]"
+          style={inputStyle}
+        />
+      </div>
+      <textarea
+        name="message"
+        required
+        placeholder="What are you working on?"
+        value={values.message}
+        onChange={handleChange}
+        rows={3}
+        className="w-full px-3 py-2.5 mb-4 text-[14px] resize-y"
+        style={inputStyle}
+      />
+      <div className="flex items-center gap-4">
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="px-5 py-2.5 text-[12.5px] tracking-[0.14em] uppercase transition-opacity"
+          style={{
+            fontFamily: UI,
+            background: VERMILLION,
+            color: '#FAF8F3',
+            opacity: status === 'sending' ? 0.6 : 1,
+          }}
+        >
+          {status === 'sending' ? 'Sending…' : 'Send'}
+        </button>
+        {status === 'error' && (
+          <span className="text-[12.5px]" style={{ color: VERMILLION }}>
+            Something went wrong — try emailing me directly instead.
+          </span>
+        )}
+      </div>
+    </form>
+  );
+}
+
 export default function Home() {
   const [activeProjectType, setActiveProjectType] = useState('ongoing');
   const [repoStats, setRepoStats] = useState({ stars: 0, forks: 0 });
   const [activeSection, setActiveSection] = useState('about');
+  const [showCollab, setShowCollab] = useState(false);
   const sectionsRef = useRef({});
 
   useEffect(() => {
@@ -343,6 +456,24 @@ export default function Home() {
               chip design, reinforcement learning, world models, and interpretability and I
               read philosophy with the other half of my time.
             </p>
+
+            <div className="hero-fade mt-4" style={{ animationDelay: '0.82s' }}>
+              <button
+                type="button"
+                onClick={() => setShowCollab((v) => !v)}
+                aria-expanded={showCollab}
+                className="inline-flex items-baseline gap-2 text-[13px] tracking-wide link-slide"
+                style={{ fontFamily: UI, color: 'var(--muted)' }}
+              >
+                <span style={{ color: VERMILLION }}>{showCollab ? '−' : '+'}</span>
+                Interested in collaborating?
+              </button>
+              {showCollab && (
+                <div className="mt-4 max-w-[46ch]">
+                  <CollaborateForm />
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Plates — between the name and the news */}
@@ -695,8 +826,8 @@ export default function Home() {
               <p className="mb-3">
                 I split my time between computer-science research and philosophy. The research
                 is mostly machine learning for chip design and interpretability; the reading is
-                mostly early Buddhism, Krishnamurti, and Spinoza. I like work that stays honest
-                about what it does and doesn&apos;t know.
+                mostly early Buddhism, Stoicism (I love Marcus Aurelius), and Krishnamurti. I like
+                work that stays honest about what it does and doesn&apos;t know.
               </p>
             </div>
           </section>
@@ -997,9 +1128,9 @@ export default function Home() {
 
             <p className="max-w-[62ch] text-[15.5px] lg:text-[16px] leading-[1.8] mb-9" style={{ color: 'var(--text)' }}>
               When I&apos;m not doing research, I read philosophy — mostly early Buddhism,
-              Krishnamurti, and Spinoza. I&apos;m not looking for a system that explains
-              everything. I&apos;m more interested in keeping the oldest questions open and
-              being honest about how little we actually see.
+              Stoicism (I love Marcus Aurelius), and Krishnamurti. I&apos;m not looking for a
+              system that explains everything. I&apos;m more interested in keeping the oldest
+              questions open and being honest about how little we actually see.
             </p>
 
             <ul className="list-none p-0 m-0 space-y-5 max-w-[64ch]">
