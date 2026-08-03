@@ -124,6 +124,11 @@ const news = [
     text: 'Currently working on world model for chip design.'
   },
   {
+    date: 'Aug 2',
+    text: 'Completed Machine Learning Foundations, Break Through Tech — view credential.',
+    href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf'
+  },
+  {
     date: 'Jun 30',
     text: 'Updated MechRL — full version now on arXiv.',
     href: 'https://arxiv.org/abs/2605.26343'
