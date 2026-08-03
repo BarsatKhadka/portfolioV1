@@ -388,7 +388,7 @@ export default function Home() {
   // opacity driven directly off scrollY so it never lags a frame behind.
   useEffect(() => {
     const FADE_DISTANCE = 420;
-    const CEILING = 0.55; // fills the blank middle gap — no text there, so it can read at full presence
+    const CEILING = 0.72; // fills the blank middle gap — no text there, so it can read at full presence
     let ticking = false;
     const update = () => {
       ticking = false;
@@ -457,7 +457,7 @@ export default function Home() {
           style={{
             position: 'fixed',
             top: '0vh',
-            left: '44%',
+            left: '40%',
             transform: 'translateX(-50%)',
             width: 'clamp(800px, 70vw, 1440px)',
             zIndex: 1,
@@ -470,10 +470,10 @@ export default function Home() {
             alt=""
             className="w-full h-auto block"
             style={{
-              filter: 'saturate(0.85) contrast(1) blur(0.5px)',
+              filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(0.5px)',
               mixBlendMode: 'multiply',
-              maskImage: 'radial-gradient(ellipse 70% 55% at 42% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.07) 60%, rgba(0,0,0,0.06) 76%, rgba(0,0,0,0.015) 90%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 70% 55% at 42% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.07) 60%, rgba(0,0,0,0.06) 76%, rgba(0,0,0,0.015) 90%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 76% 74% at 50% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 58%, rgba(0,0,0,0.02) 68%, rgba(0,0,0,0.005) 78%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 76% 74% at 50% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 58%, rgba(0,0,0,0.02) 68%, rgba(0,0,0,0.005) 78%, transparent 100%)',
             }}
           />
         </div>
