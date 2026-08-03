@@ -126,8 +126,7 @@ const news = [
   {
     date: 'Aug 2',
     text: 'Completed Machine Learning Foundations, Break Through Tech.',
-    href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf',
-    note: '(click to view credential)'
+    href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf'
   },
   {
     date: 'Jun 30',
@@ -550,6 +549,9 @@ export default function Home() {
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
+              <span className="normal-case tracking-normal" style={{ color: 'var(--faint)', fontSize: 11 }}>
+                (click to view credential)
+              </span>
             </p>
             <ol className="list-none p-0 m-0 space-y-6">
               {news.map((item, i) => (
@@ -564,11 +566,6 @@ export default function Home() {
                       </a>
                     ) : (
                       item.text
-                    )}
-                    {item.note && (
-                      <span className="ml-1.5 text-[12px]" style={{ color: 'var(--faint)' }}>
-                        {item.note}
-                      </span>
                     )}
                   </span>
                 </li>
