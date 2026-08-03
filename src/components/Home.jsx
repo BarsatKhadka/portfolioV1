@@ -125,8 +125,9 @@ const news = [
   },
   {
     date: 'Aug 2',
-    text: 'Completed Machine Learning Foundations, Break Through Tech — view credential.',
-    href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf'
+    text: 'Completed Machine Learning Foundations, Break Through Tech.',
+    href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf',
+    note: '(click to view credential)'
   },
   {
     date: 'Jun 30',
@@ -563,6 +564,11 @@ export default function Home() {
                       </a>
                     ) : (
                       item.text
+                    )}
+                    {item.note && (
+                      <span className="ml-1.5 text-[12px]" style={{ color: 'var(--faint)' }}>
+                        {item.note}
+                      </span>
                     )}
                   </span>
                 </li>
