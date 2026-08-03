@@ -457,7 +457,7 @@ export default function Home() {
           style={{
             position: 'fixed',
             top: '0vh',
-            left: '40%',
+            left: '49%',
             transform: 'translateX(-50%)',
             width: 'clamp(800px, 70vw, 1440px)',
             zIndex: 1,
