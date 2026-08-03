@@ -538,7 +538,7 @@ export default function Home() {
 
           {/* News */}
           <aside
-            className="hero-fade w-full lg:w-[400px] xl:w-[440px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-7 lg:pt-1 lg:pl-10"
+            className="hero-fade w-full lg:w-[400px] xl:w-[440px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-7 lg:pt-1 lg:pl-16"
             style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
