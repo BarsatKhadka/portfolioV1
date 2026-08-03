@@ -456,10 +456,10 @@ export default function Home() {
           className="hidden xl:block"
           style={{
             position: 'fixed',
-            top: '5vh',
-            left: '46%',
+            top: '0vh',
+            left: '44%',
             transform: 'translateX(-50%)',
-            width: 'clamp(650px, 58vw, 1160px)',
+            width: 'clamp(800px, 70vw, 1440px)',
             zIndex: 1,
             pointerEvents: 'none',
             willChange: 'opacity',
@@ -472,8 +472,8 @@ export default function Home() {
             style={{
               filter: 'saturate(0.85) contrast(1) blur(0.5px)',
               mixBlendMode: 'multiply',
-              maskImage: 'radial-gradient(ellipse 58% 52% at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.22) 66%, rgba(0,0,0,0.05) 80%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 58% 52% at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.22) 66%, rgba(0,0,0,0.05) 80%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 70% 55% at 42% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.07) 60%, rgba(0,0,0,0.06) 76%, rgba(0,0,0,0.015) 90%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 70% 55% at 42% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.07) 60%, rgba(0,0,0,0.06) 76%, rgba(0,0,0,0.015) 90%, transparent 100%)',
             }}
           />
         </div>
