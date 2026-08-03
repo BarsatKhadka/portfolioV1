@@ -8,6 +8,7 @@ import canvasImage from './canvas.png';
 import myImage from './MyImage.webp';
 import plateImage from './image.webp';
 import plateImage2 from './image2.webp';
+import heroSplash from './heroSplash.webp';
 
 // --- Data ---
 
@@ -347,6 +348,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
   const [showCollab, setShowCollab] = useState(false);
   const sectionsRef = useRef({});
+  const heroSplashRef = useRef(null);
 
   useEffect(() => {
     const fetchRepoStats = async () => {
@@ -380,6 +382,31 @@ export default function Home() {
       if (section) observer.observe(section);
     });
     return () => observer.disconnect();
+  }, []);
+
+  // Splash art fades to nothing as you scroll past the hero — fixed in place,
+  // opacity driven directly off scrollY so it never lags a frame behind.
+  useEffect(() => {
+    const FADE_DISTANCE = 420;
+    const CEILING = 0.55; // fills the blank middle gap — no text there, so it can read at full presence
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const el = heroSplashRef.current;
+      if (!el) return;
+      const opacity = CEILING * Math.max(0, 1 - window.scrollY / FADE_DISTANCE);
+      el.style.opacity = opacity;
+      el.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   // Gentle reveal-on-scroll — only arms when motion is welcome
@@ -419,6 +446,37 @@ export default function Home() {
       {/* ░░ Hero — a clean typographic masthead ░░ */}
       <header className="hero relative w-full min-h-[78svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
         <div aria-hidden="true" className="hero-aura" />
+
+        {/* Splash art — pinned to the viewport, dissolves into the paper as you scroll past.
+            One layer, one continuous falloff — no plateau-then-drop that reads as a ring,
+            just a slow fade to zero long before the image's own edge. */}
+        <div
+          ref={heroSplashRef}
+          aria-hidden="true"
+          className="hidden xl:block"
+          style={{
+            position: 'fixed',
+            top: '5vh',
+            left: '46%',
+            transform: 'translateX(-50%)',
+            width: 'clamp(650px, 58vw, 1160px)',
+            zIndex: 1,
+            pointerEvents: 'none',
+            willChange: 'opacity',
+          }}
+        >
+          <img
+            src={heroSplash}
+            alt=""
+            className="w-full h-auto block"
+            style={{
+              filter: 'saturate(0.85) contrast(1) blur(0.5px)',
+              mixBlendMode: 'multiply',
+              maskImage: 'radial-gradient(ellipse 58% 52% at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.22) 66%, rgba(0,0,0,0.05) 80%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 58% 52% at 50% 42%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.22) 66%, rgba(0,0,0,0.05) 80%, transparent 100%)',
+            }}
+          />
+        </div>
 
         {/* Top line */}
         <div className="hero-fade relative z-10 flex items-center justify-between" style={{ animationDelay: '0.15s' }}>
@@ -476,35 +534,6 @@ export default function Home() {
                 </div>
               )}
             </div>
-          </div>
-
-          {/* Plates — between the name and the news */}
-          <div
-            className="hero-fade hidden lg:flex flex-col gap-6 w-[180px] xl:w-[200px] flex-shrink-0 pt-1"
-            style={{ animationDelay: '0.85s' }}
-          >
-            {[
-              { src: plateImage, num: 'i', caption: '“do something”' },
-              { src: plateImage2, num: 'ii', caption: 'nature, in a box of our own equations' },
-            ].map((plate) => (
-              <figure key={plate.num} className="m-0">
-                <img
-                  src={plate.src}
-                  alt={plate.caption}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto block"
-                  style={{
-                    filter: 'grayscale(0.1) saturate(0.92) contrast(1.01)',
-                    boxShadow: '0 14px 30px -16px rgba(22,20,15,0.42), 1px 1px 0 rgba(26,26,26,0.08)',
-                  }}
-                />
-                <figcaption className="mt-2 text-[11px] leading-[1.4]" style={{ color: 'var(--muted)', fontFamily: UI }}>
-                  <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, marginRight: 6 }}>{plate.num}</span>
-                  {plate.caption}
-                </figcaption>
-              </figure>
-            ))}
           </div>
 
           {/* News */}
@@ -1202,6 +1231,31 @@ export default function Home() {
                 Music in the headphones, something on the stove, and long reads on the commute.
                 The rest of the day goes to sitting with the older questions.
               </p>
+
+              <div className="mt-6 flex flex-col gap-5">
+                {[
+                  { src: plateImage, num: 'i', caption: '“do something”' },
+                  { src: plateImage2, num: 'ii', caption: 'nature, in a box of our own equations' },
+                ].map((plate) => (
+                  <figure key={plate.num} className="m-0">
+                    <img
+                      src={plate.src}
+                      alt={plate.caption}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto block"
+                      style={{
+                        filter: 'grayscale(0.1) saturate(0.92) contrast(1.01)',
+                        boxShadow: '0 14px 30px -16px rgba(22,20,15,0.42), 1px 1px 0 rgba(26,26,26,0.08)',
+                      }}
+                    />
+                    <figcaption className="mt-2 text-[11px] leading-[1.4]" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                      <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, marginRight: 6 }}>{plate.num}</span>
+                      {plate.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </div>
         </aside>
