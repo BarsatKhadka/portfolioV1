@@ -472,8 +472,8 @@ export default function Home() {
             style={{
               filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(0.5px)',
               mixBlendMode: 'multiply',
-              maskImage: 'radial-gradient(ellipse 76% 74% at 50% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 58%, rgba(0,0,0,0.02) 68%, rgba(0,0,0,0.005) 78%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 76% 74% at 50% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 58%, rgba(0,0,0,0.02) 68%, rgba(0,0,0,0.005) 78%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 76% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 56%, rgba(0,0,0,0.015) 64%, rgba(0,0,0,0.004) 74%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 76% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 56%, rgba(0,0,0,0.015) 64%, rgba(0,0,0,0.004) 74%, transparent 100%)',
             }}
           />
         </div>
