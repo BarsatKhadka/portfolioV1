@@ -6,6 +6,452 @@ export default function Blog() {
 
   // Blog content mapping - can be extended for more blogs
   const blogContent = {
+    'reverse-engineering-an-asic-from-its-layout': {
+      title: 'Reverse-Engineering an ASIC From Its Layout',
+      content: (
+        <div className="text-sm lg:text-[16px] leading-[1.9] space-y-6">
+
+          <p className="text-[#6b7280] text-sm italic border-l-4 border-[#e5e7eb] pl-4">
+            August 2026 &bull; Technical
+          </p>
+
+          <p>
+            Jane Street published a puzzle: they designed a chip, ran it through a real physical
+            design flow, and released only the <strong>GDS</strong> &mdash; the geometry file a
+            foundry would use to actually manufacture it. Every human-readable name was stripped
+            along the way. Your job is to work out what the chip does and make its{' '}
+            <code className="font-mono text-[13px]">success</code> output go high.
+          </p>
+
+          <p>
+            This is a writeup of how I did that: recovering a netlist from raw polygons, proving
+            the recovery was faithful, and then solving the thing that turned out to be hiding
+            inside.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">What you actually get</h2>
+
+          <p>
+            One file matters: <code className="font-mono text-[13px]">puzzle.gds</code>. It is
+            1.4&nbsp;MB of rectangles &mdash; roughly 50,000 of them &mdash; describing about
+            200&nbsp;&times;&nbsp;353&nbsp;&micro;m of silicon in SkyWater&apos;s open 130&nbsp;nm
+            process. No module names, no signal names, no comments. Just shapes on layers.
+          </p>
+
+          <p>The chip exposes six signals:</p>
+
+          <ul className="list-disc pl-6 space-y-2">
+            <li><code className="font-mono text-[13px]">clk</code>, <code className="font-mono text-[13px]">rst_n</code>, <code className="font-mono text-[13px]">enable</code> &mdash; the usual controls</li>
+            <li><code className="font-mono text-[13px]">I</code> &mdash; a one-bit serial input</li>
+            <li><code className="font-mono text-[13px]">O[7:0]</code> &mdash; an eight-bit output</li>
+            <li><code className="font-mono text-[13px]">success</code> &mdash; the &ldquo;you got it&rdquo; flag</li>
+          </ul>
+
+          <p>
+            So it is a lock. You feed it bits and it decides. There is also a recording of somebody
+            entering a wrong answer, and a <code className="font-mono text-[13px]">warmup/</code>{' '}
+            directory containing a small practice design <em>with its original source</em> &mdash;
+            which turns out to be the most valuable file in the repository.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 1: A netlist out of geometry</h2>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">The lucky break</h3>
+
+          <p>
+            A GDS is hierarchical, and this one kept the names of the <strong>standard cells</strong>{' '}
+            &mdash; the pre-made logic bricks the chip is assembled from:
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`sky130_fd_sc_hd__nand2_2   at (177.10, 92.48)
+sky130_fd_sc_hd__dfrtp_2   at ( 26.22, 38.08)
+... 726 more`}
+          </pre>
+
+          <p>
+            That is a real gift. Identifying gates from raw polygons is the part everyone expects to
+            be hard, and it was already done. <strong>728 logic cells</strong>, plus 676 well taps
+            and 204 decaps that carry no signal and can be dropped.
+          </p>
+
+          <p>
+            Better still, each cell&apos;s own drawing carries text labels naming its pins &mdash;{' '}
+            <code className="font-mono text-[13px]">&quot;A&quot;</code> at (175.005, 90.950), and
+            so on. So the entire problem collapses to one question:{' '}
+            <strong>which pins are wired together?</strong> That, the flow really did erase.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">The geometry problem</h3>
+
+          <p>
+            Routing lives on six conductor layers: li1 (local interconnect) and met1 through met5.
+            Between adjacent layers sit <em>cuts</em> &mdash; vias &mdash; which are the only places
+            two layers connect.
+          </p>
+
+          <p>The extraction algorithm is three lines of idea:</p>
+
+          <ol className="list-decimal pl-6 space-y-2">
+            <li>Flatten every conductor polygon to top-level coordinates.</li>
+            <li>Union-find shapes that <strong>overlap on the same layer</strong>.</li>
+            <li>For every via cut, union the shape below it with the shape above it.</li>
+          </ol>
+
+          <p>
+            Same-layer overlap means connected; different layers mean nothing without a cut. That is
+            the entire physics of it. I used <strong>gdstk</strong> to read and flatten the GDS and{' '}
+            <strong>shapely</strong> with an STRtree to make the 50,000-shape overlap test fast. It
+            runs in about 2.5 seconds.
+          </p>
+
+          <p>
+            Then, for each cell instance, look up which blob covers each pin label &mdash; and you
+            have connectivity.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">Did it work?</h3>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`cut li1 ->met1 : 19764/19764 bridged
+cut met1->met2 :  6869/6869  bridged
+cut met2->met3 :  3423/3423  bridged
+cut met3->met4 :  3159/3159  bridged
+cut met4->met5 :   108/108   bridged`}
+          </pre>
+
+          <p>
+            <strong>33,323 of 33,323 vias landed on metal on both sides.</strong> If the layer map
+            or the coordinate transforms were wrong, vias would be floating in space. None were.
+          </p>
+
+          <p>
+            The recovered design: 728 functional cells across 69 types, 92 flip-flops, 734 nets,
+            zero combinational loops, zero multiply-driven nets, and exactly one net with no driver
+            (more on that at the end).
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 2: What the gates do</h2>
+
+          <p>
+            A netlist is useless without cell semantics, so I pulled the functional models for all
+            63 cell types from the open SkyWater PDK.
+          </p>
+
+          <p>
+            One trap worth flagging: <strong>the human-readable equations in the PDK headers are not
+            reliable.</strong>
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`nor3:   Y = !(A | B | C | !D)      <- nor3 has no D input
+nor3b:  Y = (!(A | B)) & !C)       <- unbalanced parentheses`}
+          </pre>
+
+          <p>
+            Below those comments, though, each model has a <em>structural</em> body built from
+            Verilog primitives, which is unambiguous. I parse the structural bodies and ignore the
+            prose entirely.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 3: Proving the reconstruction is faithful</h2>
+
+          <p>
+            This is the step that matters most, and it is exactly why the warm-up directory exists.
+            Anyone can produce <em>an</em> answer. The real question is why you should believe it.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">Test 1 &mdash; the warm-up, where the answer is known</h3>
+
+          <p>
+            The warm-up ships a small design run through the same flow, including its original
+            Verilog, which says the design asserts its output when{' '}
+            <code className="font-mono text-[13px]">A + B == 496</code>. So: run the identical
+            pipeline on the warm-up GDS, which has names stripped exactly like the puzzle, and check
+            against the known answer. I tested all 65,536 input pairs.
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`ERRORS=0   S_high_count=15 (expected 15)`}
+          </pre>
+
+          <p>
+            Zero mismatches. Fifteen is right: with eight-bit operands,{' '}
+            <code className="font-mono text-[13px]">a + b == 496</code> has exactly fifteen
+            solutions.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">Test 2 &mdash; their own recording</h3>
+
+          <p>
+            The provided VCD records a wrong attempt. Decoding the{' '}
+            <code className="font-mono text-[13px]">O</code> bus as ASCII gave the first real clue
+            about the chip:
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`0x54 0x52 0x59 0x20 0x41 0x47 0x41 0x49 0x4E
+  T    R    Y   ' '   A    G    A    I    N`}
+          </pre>
+
+          <p>
+            The chip talks back. So I replayed the same stimulus through my reconstruction and
+            compared <code className="font-mono text-[13px]">O</code> and{' '}
+            <code className="font-mono text-[13px]">success</code> at every sample:{' '}
+            <strong>0 mismatches over 624 golden samples</strong>, same characters at the same clock
+            ticks.
+          </p>
+
+          <h3 className="text-xl lg:text-2xl font-semibold mt-6 mb-4">Test 3 &mdash; a real simulator, none of my code</h3>
+
+          <p>
+            Finally I emitted a gate-level Verilog netlist and ran it under Icarus Verilog against
+            the official SkyWater cell models, with none of my own code in the loop:
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`== warm-up netlist vs known answer, all 65536 pairs ==
+ERRORS=0  S_high_count=15 (expected 15)
+
+== puzzle netlist ==
+VCD wrong input: success=0  message="TRY AGAIN"`}
+          </pre>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 4: The protocol</h2>
+
+          <p>Reading clock edges out of the VCD makes the interface obvious:</p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`edges 0-2    rst_n = 0            reset
+edge  3      rst_n = 1
+edges 4-124  enable = 1           <- 121 bits shifted in on I
+edge  125    enable = 0           <- message begins immediately`}
+          </pre>
+
+          <p>
+            <strong>121 input bits.</strong> Tracing back from{' '}
+            <code className="font-mono text-[13px]">success</code> shows a sticky flag whose set
+            condition is a wide AND tree &mdash; and that tree decomposes into two groups of{' '}
+            <em>eleven</em> near-identical two-bit comparisons, each checking a counter equals two.
+            Eleven of one thing, eleven of another, everything compared against two. I did not read
+            that correctly until later.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 5: Solving</h2>
+
+          <p>
+            121 bits is 2<sup>121</sup> possibilities. Brute force is not on the table.
+          </p>
+
+          <p>
+            I first checked whether the state update was linear over GF(2) &mdash; if it were an
+            LFSR or a CRC, Gaussian elimination would crack it instantly. It is not: twenty out of
+            twenty linearity predictions failed. Genuinely nonlinear. So, SAT.
+          </p>
+
+          <p>
+            I unrolled the netlist over 129 clock cycles and Tseitin-encoded every gate from its
+            primitive structure, giving a gate-exact CNF of <strong>370,618 clauses</strong> over{' '}
+            <strong>109,256 variables</strong>, plus one extra clause:{' '}
+            <code className="font-mono text-[13px]">success = 1</code>.
+          </p>
+
+          <p>
+            CaDiCaL returned an answer in <strong>15 milliseconds</strong>. Adding a blocking clause
+            and re-solving returned UNSAT &mdash; the key is unique.
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`cycle 121 | 0x28 '('  success=1
+cycle 122 | 0x2a '*'  success=1
+cycle 123 | 0x20 ' '  success=1
+cycle 124 | 0x54 'T'  success=1
+...
+cycle 135 | 0x29 ')'  success=1`}
+          </pre>
+
+          <p className="text-lg">
+            <strong>(* TWO STARS *)</strong>
+          </p>
+
+          <p>
+            An OCaml comment, which for Jane Street is about as on-brand as it gets.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 6: The puzzle inside the puzzle</h2>
+
+          <p>Then I looked at the key itself. <strong>121 = 11 &times; 11.</strong></p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`. . . . . . . * . * .
+* . . . . * . . . . .
+. . . . . . . * . * .
+* . * . . . . . . . .
+. . . . * . * . . . .
+. . * . . . . . * . .
+. . . . * . . . . . *
+. * . . . . * . . . .
+. . . * . . . . . . *
+. . . . . * . . * . .
+. * . * . . . . . . .`}
+          </pre>
+
+          <p>
+            Exactly two stars in every row. Exactly two in every column. No two stars touching, not
+            even diagonally. It is a <strong>Star Battle</strong> &mdash; and &ldquo;TWO
+            STARS&rdquo; had been telling me the whole time. The eleven-plus-eleven pairs of
+            &ldquo;counter equals two&rdquo; in the success tree were the column counters and the
+            region counters.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 7: Recovering the regions</h2>
+
+          <p>
+            Star Battle also needs irregular regions, two stars each. Those are baked into the
+            chip&apos;s logic, so I extracted them by probing: shift in a grid with a single star at
+            cell <em>i</em>, diff the 92-bit flop state against the empty grid, repeat for all 121
+            cells. Cells feeding the same counter belong to the same region.
+          </p>
+
+          <p>Eleven flops partition the 121 cells exactly, with nothing left over:</p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`A A A A A B B C D D E
+A A F A A B C C D D E
+A A F B B B B C C D E
+A A F B G G G E C C E
+F A F B G E E E E E E
+F F F B G G G E H H H
+B B B B B B G E H I I
+B J J J G G G E H I I
+B J J K E E E E H I I
+B B J K K E E E H H H
+B J J K E E E E E E E`}
+          </pre>
+
+          <p>
+            Sizes A=14 B=21 C=7 D=5 E=28 F=8 G=11 H=9 I=6 J=8 K=4, summing to 121, every region
+            orthogonally contiguous, as a well-formed Star Battle requires.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Step 8: Closing the loop</h2>
+
+          <p>
+            The last check. I took the recovered region map, wrote a plain Star Battle solver using
+            the standard rules, and made no reference to the circuit at all.
+          </p>
+
+          <pre className="bg-[#f5f5f5] p-4 rounded-lg overflow-x-auto text-sm font-mono">
+{`independent Star Battle solutions: 1
+matches chip solution: True`}
+          </pre>
+
+          <p>
+            One solution, and it is the same grid the SAT solver pulled out of the transistors. The
+            puzzle in the silicon and the puzzle on paper agree.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">What else is hiding in there</h2>
+
+          <p>
+            The chip has more to say than pass or fail. Feeding it degenerate grids produces
+            different replies, and one string is reachable only by reading the logic:
+          </p>
+
+          <ul className="list-disc pl-6 space-y-2">
+            <li><code className="font-mono text-[13px]">TRY AGAIN</code> &mdash; any ordinary wrong grid</li>
+            <li><code className="font-mono text-[13px]">EMPTY SKY</code> &mdash; all 121 bits zero</li>
+            <li><code className="font-mono text-[13px]">BIG BANG</code> &mdash; all 121 bits one</li>
+            <li><code className="font-mono text-[13px]">(* TWO STARS *)</code> &mdash; the correct grid</li>
+            <li>
+              <code className="font-mono text-[13px]">TWO&quot;NOT TOUCH</code> &mdash; the alternate
+              name for Star Battle, encoded in the output generator but{' '}
+              <strong>unreachable from any input</strong>. I proved that with SAT: constrain the
+              output bus to those bytes over a free starting state and it is satisfiable; do the
+              same over reachable states and it is UNSAT. A dead string you can only find by
+              reverse-engineering the ROM.
+            </li>
+          </ul>
+
+          <p>
+            There are quieter ones too. The provided VCD is dated{' '}
+            <code className="font-mono text-[13px]">Sat Dec 31 23:59:60 2016</code> &mdash; a real
+            leap second &mdash; and its version field reads &ldquo;Leave no stone unturned!&rdquo;.
+            And the warm-up&apos;s magic constant, 496, is the third perfect number.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Loose ends</h2>
+
+          <p>
+            One net has no driver in my extraction. Two input pins in the output-generator block are
+            routed to each other on met1 and met2, but the source connection is not recovered.
+            Everything else in the design connects cleanly, so I suspect a routing pattern my
+            overlap rule does not cover rather than anything deliberate.
+          </p>
+
+          <p>
+            It is provably irrelevant here: both polarities reproduce the golden waveform exactly,
+            and both produce the same unique solution and the same message. I tied it off explicitly
+            in the emitted netlist with a comment rather than papering over it.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">Tools</h2>
+
+          <p>
+            Everything is free and open source, which is clearly deliberate on Jane Street&apos;s
+            part: <strong>gdstk</strong> to read and flatten the GDS, <strong>shapely</strong> for
+            geometry and spatial indexing, the <strong>SkyWater sky130 PDK</strong> for cell
+            semantics, <strong>python-sat</strong> with CaDiCaL for solving,{' '}
+            <strong>Icarus Verilog</strong> for independent verification, and{' '}
+            <strong>KLayout</strong> and <strong>Surfer</strong> for looking at things. Total
+            pipeline runtime from GDS to answer: under five seconds.
+          </p>
+
+          <hr className="border-[#e5e7eb] my-2" />
+
+          <h2 className="text-2xl lg:text-3xl font-semibold mt-8 mb-4">What I would tell someone starting this</h2>
+
+          <p>
+            Do the warm-up first, properly. It is not busywork &mdash; it is the only thing that
+            tells you your extractor is right before you point it at a design where you cannot check
+            the answer. Two of my early bugs would have produced plausible, completely wrong
+            netlists, and the warm-up caught both.
+          </p>
+
+          <p>
+            And you do not need to understand the circuit to solve it. I never did, not until
+            afterwards. Rebuild it exactly, prove the rebuild is faithful against known answers, then
+            let a SAT solver do the reasoning. The insight that it was a Star Battle came from
+            staring at the 121-bit key and noticing 11 &times; 11.
+          </p>
+
+        </div>
+      )
+    },
     'why-traditional-rl-will-not-yield-agi': {
       title: 'Why Traditional Reinforcement Learning Will Not Yield AGI',
       content: (
