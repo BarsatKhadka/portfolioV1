@@ -481,6 +481,19 @@ export default function Home() {
               WebkitMaskImage: 'radial-gradient(ellipse 76% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 56%, rgba(0,0,0,0.015) 64%, rgba(0,0,0,0.004) 74%, transparent 100%)',
             }}
           />
+          {/* Softens just the left side, over the name, so it reads less like a sharp photo there */}
+          <img
+            src={heroSplash}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-auto block"
+            style={{
+              filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(1.5px)',
+              mixBlendMode: 'multiply',
+              maskImage: 'linear-gradient(to right, black 0%, rgba(0,0,0,0.3) 30%, transparent 65%)',
+              WebkitMaskImage: 'linear-gradient(to right, black 0%, rgba(0,0,0,0.3) 30%, transparent 65%)',
+            }}
+          />
         </div>
 
         {/* Top line */}
@@ -866,7 +879,7 @@ export default function Home() {
                 I split my time between computer-science research and philosophy. The research
                 is mostly machine learning for chip design and interpretability; the reading is
                 mostly early Buddhism, Stoicism (I love Marcus Aurelius), and Krishnamurti. I like
-                work that stays honest about what it does and doesn&apos;t know.
+                those who live by their philosophy.
               </p>
             </div>
           </section>
