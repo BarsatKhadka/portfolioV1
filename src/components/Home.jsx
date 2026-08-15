@@ -97,6 +97,13 @@ const research = [
 
 const publications = [
   {
+    title: 'Reverse-Engineering an ASIC From Its Layout',
+    description: 'Recovering a gate-level netlist from a raw GDS, verifying it against known-good references, and solving the Star Battle puzzle hidden in the silicon.',
+    type: 'Technical',
+    year: 'Aug 2026',
+    slug: 'reverse-engineering-an-asic-from-its-layout'
+  },
+  {
     title: 'Why Traditional Reinforcement Learning Will Not Yield AGI',
     description: 'An argument for why narrow reward optimization and stationary environments are fundamentally insufficient for general intelligence.',
     type: 'Essay',
