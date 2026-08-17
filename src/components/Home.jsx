@@ -484,21 +484,22 @@ export default function Home() {
             style={{
               filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(0.5px)',
               mixBlendMode: 'multiply',
-              maskImage: 'radial-gradient(ellipse 76% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 56%, rgba(0,0,0,0.015) 64%, rgba(0,0,0,0.004) 74%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 76% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(0,0,0,0.4) 46%, rgba(0,0,0,0.1) 56%, rgba(0,0,0,0.015) 64%, rgba(0,0,0,0.004) 74%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 50% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.03) 70%, rgba(0,0,0,0.005) 85%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 50% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.03) 70%, rgba(0,0,0,0.005) 85%, transparent 100%)',
             }}
           />
-          {/* Softens just the left side, over the name, so it reads less like a sharp photo there */}
+          {/* Softens just the left side, over the name — a self-contained patch that fades
+              to zero well inside the box on every side, so it can't create its own edge */}
           <img
             src={heroSplash}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-auto block"
             style={{
-              filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(1.5px)',
+              filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(3px)',
               mixBlendMode: 'multiply',
-              maskImage: 'linear-gradient(to right, black 0%, rgba(0,0,0,0.3) 30%, transparent 65%)',
-              WebkitMaskImage: 'linear-gradient(to right, black 0%, rgba(0,0,0,0.3) 30%, transparent 65%)',
+              maskImage: 'radial-gradient(ellipse 18% 30% at 22% 44%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.08) 70%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 18% 30% at 22% 44%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.08) 70%, transparent 100%)',
             }}
           />
         </div>
