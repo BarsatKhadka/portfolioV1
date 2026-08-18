@@ -9,6 +9,14 @@ import myImage from './MyImage.webp';
 import plateImage from './image.webp';
 import plateImage2 from './image2.webp';
 import heroSplash from './heroSplash.webp';
+import personal1 from './personal1.webp';
+import personal2 from './personal2.webp';
+import personal3 from './personal3.webp';
+import personal4 from './personal4.webp';
+import personal5 from './personal5.webp';
+import personal6 from './personal6.webp';
+import personal7 from './personal7.webp';
+import personal8 from './personal8.webp';
 
 // --- Data ---
 
@@ -177,6 +185,9 @@ const honors = [
   { title: 'Academic Excellence Scholarship', detail: 'full tuition' },
   { title: "President's List", detail: 'Spring 2025' },
 ];
+
+// A few personal snapshots — kept small, off to the side.
+const personalPhotos = [personal1, personal2, personal3, personal4, personal5, personal6, personal7, personal8];
 
 const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
 const SERIF = DISPLAY;
@@ -639,8 +650,8 @@ export default function Home() {
         <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[color:var(--hairline)] md:sticky md:top-0 md:h-screen overflow-y-auto">
           <div className="p-4 lg:p-8">
 
-            {/* Portrait */}
-            <div className="mb-8 flex justify-start">
+            {/* Portrait, with a few personal snapshots spread beside it */}
+            <div className="mb-2 flex items-start gap-2 flex-wrap">
               <img
                 src={myImage}
                 alt="Barsat Khadka"
@@ -653,7 +664,29 @@ export default function Home() {
                   boxShadow: '0 1px 0 rgba(26,26,26,0.10)'
                 }}
               />
+              {personalPhotos.map((src, i) => (
+                <a
+                  key={i}
+                  href={src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block overflow-hidden"
+                  style={{ boxShadow: '0 1px 0 rgba(26,26,26,0.10)' }}
+                >
+                  <img
+                    src={src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="block"
+                    style={{ height: 56, width: 'auto', filter: 'grayscale(0.1) contrast(1.02)' }}
+                  />
+                </a>
+              ))}
             </div>
+            <p className="mb-8 text-[10px] tracking-[0.28em] uppercase" style={{ color: 'var(--faint)', fontFamily: UI }}>
+              (click to view photos)
+            </p>
 
             {/* Masthead name */}
             <p
