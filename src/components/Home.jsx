@@ -10,13 +10,6 @@ import plateImage from './image.webp';
 import plateImage2 from './image2.webp';
 import heroSplash from './heroSplash.webp';
 import personal1 from './personal1.webp';
-import personal2 from './personal2.webp';
-import personal3 from './personal3.webp';
-import personal4 from './personal4.webp';
-import personal5 from './personal5.webp';
-import personal6 from './personal6.webp';
-import personal7 from './personal7.webp';
-import personal8 from './personal8.webp';
 
 // --- Data ---
 
@@ -186,8 +179,8 @@ const honors = [
   { title: "President's List", detail: 'Spring 2025' },
 ];
 
-// A few personal snapshots — kept small, off to the side.
-const personalPhotos = [personal1, personal2, personal3, personal4, personal5, personal6, personal7, personal8];
+// A personal snapshot, kept small, off to the side.
+const personalPhotos = [personal1];
 
 const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
 const SERIF = DISPLAY;
@@ -685,7 +678,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mb-8 text-[10px] tracking-[0.28em] uppercase" style={{ color: 'var(--faint)', fontFamily: UI }}>
-              (click to view photos)
+              (click to view photo)
             </p>
 
             {/* Masthead name */}
