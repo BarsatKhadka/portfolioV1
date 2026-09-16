@@ -120,6 +120,15 @@ const publications = [
   }
 ];
 
+// Technical reports — open as PDFs.
+const technicalReports = [
+  {
+    title: 'CHIA-OpenROAD: An Agentic RTL-to-GDS Loop with a Replaceable Surrogate Evaluator',
+    href: '/CHIA-OpenROAD.pdf',
+    year: 'Sep 2026'
+  }
+];
+
 // A few notes I keep — kept short on purpose.
 const philosophyNotes = [
   'We do not observe nature as it really is, but nature exposed to our methods of perception.'
@@ -1196,6 +1205,34 @@ export default function Home() {
                       <span className="uppercase tracking-[0.16em] text-[10px]">{pub.type}</span>
                     </p>
                   </Link>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-10 mb-4 text-[10.5px] tracking-[0.26em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+              Technical Reports
+            </p>
+            <ol className="list-none p-0 m-0 space-y-3.5">
+              {technicalReports.map((report, index) => (
+                <li key={index} className="relative">
+                  <a href={report.href} target="_blank" rel="noopener noreferrer" className="group block">
+                    <div className="flex items-baseline gap-2">
+                      <h3
+                        className="tracking-tight"
+                        style={{ fontSize: 15.5, fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.3, color: 'var(--accent)' }}
+                      >
+                        <span className="link-slide">{report.title}</span>
+                      </h3>
+                      <span
+                        aria-hidden="true"
+                        className="flex-1 mx-1 mb-[4px] hidden md:block"
+                        style={{ borderBottom: '1px dotted rgba(26,26,26,0.28)', minWidth: 16 }}
+                      />
+                      <span className="shrink-0 text-[11px] tracking-[0.16em] uppercase whitespace-nowrap" style={{ color: 'var(--muted)' }}>
+                        {report.year}
+                      </span>
+                    </div>
+                  </a>
                 </li>
               ))}
             </ol>
