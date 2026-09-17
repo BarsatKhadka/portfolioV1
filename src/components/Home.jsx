@@ -921,7 +921,7 @@ export default function Home() {
               <p className="mb-3">
                 I split my time between computer-science research and philosophy. The research
                 is mostly machine learning for chip design and interpretability; the reading is
-                mostly early Buddhism, Stoicism (I love Marcus Aurelius), and Krishnamurti. I like
+                mostly early Buddhism and Stoicism (I love Marcus Aurelius). I like
                 those who live by their philosophy.
               </p>
             </div>
@@ -1250,8 +1250,8 @@ export default function Home() {
             <Rule />
 
             <p className="max-w-[62ch] text-[15.5px] lg:text-[16px] leading-[1.8] mb-9" style={{ color: 'var(--text)' }}>
-              When I&apos;m not doing research, I read philosophy — mostly early Buddhism,
-              Stoicism (I love Marcus Aurelius), and Krishnamurti. I&apos;m not looking for a
+              When I&apos;m not doing research, I read philosophy — mostly early Buddhism and
+              Stoicism (I love Marcus Aurelius). I&apos;m not looking for a
               system that explains everything. I&apos;m more interested in keeping the oldest
               questions open and being honest about how little we actually see.
             </p>
