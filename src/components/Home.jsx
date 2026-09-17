@@ -877,18 +877,6 @@ export default function Home() {
 
             {/* Roles */}
             <dl className="mb-7 lg:mb-9 grid grid-cols-[6.5rem_1fr] sm:grid-cols-[7.5rem_1fr] gap-x-5 lg:gap-x-8 gap-y-1.5 text-[14.5px]">
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Intern</dt>
-              <dd className="leading-[1.5]">
-                Research Intern at{' '}
-                <a
-                  href="https://www.gatech.edu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-slide"
-                >
-                  Georgia Institute of Technology
-                </a>
-              </dd>
               <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Engineer</dt>
               <dd className="leading-[1.5]">
                 Research Software Engineer at{' '}
