@@ -75,8 +75,8 @@ const research = [
   {
     title: 'MechRL: Reinforcement Learning Agents Perform Circuit Discovery for Mechanistic Interpretability',
     authors: 'Barsat Khadka',
-    venue: 'TMLR',
-    status: 'under review',
+    venue: 'Interp4Discovery Workshop @ NeurIPS 2026',
+    status: 'accepted',
     link: 'https://arxiv.org/abs/2605.26343',
     links: [
       { label: 'arXiv', href: 'https://arxiv.org/abs/2605.26343' },
