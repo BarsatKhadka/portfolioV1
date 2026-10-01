@@ -125,6 +125,7 @@ const technicalReports = [
   {
     title: 'CHIA-OpenROAD: An Agentic RTL-to-GDS Loop with a Replaceable Surrogate Evaluator',
     href: '/CHIA-OpenROAD.pdf',
+    venue: 'In proceedings of A3 Workshop at MICRO (hackathon track)',
     year: 'Sep 2026'
   }
 ];
@@ -1259,6 +1260,11 @@ export default function Home() {
                         {report.year}
                       </span>
                     </div>
+                    {report.venue && (
+                      <p className="mb-0 mt-1.5 text-[12.5px] leading-[1.5]" style={{ color: 'var(--muted)' }}>
+                        {report.venue}
+                      </p>
+                    )}
                   </a>
                 </li>
               ))}
