@@ -500,7 +500,8 @@ export default function Home() {
             alt=""
             className="w-full h-auto block"
             style={{
-              filter: 'saturate(1.05) contrast(1.12) brightness(1.08) blur(0.5px)',
+              opacity: 0.55,
+              filter: 'saturate(0.85) contrast(1.05) brightness(1.08) blur(0.5px)',
               mixBlendMode: 'multiply',
               maskImage: 'radial-gradient(ellipse 50% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.03) 70%, rgba(0,0,0,0.005) 85%, transparent 100%)',
               WebkitMaskImage: 'radial-gradient(ellipse 50% 74% at 45% 44%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.03) 70%, rgba(0,0,0,0.005) 85%, transparent 100%)',
@@ -582,14 +583,14 @@ export default function Home() {
 
           {/* News */}
           <aside
-            className="hero-fade w-full min-w-0 xl:w-[400px] xl:flex-shrink-0 border rounded-lg p-5 sm:p-6"
-            style={{ borderColor: 'var(--hairline)', backgroundColor: 'var(--panel)', animationDelay: '0.9s' }}
+            className="news-panel hero-fade w-full min-w-0 xl:w-[400px] xl:flex-shrink-0 border rounded-lg p-5 sm:p-6"
+            style={{ animationDelay: '0.9s' }}
           >
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
-              <span className="normal-case tracking-normal" style={{ color: 'var(--faint)', fontSize: 11 }}>
-                (click to view credential)
+              <span className="ml-auto normal-case tracking-normal" style={{ color: 'var(--muted)', fontSize: 11 }}>
+                Latest updates
               </span>
             </p>
             <ol
@@ -599,7 +600,7 @@ export default function Home() {
               style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--faint) transparent' }}
             >
               {news.map((item, i) => (
-                <li key={i} className="flex flex-col">
+                <li key={i} className="news-entry relative flex flex-col pl-4">
                   <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: UI }}>
                     {item.date}
                   </span>
@@ -615,11 +616,15 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+            <p className="news-scroll-hint mb-0 mt-4 pt-3 text-[11px] flex items-center justify-between" style={{ color: 'var(--muted)', fontFamily: UI }}>
+              <span>Scroll for earlier updates</span>
+              <span aria-hidden="true">↓</span>
+            </p>
           </aside>
         </div>
 
         {/* Bottom — contents index */}
-        <div className="hero-fade relative z-10 flex flex-wrap items-end justify-between gap-y-4 gap-x-8" style={{ animationDelay: '1s' }}>
+        <div className="hero-fade relative z-10 flex flex-wrap items-end justify-between gap-y-4 gap-x-8 border-t pt-5" style={{ borderColor: 'var(--hairline)', animationDelay: '1s' }}>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {[
               { id: 'about', n: 'i', label: 'Currently' },
@@ -635,7 +640,7 @@ export default function Home() {
                 type="button"
                 onClick={() => scrollToSection(s.id)}
                 aria-current={active ? 'true' : undefined}
-                className="group inline-flex items-baseline gap-2 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
+                className="hero-nav-link group inline-flex items-baseline gap-2 py-2 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
                 style={{ color: 'var(--muted)', fontFamily: UI }}
               >
                 <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, letterSpacing: 0, fontSize: 12 }}>{s.n}</span>
@@ -979,7 +984,7 @@ export default function Home() {
 
                     <div className="max-w-[70ch]">
                       {/* title + status stamp */}
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4">
                         <h3 className="leading-[1.32] tracking-tight" style={{ fontSize: 17, fontWeight: 500, letterSpacing: '-0.018em' }}>
                           {item.link ? (
                             <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>

@@ -19,8 +19,8 @@
     --panel: rgba(26, 26, 27, 0.026);
     --card: rgba(26, 26, 27, 0.022);
     --text: #16140F;
-    --muted: rgba(34, 30, 24, 0.54);
-    --faint: rgba(34, 30, 24, 0.32);
+    --muted: rgba(34, 30, 24, 0.65);
+    --faint: rgba(34, 30, 24, 0.44);
     --border: rgba(34, 30, 24, 0.10);
     --accent: #1F3A52;       /* deep indigo ink */
     --accent-2: #B5341F;     /* vermilion seal */
@@ -241,6 +241,51 @@
 
 .hero-name {
   margin: 0;
+}
+
+.news-panel {
+  border-color: var(--border);
+  background: rgba(250, 248, 243, 0.92);
+  box-shadow: 0 2px 6px rgba(34, 30, 24, 0.025), 0 16px 40px rgba(34, 30, 24, 0.035);
+}
+
+.news-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--faint);
+}
+
+.news-entry:first-child::before {
+  background: var(--accent-2);
+}
+
+.news-scroll-hint {
+  border-top: 1px solid var(--hairline);
+}
+
+.hero-nav-link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease;
+}
+
+.hero-nav-link:hover,
+.hero-nav-link[aria-current='true'] {
+  border-bottom-color: var(--accent-2);
+}
+
+:where(a, button, input, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  color: var(--text);
+  background: rgba(181, 52, 31, 0.16);
 }
 
 /* Gallery wall — a living altar of influences */
