@@ -141,6 +141,11 @@ const news = [
     text: 'Currently working on world model for chip design.'
   },
   {
+    date: 'Sep 29',
+    text: 'MechRL accepted to the Interp4Discovery workshop at NeurIPS 2026.',
+    href: 'https://arxiv.org/abs/2605.26343'
+  },
+  {
     date: 'Aug 2',
     text: 'Completed Machine Learning Foundations, Break Through Tech.',
     href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf'
