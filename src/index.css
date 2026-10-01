@@ -427,7 +427,7 @@ button:focus-visible {
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .sidebar {
     position: relative;
     width: 100%;

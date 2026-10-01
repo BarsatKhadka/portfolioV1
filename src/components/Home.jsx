@@ -474,7 +474,7 @@ export default function Home() {
       <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* ░░ Hero — a clean typographic masthead ░░ */}
-      <header className="hero relative w-full min-h-[78svh] flex flex-col justify-between overflow-hidden px-6 sm:px-10 lg:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
+      <header className="hero relative w-full min-h-[78svh] flex flex-col justify-between gap-10 overflow-hidden px-6 sm:px-10 xl:px-24 pt-9 lg:pt-12 pb-7 lg:pb-9">
         <div aria-hidden="true" className="hero-aura" />
 
         {/* Splash art — pinned to the viewport, dissolves into the paper as you scroll past.
@@ -483,7 +483,7 @@ export default function Home() {
         <div
           ref={heroSplashRef}
           aria-hidden="true"
-          className="hidden xl:block"
+          className="hidden 2xl:block"
           style={{
             position: 'fixed',
             top: '0vh',
@@ -533,7 +533,7 @@ export default function Home() {
         </div>
 
         {/* Middle — name + intro on the left, plates in the center, news on the right */}
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-10">
+        <div className="relative z-10 flex flex-col xl:flex-row xl:items-start xl:justify-between gap-10">
           <div className="min-w-0 lg:flex-1">
             <h1
               className="hero-name"
@@ -582,8 +582,8 @@ export default function Home() {
 
           {/* News */}
           <aside
-            className="hero-fade w-full lg:w-[400px] xl:w-[440px] lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l pt-7 lg:pt-1 lg:pl-16"
-            style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
+            className="hero-fade w-full min-w-0 xl:w-[400px] xl:flex-shrink-0 border rounded-lg p-5 sm:p-6"
+            style={{ borderColor: 'var(--hairline)', backgroundColor: 'var(--panel)', animationDelay: '0.9s' }}
           >
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
@@ -656,10 +656,10 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col lg:flex-row">
 
         {/* Left Sidebar */}
-        <aside className="sidebar w-full md:w-[320px] lg:w-[420px] flex-shrink-0 border-r border-[color:var(--hairline)] md:sticky md:top-0 md:h-screen overflow-y-auto">
+        <aside className="sidebar w-full lg:w-[300px] xl:w-[360px] 2xl:w-[420px] flex-shrink-0 lg:border-r border-[color:var(--hairline)] lg:sticky lg:top-0 lg:h-[100svh] lg:overflow-y-auto">
           <div className="p-4 lg:p-8">
 
             {/* Portrait, with a few personal snapshots spread beside it */}
@@ -872,7 +872,7 @@ export default function Home() {
         </aside>
 
         {/* Main Content */}
-        <main id="main-content" className="main-content flex-1 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-20">
+        <main id="main-content" className="main-content flex-1 min-w-0 w-full lg:max-w-[900px] px-4 lg:px-0 lg:ml-6 xl:ml-12 2xl:ml-20">
 
           {/* About Section */}
           <section
@@ -1205,9 +1205,9 @@ export default function Home() {
                     §{index + 1}
                   </span>
                   <Link to={`/blogs/${pub.slug}`} className="group block">
-                    <div className="flex items-baseline gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2">
                       <h3
-                        className="shrink-0 tracking-tight"
+                        className="min-w-0 tracking-tight"
                         style={{ fontSize: 15.5, fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.3, color: 'var(--accent)' }}
                       >
                         <span className="link-slide">{pub.title}</span>
@@ -1238,7 +1238,7 @@ export default function Home() {
               {technicalReports.map((report, index) => (
                 <li key={index} className="relative">
                   <a href={report.href} target="_blank" rel="noopener noreferrer" className="group block">
-                    <div className="flex items-baseline gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2">
                       <h3
                         className="tracking-tight"
                         style={{ fontSize: 15.5, fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.3, color: 'var(--accent)' }}
@@ -1315,7 +1315,7 @@ export default function Home() {
 
         {/* Right Sidebar — marginalia */}
         <aside
-          className="hidden xl:block w-[280px] flex-shrink-0 pl-12 pt-32 text-sm xl:translate-x-8"
+          className="hidden 2xl:block w-[280px] flex-shrink-0 px-6 pt-32 text-sm"
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
         >
           <div className="mb-10">
