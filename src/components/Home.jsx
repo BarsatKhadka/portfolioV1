@@ -592,7 +592,12 @@ export default function Home() {
                 (click to view credential)
               </span>
             </p>
-            <ol className="list-none p-0 m-0 space-y-6">
+            <ol
+              aria-label="Latest news"
+              tabIndex={0}
+              className="list-none p-0 m-0 space-y-6 max-h-[320px] lg:max-h-[360px] overflow-y-auto pr-3 rounded-sm focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--accent)]"
+              style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--faint) transparent' }}
+            >
               {news.map((item, i) => (
                 <li key={i} className="flex flex-col">
                   <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: UI }}>
