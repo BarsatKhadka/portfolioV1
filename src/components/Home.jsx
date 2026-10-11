@@ -10,6 +10,8 @@ import plateImage from './image.webp';
 import plateImage2 from './image2.webp';
 import heroSplash from './heroSplash.webp';
 import personal1 from './personal1.webp';
+import figMechRL from './fig-mechrl.webp';
+import figSwiftCTS from './fig-swiftcts.webp';
 
 // --- Data ---
 
@@ -63,6 +65,8 @@ const research = [
   },
   {
     title: 'SwiftCTS: Fast Cross-Design Prediction and Pareto Optimization of Clock Tree Metrics via Few-Shot Calibration',
+    figure: figSwiftCTS,
+    figureCaption: 'High-level overview of the SwiftCTS framework. The pipeline begins with feature extraction from placement data, followed by a lightweight surrogate model for rapid CTS metric prediction. A K-shot calibration module aligns predictions to new designs, and an NSGA-II optimizer explores the configuration space to generate Pareto-optimal solutions.',
     authors: 'Barsat Khadka, Dr. Kawsher Roxy, Dr. Md Rubel Ahmed',
     venue: 'ICCAD 2026',
     status: 'under review',
@@ -74,6 +78,8 @@ const research = [
   },
   {
     title: 'MechRL: Reinforcement Learning Agents Perform Circuit Discovery for Mechanistic Interpretability',
+    figure: figMechRL,
+    figureCaption: 'Overview of MechRL. A single pruning policy \u03c0\u03b8 repeatedly removes edges from a prefiltered GPT-2 small computation graph, guided by a faithfulness reward computed through causal patching. Trained jointly across twelve behaviours spanning three families, the same frozen policy recovers a faithful circuit for each and transfers to held-out behaviours never seen during training.',
     authors: 'Barsat Khadka',
     venue: 'Interp4Discovery Workshop @ NeurIPS 2026',
     status: 'accepted',
@@ -1055,6 +1061,25 @@ export default function Home() {
                             </>
                           )}
                         </div>
+                      )}
+
+                      {item.figure && (
+                        <figure className="m-0 mt-5">
+                          <img
+                            src={item.figure}
+                            alt={`Figure 1 from ${item.title}`}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-auto block"
+                            style={{ border: '1px solid var(--hairline)', background: '#FFFFFF' }}
+                          />
+                          <figcaption className="mt-2.5 text-[12px] leading-[1.6]" style={{ color: 'var(--muted)' }}>
+                            <span style={{ fontFamily: LABEL, fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: VERMILLION, marginRight: 8 }}>
+                              Fig. 1
+                            </span>
+                            {item.figureCaption}
+                          </figcaption>
+                        </figure>
                       )}
                     </div>
                   </li>
