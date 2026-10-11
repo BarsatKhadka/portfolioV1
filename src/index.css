@@ -27,11 +27,13 @@
     --paper: #7C2D12;        /* confident burnt sienna for arXiv */
     --hairline: rgba(34, 30, 24, 0.08);
 
-    /* The Quiet Journal — Fraunces display, Newsreader text, Hanken micro-labels */
-    --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
-    --font-text: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-    --font-ui: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    /* Source Serif sets the name, the headings and the prose; every tracked
+       micro-label speaks in mono, like an instrument panel. */
+    --font-display: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --font-text: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --font-ui: 'Archivo', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-label: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     background-color: var(--bg);
     color: var(--text);
@@ -58,21 +60,21 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 600;
     color: var(--text);
     letter-spacing: -0.01em;
   }
 
   h1 {
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.02em;
   }
 
   h2 {
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.04;
     letter-spacing: -0.018em;
   }
@@ -85,9 +87,9 @@
     font-family: var(--font-text);
   }
 
-  /* Every tracked micro-label speaks Hanken Grotesk, not a serif */
+  /* Every tracked micro-label speaks mono, not a serif */
   .uppercase {
-    font-family: var(--font-ui);
+    font-family: var(--font-label);
     font-feature-settings: "kern";
   }
 

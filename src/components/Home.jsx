@@ -147,6 +147,11 @@ const news = [
     href: 'https://arxiv.org/abs/2605.26343'
   },
   {
+    date: 'Sep 28',
+    text: 'CHIA-OpenROAD accepted to the A3 Workshop at MICRO (hackathon track).',
+    href: '/CHIA-OpenROAD.pdf'
+  },
+  {
     date: 'Aug 2',
     text: 'Completed Machine Learning Foundations, Break Through Tech.',
     href: '/Barsat-Khadka-eCornell-ML-Foundations.pdf'
@@ -197,9 +202,11 @@ const honors = [
 // A personal snapshot, kept small, off to the side.
 const personalPhotos = [personal1];
 
-const DISPLAY = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
-const SERIF = DISPLAY;
-const UI = "'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif";
+const SERIF = "'Source Serif 4', 'Iowan Old Style', Georgia, serif";
+const DISPLAY = SERIF;
+const NAME = SERIF;
+const UI = "'Archivo', ui-sans-serif, system-ui, sans-serif";
+const LABEL = "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
 
@@ -223,7 +230,7 @@ function Head({ children, kicker }) {
   return (
     <div className="mb-1">
       {kicker && (
-        <p className="mb-2.5 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
+        <p className="mb-2.5 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
           <span aria-hidden="true" style={{ width: 22, height: 1, background: VERMILLION, display: 'inline-block' }} />
           {kicker}
         </p>
@@ -232,9 +239,8 @@ function Head({ children, kicker }) {
         className="text-[40px] lg:text-[54px] leading-[0.98]"
         style={{
           fontFamily: DISPLAY,
-          fontWeight: 380,
-          letterSpacing: '-0.025em',
-          fontVariationSettings: "'SOFT' 5, 'opsz' 96",
+          fontWeight: 600,
+          letterSpacing: '-0.022em',
           color: 'var(--text)',
         }}
       >
@@ -355,7 +361,7 @@ function CollaborateForm() {
           disabled={status === 'sending'}
           className="px-5 py-2.5 text-[12.5px] tracking-[0.14em] uppercase transition-opacity"
           style={{
-            fontFamily: UI,
+            fontFamily: LABEL,
             background: VERMILLION,
             color: '#FAF8F3',
             opacity: status === 'sending' ? 0.6 : 1,
@@ -526,10 +532,10 @@ export default function Home() {
 
         {/* Top line */}
         <div className="hero-fade relative z-10 flex items-center justify-between" style={{ animationDelay: '0.15s' }}>
-          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
             बर्सत खड्का
           </span>
-          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
             Hattiesburg, Mississippi
           </span>
         </div>
@@ -540,21 +546,20 @@ export default function Home() {
             <h1
               className="hero-name"
               style={{
-                fontFamily: DISPLAY,
-                lineHeight: 0.86,
-                letterSpacing: '-0.035em',
-                fontVariationSettings: "'SOFT' 4, 'opsz' 144",
-                fontWeight: 360,
-                fontSize: 'clamp(52px, 8vw, 124px)',
+                fontFamily: NAME,
+                lineHeight: 0.94,
+                letterSpacing: '-0.03em',
+                fontWeight: 600,
+                fontSize: 'clamp(54px, 8.2vw, 124px)',
               }}
             >
               <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.25s' }}>Barsat</span></span>
-              <span className="hero-line"><span className="hero-line-inner" style={{ animationDelay: '0.4s', fontStyle: 'italic', color: 'var(--muted)' }}>Khadka</span></span>
+              <span className="hero-line"><span className="hero-line-inner" style={{ fontWeight: 400, color: 'var(--muted)' }}>Khadka</span></span>
             </h1>
 
             <p
               className="hero-fade mt-7 lg:mt-9 text-[17px] lg:text-[20px] leading-[1.6]"
-              style={{ animationDelay: '0.78s', fontFamily: UI, color: 'var(--text)', maxWidth: '46ch' }}
+              style={{ animationDelay: '0.78s', fontFamily: SERIF, color: 'var(--text)', maxWidth: '46ch' }}
             >
               Computer engineering student and researcher. I work on machine learning for
               chip design, reinforcement learning, world models, and interpretability and I
@@ -584,10 +589,10 @@ export default function Home() {
 
           {/* News */}
           <aside
-            className="news-panel hero-fade w-full min-w-0 xl:w-[400px] xl:flex-shrink-0 border rounded-lg p-5 sm:p-6"
-            style={{ animationDelay: '0.9s' }}
+            className="hero-fade w-full min-w-0 xl:w-[440px] xl:flex-shrink-0 border-t xl:border-t-0 xl:border-l pt-7 xl:pt-1 xl:pl-16"
+            style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
-            <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: UI }}>
+            <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
               <span className="ml-auto normal-case tracking-normal" style={{ color: 'var(--muted)', fontSize: 11 }}>
@@ -602,7 +607,7 @@ export default function Home() {
             >
               {news.map((item, i) => (
                 <li key={i} className="news-entry relative flex flex-col pl-4">
-                  <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                  <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
                     {item.date}
                   </span>
                   <span className="text-[16px] lg:text-[17px] leading-[1.5]" style={{ color: 'var(--text)' }}>
@@ -702,23 +707,22 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            <p className="mb-8 text-[10px] tracking-[0.28em] uppercase" style={{ color: 'var(--faint)', fontFamily: UI }}>
+            <p className="mb-8 text-[10px] tracking-[0.28em] uppercase" style={{ color: 'var(--faint)', fontFamily: LABEL }}>
               (click to view photo)
             </p>
 
             {/* Masthead name */}
             <p
-              className="mb-1 leading-[0.92]"
+              className="mb-1 leading-[0.96]"
               style={{
-                fontFamily: DISPLAY,
-                fontWeight: 380,
-                fontSize: 'clamp(44px, 5.4vw, 62px)',
+                fontFamily: NAME,
+                fontWeight: 600,
+                fontSize: 'clamp(42px, 5.2vw, 60px)',
                 letterSpacing: '-0.025em',
-                fontVariationSettings: "'SOFT' 6, 'opsz' 120",
               }}
             >
               Barsat<br />
-              <span style={{ fontStyle: 'italic', fontWeight: 360, color: 'var(--muted)' }}>Khadka</span>
+              <span style={{ fontWeight: 400, color: 'var(--muted)' }}>Khadka</span>
             </p>
             <p
               className="mt-2 text-[19px] leading-[1.3]"
@@ -729,7 +733,7 @@ export default function Home() {
             </p>
             <p
               className="mt-3 mb-6 text-[10.5px] tracking-[0.26em] uppercase"
-              style={{ color: 'var(--muted)', fontFamily: UI }}
+              style={{ color: 'var(--muted)', fontFamily: LABEL }}
             >
               Computer Engineer · Researcher
             </p>
@@ -767,7 +771,7 @@ export default function Home() {
 
             {/* Affiliation */}
             <div className="mb-6">
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: UI }}>Studying at</p>
+              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: LABEL }}>Studying at</p>
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-md bg-[#FFD700] flex items-center justify-center flex-shrink-0" style={{ boxShadow: '0 1px 0 rgba(26,26,26,0.10)' }}>
                   <img src={canvasImage} alt="USM" loading="lazy" decoding="async" className="w-7 h-7 lg:w-8 lg:h-8 object-contain" />
@@ -787,7 +791,7 @@ export default function Home() {
 
               {/* Distinctions */}
               <div className="mt-3.5 pt-3.5" style={{ borderTop: '1px solid var(--hairline)' }}>
-                <p className="text-[9.5px] tracking-[0.3em] uppercase mb-2.5" style={{ color: 'var(--faint)', fontFamily: UI }}>
+                <p className="text-[9.5px] tracking-[0.3em] uppercase mb-2.5" style={{ color: 'var(--faint)', fontFamily: LABEL }}>
                   Distinctions
                 </p>
                 <ul className="space-y-[7px]">
@@ -866,7 +870,7 @@ export default function Home() {
 
             {/* Research interests */}
             <div className="pt-5" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: UI }}>
+              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
                 Research interests
               </p>
               <p className="text-[13.5px] leading-[1.7] tracking-tight" style={{ color: 'var(--text)' }}>
@@ -892,9 +896,8 @@ export default function Home() {
             <Rule />
 
             {/* Roles */}
-            <dl className="mb-7 lg:mb-9 grid grid-cols-[6.5rem_1fr] sm:grid-cols-[7.5rem_1fr] gap-x-5 lg:gap-x-8 gap-y-1.5 text-[14.5px]">
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Intern</dt>
-              <dd className="leading-[1.5]">
+            <ul className="list-none p-0 m-0 mb-7 lg:mb-9 space-y-1.5 text-[14.5px]">
+              <li className="leading-[1.5]">
                 Research Intern at{' '}
                 <a
                   href="https://www.gatech.edu/"
@@ -904,9 +907,8 @@ export default function Home() {
                 >
                   Georgia Institute of Technology
                 </a>
-              </dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Engineer</dt>
-              <dd className="leading-[1.5]">
+              </li>
+              <li className="leading-[1.5]">
                 Research Software Engineer at{' '}
                 <a
                   href="https://www.usm.edu/advanced-analytics-security/index.php"
@@ -916,11 +918,19 @@ export default function Home() {
                 >
                   Institute of Advanced Analytics &amp; Security
                 </a>
-              </dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Researcher</dt>
-              <dd className="leading-[1.5]">Research Assistant, Cyber Innovations Lab</dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Fellow</dt>
-              <dd className="leading-[1.5]">
+              </li>
+              <li className="leading-[1.5]">
+                Research Assistant,{' '}
+                <a
+                  href="https://cil.usm.edu/people"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-slide"
+                >
+                  Cyber Innovations Lab
+                </a>
+              </li>
+              <li className="leading-[1.5]">
                 AI/ML Fellow,{' '}
                 <a
                   href="https://www.breakthroughtech.org/programs/the-ai-program/"
@@ -930,9 +940,9 @@ export default function Home() {
                 >
                   Break Through Tech AI
                 </a>
-              </dd>
-              <dt className="uppercase tracking-[0.18em] text-[10.5px] pt-[5px]" style={{ color: 'var(--muted)', fontFamily: UI }}>Secretary</dt>
-              <dd className="leading-[1.5]">
+              </li>
+              <li className="leading-[1.5]">
+                Secretary,{' '}
                 <a
                   href="https://www.instagram.com/oscusm/"
                   target="_blank"
@@ -941,8 +951,8 @@ export default function Home() {
                 >
                   Open Source Club, USM
                 </a>
-              </dd>
-            </dl>
+              </li>
+            </ul>
 
             {/* Opener */}
             <div className="text-[15.5px] lg:text-[16px] leading-[1.75] max-w-[62ch]">
@@ -999,7 +1009,7 @@ export default function Home() {
                           <span
                             className="flex-shrink-0 mt-[3px] inline-flex items-center gap-1.5 whitespace-nowrap"
                             style={{
-                              fontFamily: UI, fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+                              fontFamily: LABEL, fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
                               color: st.fg, background: st.bg, border: `1px solid ${st.bd}`, padding: '3px 9px', borderRadius: '2px',
                             }}
                           >
@@ -1111,7 +1121,7 @@ export default function Home() {
                       )}
                     </h3>
                     {project.title === 'Vinaya Journal' && (
-                      <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                      <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
                         {repoStats.stars} stars
                         <span className="opacity-40">·</span>
                         {repoStats.forks} forks
@@ -1140,7 +1150,7 @@ export default function Home() {
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: VERMILLION, display: 'inline-block' }} />
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
-                        <span className="ml-3 text-[10.5px] tracking-[0.14em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                        <span className="ml-3 text-[10.5px] tracking-[0.14em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
                           vinaya-journal.vercel.app
                         </span>
                       </div>
@@ -1237,7 +1247,7 @@ export default function Home() {
               ))}
             </ol>
 
-            <p className="mt-10 mb-4 text-[10.5px] tracking-[0.26em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+            <p className="mt-10 mb-4 text-[10.5px] tracking-[0.26em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
               Technical Reports
             </p>
             <ol className="list-none p-0 m-0 space-y-3.5">
@@ -1303,7 +1313,7 @@ export default function Home() {
           {/* Footer */}
           <footer data-reveal className="relative px-4 lg:px-8 pb-20 lg:pb-28">
             <div className="max-w-[60ch] mx-auto pt-12 text-center" style={{ borderTop: '1px solid var(--hairline)' }}>
-              <p style={{ fontFamily: DISPLAY, fontSize: 20, fontWeight: 400, letterSpacing: '-0.015em', lineHeight: 1.2, color: 'var(--muted)' }}>
+              <p style={{ fontFamily: NAME, fontSize: 20, fontWeight: 600, letterSpacing: '-0.015em', lineHeight: 1.2, color: 'var(--muted)' }}>
                 Barsat Khadka
                 <span style={{ fontFamily: DEVANAGARI, color: VERMILLION, marginLeft: 10, fontSize: 19 }} lang="ne">बर्सत खड्का</span>
               </p>
@@ -1316,7 +1326,7 @@ export default function Home() {
                 <span style={{ color: 'var(--faint)' }}>·</span>
                 <a href="https://www.linkedin.com/in/barsat-khadka" target="_blank" rel="noopener noreferrer" className="link-slide">LinkedIn</a>
               </nav>
-              <p className="mt-7 text-[10.5px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)', fontFamily: UI }}>
+              <p className="mt-7 text-[10.5px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
                 Grew up in Nepal · based in Hattiesburg · open source, open science
               </p>
             </div>
@@ -1326,7 +1336,7 @@ export default function Home() {
 
         {/* Right Sidebar — marginalia */}
         <aside
-          className="hidden 2xl:block w-[280px] flex-shrink-0 px-6 pt-32 text-sm"
+          className="hidden xl:block w-[240px] 2xl:w-[280px] flex-shrink-0 px-5 2xl:px-6 pt-32 text-sm"
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
         >
           <div className="mb-10">
