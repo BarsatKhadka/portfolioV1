@@ -484,7 +484,7 @@ export default function Home() {
         <div
           ref={heroSplashRef}
           aria-hidden="true"
-          className="hidden 2xl:block"
+          className="hidden xl:block"
           style={{
             position: 'fixed',
             top: '0vh',
