@@ -185,12 +185,10 @@ const news = [
 ];
 
 const researchInterests = [
-  'Graph Neural Networks',
-  'ML for Physical Design (EDA)',
-  'Mechanistic Interpretability',
+  'Machine Learning for Chip Design / Electronic Design Automation (EDA)',
+  'Computer Architecture and Memory Systems',
   'Reinforcement Learning',
-  'Security & GNNs',
-  'Open Science & Open Source'
+  'Mechanistic Interpretability'
 ];
 
 const education = {
