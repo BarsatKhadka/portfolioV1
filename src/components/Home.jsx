@@ -194,6 +194,12 @@ const honors = [
   { title: "President's List", detail: 'Spring 2025' },
 ];
 
+const formerRoles = [
+  { role: 'Software Engineering Intern', org: 'Sports Media (Dakdan Worldwide)' },
+  { role: 'Web / App Developer Intern', org: 'Crystal ERP' },
+  { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
+];
+
 // A personal snapshot, kept small, off to the side.
 const personalPhotos = [personal1];
 
@@ -251,6 +257,21 @@ function Rule() {
       <span style={{ width: 4, height: 4, background: VERMILLION, borderRadius: '50%' }} />
       <span className="h-px flex-1" style={{ background: 'rgba(26,26,26,0.16)' }} />
     </div>
+  );
+}
+
+function FormerlyRoles() {
+  return (
+    <ol className="list-none p-0 m-0 space-y-4">
+      {formerRoles.map(({ role, org }) => (
+        <li key={role}>
+          <p className="font-medium tracking-tight leading-[1.2]" style={{ fontSize: 14.5, color: 'var(--text)' }}>
+            {role}
+          </p>
+          <p className="text-[12px] leading-[1.2]" style={{ color: 'var(--muted)' }}>{org}</p>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -953,6 +974,13 @@ export default function Home() {
                 those who live by their philosophy.
               </p>
             </div>
+
+            <div className="xl:hidden mt-8 pt-6" style={{ borderTop: '1px solid var(--hairline)' }}>
+              <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)', fontFamily: UI }}>
+                Formerly
+              </p>
+              <FormerlyRoles />
+            </div>
           </section>
 
           {/* Research Section */}
@@ -1326,27 +1354,14 @@ export default function Home() {
 
         {/* Right Sidebar — marginalia */}
         <aside
-          className="hidden 2xl:block w-[280px] flex-shrink-0 px-6 pt-32 text-sm"
+          className="hidden xl:block w-[240px] 2xl:w-[280px] flex-shrink-0 px-5 2xl:px-6 pt-32 text-sm"
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
         >
           <div className="mb-10">
             <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
               Formerly
             </p>
-            <ol className="list-none p-0 m-0 space-y-4">
-              {[
-                { role: 'Software Engineering Intern', org: 'Sports Media (Dakdan Worldwide)' },
-                { role: 'Web / App Developer Intern', org: 'Crystal ERP' },
-                { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
-              ].map((x, i) => (
-                <li key={i}>
-                  <p className="font-medium tracking-tight leading-[1.2]" style={{ fontSize: 14.5, color: 'var(--text)' }}>
-                    {x.role}
-                  </p>
-                  <p className="text-[12px] leading-[1.2]" style={{ color: 'var(--muted)' }}>{x.org}</p>
-                </li>
-              ))}
-            </ol>
+            <FormerlyRoles />
 
             <div className="mt-9 pt-6" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
               <p className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: 'var(--muted)' }}>
