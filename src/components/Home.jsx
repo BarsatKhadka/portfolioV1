@@ -935,17 +935,6 @@ export default function Home() {
                 </a>
               </li>
               <li className="leading-[1.5]">
-                AI/ML Fellow,{' '}
-                <a
-                  href="https://www.breakthroughtech.org/programs/the-ai-program/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-slide"
-                >
-                  Break Through Tech AI
-                </a>
-              </li>
-              <li className="leading-[1.5]">
                 Secretary,{' '}
                 <a
                   href="https://www.instagram.com/oscusm/"
@@ -1368,6 +1357,7 @@ export default function Home() {
             </p>
             <ol className="list-none p-0 m-0 space-y-4">
               {[
+                { role: 'AI/ML Fellow', org: 'Break Through Tech AI', detail: 'Summer 2026 · Machine Learning Foundations' },
                 { role: 'Software Engineering Intern', org: 'Sports Media (Dakdan Worldwide)' },
                 { role: 'Web / App Developer Intern', org: 'Crystal ERP' },
                 { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
@@ -1377,6 +1367,9 @@ export default function Home() {
                     {x.role}
                   </p>
                   <p className="text-[12px] leading-[1.2]" style={{ color: 'var(--muted)' }}>{x.org}</p>
+                  {x.detail && (
+                    <p className="text-[11px] leading-[1.35] mt-[3px]" style={{ color: 'var(--faint)' }}>{x.detail}</p>
+                  )}
                 </li>
               ))}
             </ol>
