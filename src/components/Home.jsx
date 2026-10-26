@@ -494,7 +494,7 @@ export default function Home() {
         <div
           ref={heroSplashRef}
           aria-hidden="true"
-          className="hidden xl:block"
+          className="hidden lg:block"
           style={{
             position: 'fixed',
             top: '0vh',
@@ -545,7 +545,7 @@ export default function Home() {
         </div>
 
         {/* Middle — name + intro on the left, plates in the center, news on the right */}
-        <div className="relative z-10 flex flex-col xl:flex-row xl:items-start xl:justify-between gap-10">
+        <div className="relative z-10 flex flex-col min-[1120px]:flex-row min-[1120px]:items-start min-[1120px]:justify-between gap-10">
           <div className="min-w-0 lg:flex-1">
             <h1
               className="hero-name"
@@ -593,7 +593,7 @@ export default function Home() {
 
           {/* News */}
           <aside
-            className="hero-fade w-full min-w-0 xl:w-[440px] xl:flex-shrink-0 border-t xl:border-t-0 xl:border-l pt-7 xl:pt-1 xl:pl-16"
+            className="hero-fade w-full min-w-0 min-[1120px]:w-[380px] xl:w-[440px] min-[1120px]:flex-shrink-0 border-t min-[1120px]:border-t-0 min-[1120px]:border-l pt-7 min-[1120px]:pt-1 min-[1120px]:pl-10 xl:pl-16"
             style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
@@ -1348,7 +1348,7 @@ export default function Home() {
 
         {/* Right Sidebar — marginalia */}
         <aside
-          className="hidden xl:block w-[240px] 2xl:w-[280px] flex-shrink-0 px-5 2xl:px-6 pt-32 text-sm"
+          className="hidden min-[1120px]:block w-[200px] xl:w-[240px] 2xl:w-[280px] flex-shrink-0 px-4 xl:px-5 2xl:px-6 pt-32 text-sm"
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
         >
           <div className="mb-10">
