@@ -27,13 +27,13 @@
     --paper: #7C2D12;        /* confident burnt sienna for arXiv */
     --hairline: rgba(34, 30, 24, 0.08);
 
-    /* Source Serif sets the name, the headings and the prose; every tracked
-       micro-label speaks in mono, like an instrument panel. */
+    /* Two faces only: Source Serif for the name, the headings and the prose,
+       Archivo for micro-labels and interface text. Mono is for code alone. */
     --font-display: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
     --font-text: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
     --font-ui: 'Archivo', ui-sans-serif, system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    --font-label: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-label: 'Archivo', ui-sans-serif, system-ui, sans-serif;
 
     background-color: var(--bg);
     color: var(--text);
@@ -87,7 +87,7 @@
     font-family: var(--font-text);
   }
 
-  /* Every tracked micro-label speaks mono, not a serif */
+  /* Every tracked micro-label speaks Archivo, not a serif */
   .uppercase {
     font-family: var(--font-label);
     font-feature-settings: "kern";
@@ -264,6 +264,13 @@
 
 .news-entry:first-child::before {
   background: var(--accent-2);
+}
+
+/* The news list is a bounded box — rules top and bottom so a half-shown
+   entry at the edge reads as "there is more below", not as a cut-off page. */
+.news-list {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-nav-link {

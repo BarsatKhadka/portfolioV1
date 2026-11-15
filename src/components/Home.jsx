@@ -210,7 +210,7 @@ const SERIF = "'Source Serif 4', 'Iowan Old Style', Georgia, serif";
 const DISPLAY = SERIF;
 const NAME = SERIF;
 const UI = "'Archivo', ui-sans-serif, system-ui, sans-serif";
-const LABEL = "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
+const LABEL = UI;
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
 
@@ -600,7 +600,7 @@ export default function Home() {
             <ol
               aria-label="Latest news"
               tabIndex={0}
-              className="list-none p-0 m-0 space-y-6 max-h-[320px] lg:max-h-[360px] overflow-y-auto pr-3 rounded-sm focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--accent)]"
+              className="news-list list-none p-0 m-0 space-y-6 max-h-[300px] lg:max-h-[332px] overflow-y-auto py-5 pr-3 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--accent)]"
               style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--faint) transparent' }}
             >
               {news.map((item, i) => (
