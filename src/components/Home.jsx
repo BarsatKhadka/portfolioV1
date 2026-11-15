@@ -234,7 +234,7 @@ function Head({ children, kicker }) {
   return (
     <div className="mb-1">
       {kicker && (
-        <p className="mb-2.5 flex items-center gap-2.5 text-[11px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
+        <p className="mb-2.5 flex items-center gap-2.5 text-[11px] tracking-[0.06em]" style={{ color: VERMILLION, fontFamily: SERIF }}>
           <span aria-hidden="true" style={{ width: 22, height: 1, background: VERMILLION, display: 'inline-block' }} />
           {kicker}
         </p>
@@ -363,9 +363,9 @@ function CollaborateForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="px-5 py-2.5 text-[12.5px] tracking-[0.14em] uppercase transition-opacity"
+          className="px-5 py-2.5 text-[12.5px] tracking-[0.06em] transition-opacity"
           style={{
-            fontFamily: LABEL,
+            fontFamily: SERIF,
             background: VERMILLION,
             color: '#FAF8F3',
             opacity: status === 'sending' ? 0.6 : 1,
@@ -536,7 +536,7 @@ export default function Home() {
 
         {/* Top line */}
         <div className="hero-fade relative z-10 flex items-center" style={{ animationDelay: '0.15s' }}>
-          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+          <span className="text-[10.5px] sm:text-[11px] tracking-[0.06em]" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
             बर्सत खड्का
           </span>
         </div>
@@ -593,7 +593,7 @@ export default function Home() {
             className="hero-fade w-full min-w-0 min-[1120px]:w-[380px] xl:w-[440px] min-[1120px]:flex-shrink-0 border-t min-[1120px]:border-t-0 min-[1120px]:border-l pt-7 min-[1120px]:pt-1 min-[1120px]:pl-10 xl:pl-16"
             style={{ borderColor: 'var(--hairline)', animationDelay: '0.9s' }}
           >
-            <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
+            <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.06em]" style={{ color: VERMILLION, fontFamily: SERIF }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
             </p>
@@ -640,7 +640,7 @@ export default function Home() {
                 type="button"
                 onClick={() => scrollToSection(s.id)}
                 aria-current={active ? 'true' : undefined}
-                className="hero-nav-link group inline-flex items-baseline gap-2 py-2 text-[11px] sm:text-[12px] tracking-[0.16em] uppercase"
+                className="hero-nav-link group inline-flex items-baseline gap-2 py-2 text-[12px] sm:text-[13px] tracking-[0.04em]"
                 style={{ color: 'var(--muted)', fontFamily: UI }}
               >
                 <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: VERMILLION, letterSpacing: 0, fontSize: 12 }}>{s.n}</span>
@@ -692,7 +692,7 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            <p className="mb-8 text-[10px] tracking-[0.28em] uppercase" style={{ color: 'var(--faint)', fontFamily: LABEL }}>
+            <p className="mb-8 text-[10px] tracking-[0.06em]" style={{ color: 'var(--faint)', fontFamily: SERIF }}>
               (click to view photo)
             </p>
 
@@ -717,8 +717,8 @@ export default function Home() {
               बर्सत खड्का
             </p>
             <p
-              className="mt-3 mb-6 text-[10.5px] tracking-[0.26em] uppercase"
-              style={{ color: 'var(--muted)', fontFamily: LABEL }}
+              className="mt-3 mb-6 text-[12.5px] tracking-[0.02em]"
+              style={{ color: 'var(--muted)', fontFamily: SERIF }}
             >
               Computer Engineer · Researcher
             </p>
@@ -756,7 +756,7 @@ export default function Home() {
 
             {/* Affiliation */}
             <div className="mb-6">
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: LABEL }}>Studying at</p>
+              <p className="text-[10px] tracking-[0.06em] mb-2" style={{ color: 'var(--muted)', fontFamily: SERIF }}>Studying at</p>
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-md bg-[#FFD700] flex items-center justify-center flex-shrink-0" style={{ boxShadow: '0 1px 0 rgba(26,26,26,0.10)' }}>
                   <img src={canvasImage} alt="USM" loading="lazy" decoding="async" className="w-7 h-7 lg:w-8 lg:h-8 object-contain" />
@@ -776,7 +776,7 @@ export default function Home() {
 
               {/* Distinctions */}
               <div className="mt-3.5 pt-3.5" style={{ borderTop: '1px solid var(--hairline)' }}>
-                <p className="text-[9.5px] tracking-[0.3em] uppercase mb-2.5" style={{ color: 'var(--faint)', fontFamily: LABEL }}>
+                <p className="text-[9.5px] tracking-[0.06em] mb-2.5" style={{ color: 'var(--faint)', fontFamily: SERIF }}>
                   Distinctions
                 </p>
                 <ul className="space-y-[7px]">
@@ -855,7 +855,7 @@ export default function Home() {
 
             {/* Research interests */}
             <div className="pt-5" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-2" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+              <p className="text-[10px] tracking-[0.06em] mb-2" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
                 Research interests
               </p>
               <p className="text-[13.5px] leading-[1.7] tracking-tight" style={{ color: 'var(--text)' }}>
@@ -947,7 +947,7 @@ export default function Home() {
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="ii" />
-            <Head kicker="papers & preprints">Research</Head>
+            <Head kicker="Papers & preprints">Research</Head>
             <Rule />
 
             <ol className="list-none p-0 m-0 mt-1">
@@ -983,7 +983,7 @@ export default function Home() {
                           <span
                             className="flex-shrink-0 mt-[3px] inline-flex items-center gap-1.5 whitespace-nowrap"
                             style={{
-                              fontFamily: LABEL, fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+                              fontFamily: SERIF, fontSize: 11, letterSpacing: '0.02em',
                               color: st.fg, background: st.bg, border: `1px solid ${st.bd}`, padding: '3px 9px', borderRadius: '2px',
                             }}
                           >
@@ -1042,7 +1042,7 @@ export default function Home() {
                             style={{ border: '1px solid var(--hairline)', background: '#FFFFFF' }}
                           />
                           <figcaption className="mt-2.5 text-[12px] leading-[1.6]" style={{ color: 'var(--muted)' }}>
-                            <span style={{ fontFamily: LABEL, fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: VERMILLION, marginRight: 8 }}>
+                            <span style={{ fontFamily: SERIF, fontSize: 11.5, letterSpacing: '0.02em', color: VERMILLION, marginRight: 8 }}>
                               Fig. 1
                             </span>
                             {item.figureCaption}
@@ -1064,12 +1064,12 @@ export default function Home() {
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="iii" />
-            <Head kicker="built & building">Projects</Head>
+            <Head kicker="Built & building">Projects</Head>
             <Rule />
 
             {/* Filter */}
             <p className="mb-7 text-[14px] tracking-[0.02em]" style={{ color: 'var(--muted)' }}>
-              <span className="uppercase tracking-[0.22em] text-[11px] mr-3">Showing</span>
+              <span className="tracking-[0.04em] text-[12px] mr-3">Showing</span>
               {['ongoing', 'previous'].map((t, i) => (
                 <React.Fragment key={t}>
                   {i > 0 && <span className="mx-3 opacity-40">·</span>}
@@ -1097,7 +1097,7 @@ export default function Home() {
                 <li key={index} className="relative">
                   {/* Floating year marginalia */}
                   <span
-                    className="hidden lg:block absolute -left-24 top-[10px] text-right pr-3 uppercase tracking-[0.22em] text-[10px]"
+                    className="hidden lg:block absolute -left-24 top-[10px] text-right pr-3 tracking-[0.04em] text-[11px]"
                     style={{ color: 'var(--muted)' }}
                   >
                     {project.year ? `${project.year} —` : project.status}
@@ -1114,7 +1114,7 @@ export default function Home() {
                       )}
                     </h3>
                     {project.title === 'Vinaya Journal' && (
-                      <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+                      <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.06em]" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
                         {repoStats.stars} stars
                         <span className="opacity-40">·</span>
                         {repoStats.forks} forks
@@ -1143,7 +1143,7 @@ export default function Home() {
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: VERMILLION, display: 'inline-block' }} />
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(22,20,15,0.18)', display: 'inline-block' }} />
-                        <span className="ml-3 text-[10.5px] tracking-[0.14em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+                        <span className="ml-3 text-[10.5px] tracking-[0.06em]" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
                           vinaya-journal.vercel.app
                         </span>
                       </div>
@@ -1165,7 +1165,7 @@ export default function Home() {
               {activeProjectType === 'previous' && previousProjects.map((project, index) => (
                 <li key={index} className="relative">
                   <span
-                    className="hidden lg:block absolute -left-24 top-[10px] text-right pr-3 uppercase tracking-[0.22em] text-[10px]"
+                    className="hidden lg:block absolute -left-24 top-[10px] text-right pr-3 tracking-[0.04em] text-[11px]"
                     style={{ color: 'var(--muted)' }}
                   >
                     {project.year || project.status}
@@ -1197,7 +1197,7 @@ export default function Home() {
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="iv" />
-            <Head kicker="from the notebook">Writing</Head>
+            <Head kicker="From the notebook">Writing</Head>
             <Rule />
 
             <p className="mb-7 text-[14px] max-w-[58ch] leading-[1.7]" style={{ color: 'var(--muted)' }}>
@@ -1226,21 +1226,21 @@ export default function Home() {
                         className="flex-1 mx-1 mb-[4px] hidden md:block"
                         style={{ borderBottom: '1px dotted rgba(26,26,26,0.28)', minWidth: 16 }}
                       />
-                      <span className="shrink-0 text-[11px] tracking-[0.16em] uppercase whitespace-nowrap" style={{ color: 'var(--muted)' }}>
+                      <span className="shrink-0 text-[12px] tracking-[0.03em] whitespace-nowrap" style={{ color: 'var(--muted)' }}>
                         {pub.year}
                       </span>
                     </div>
                     <p className="text-[12.5px] leading-[1.5] mt-0.5 max-w-[64ch]" style={{ color: 'var(--muted)' }}>
                       {pub.description}
                       <span className="mx-1.5 opacity-50">·</span>
-                      <span className="uppercase tracking-[0.16em] text-[10px]">{pub.type}</span>
+                      <span className="tracking-[0.03em] text-[11px]">{pub.type}</span>
                     </p>
                   </Link>
                 </li>
               ))}
             </ol>
 
-            <p className="mt-10 mb-4 text-[10.5px] tracking-[0.26em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+            <p className="mt-10 mb-4 text-[10.5px] tracking-[0.06em]" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
               Technical Reports
             </p>
             <ol className="list-none p-0 m-0 space-y-3.5">
@@ -1259,7 +1259,7 @@ export default function Home() {
                         className="flex-1 mx-1 mb-[4px] hidden md:block"
                         style={{ borderBottom: '1px dotted rgba(26,26,26,0.28)', minWidth: 16 }}
                       />
-                      <span className="shrink-0 text-[11px] tracking-[0.16em] uppercase whitespace-nowrap" style={{ color: 'var(--muted)' }}>
+                      <span className="shrink-0 text-[12px] tracking-[0.03em] whitespace-nowrap" style={{ color: 'var(--muted)' }}>
                         {report.year}
                       </span>
                     </div>
@@ -1282,7 +1282,7 @@ export default function Home() {
             className="relative mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="v" />
-            <Head kicker="the other half of the day">Philosophy</Head>
+            <Head kicker="The other half of the day">Philosophy</Head>
             <Rule />
 
             <p className="max-w-[62ch] text-[15.5px] lg:text-[16px] leading-[1.8] mb-9" style={{ color: 'var(--text)' }}>
@@ -1319,7 +1319,7 @@ export default function Home() {
                 <span style={{ color: 'var(--faint)' }}>·</span>
                 <a href="https://www.linkedin.com/in/barsat-khadka" target="_blank" rel="noopener noreferrer" className="link-slide">LinkedIn</a>
               </nav>
-              <p className="mt-7 text-[10.5px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+              <p className="mt-7 text-[10.5px] tracking-[0.06em]" style={{ color: 'var(--muted)', fontFamily: SERIF }}>
                 Grew up in Nepal · based in Hattiesburg · open source, open science
               </p>
             </div>
@@ -1333,7 +1333,7 @@ export default function Home() {
           style={{ borderLeft: '1px solid rgba(26,26,26,0.10)' }}
         >
           <div className="mb-10">
-            <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
+            <p className="text-[11.5px] tracking-[0.05em] mb-4" style={{ color: 'var(--muted)' }}>
               Formerly
             </p>
             <ol className="list-none p-0 m-0 space-y-[18px]">
@@ -1356,7 +1356,7 @@ export default function Home() {
             </ol>
 
             <div className="mt-9 pt-6" style={{ borderTop: '1px solid rgba(26,26,26,0.10)' }}>
-              <p className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: 'var(--muted)' }}>
+              <p className="text-[11.5px] tracking-[0.05em] mb-3" style={{ color: 'var(--muted)' }}>
                 Away from the desk
               </p>
               <p className="text-[13px] leading-[1.75]" style={{ color: 'var(--text)' }}>
