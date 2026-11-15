@@ -266,10 +266,6 @@
   background: var(--accent-2);
 }
 
-.news-scroll-hint {
-  border-top: 1px solid var(--hairline);
-}
-
 .hero-nav-link {
   border-bottom: 1px solid transparent;
   transition: border-color 180ms ease;
@@ -332,14 +328,6 @@
   display: block;
 }
 
-.hero-scrollline {
-  display: inline-block;
-  width: 48px;
-  height: 1px;
-  background: var(--accent-2);
-  transform-origin: left center;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .hero-line-inner {
     transform: translateY(112%);
@@ -349,10 +337,6 @@
   .hero-fade {
     opacity: 0;
     animation: heroFadeUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-
-  .hero-scrollline {
-    animation: scrollPulse 2.4s ease-in-out infinite;
   }
 }
 
@@ -364,11 +348,6 @@
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: none; }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { transform: scaleX(0.45); opacity: 0.45; }
-  50% { transform: scaleX(1); opacity: 1; }
 }
 
 /* Warm ink selection — a small, soothing detail */

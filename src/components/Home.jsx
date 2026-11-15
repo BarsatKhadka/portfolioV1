@@ -126,12 +126,12 @@ const publications = [
   }
 ];
 
-// Technical reports — open as PDFs.
+// Technical reports — open where they're published.
 const technicalReports = [
   {
     title: 'CHIA-OpenROAD: An Agentic RTL-to-GDS Loop with a Replaceable Surrogate Evaluator',
-    href: '/CHIA-OpenROAD.pdf',
-    venue: 'In proceedings of A3 Workshop at MICRO (hackathon track)',
+    href: 'https://openreview.net/forum?id=iFzJJksIU2',
+    venue: 'In proceedings of A3 Workshop at MICRO (short paper)',
     year: 'Sep 2026'
   }
 ];
@@ -154,8 +154,8 @@ const news = [
   },
   {
     date: 'Sep 28',
-    text: 'CHIA-OpenROAD accepted to the A3 Workshop at MICRO (hackathon track).',
-    href: '/CHIA-OpenROAD.pdf'
+    text: 'CHIA-OpenROAD accepted to the A3 Workshop at MICRO (short paper).',
+    href: 'https://openreview.net/forum?id=iFzJJksIU2'
   },
   {
     date: 'Aug 2',
@@ -535,12 +535,9 @@ export default function Home() {
         </div>
 
         {/* Top line */}
-        <div className="hero-fade relative z-10 flex items-center justify-between" style={{ animationDelay: '0.15s' }}>
+        <div className="hero-fade relative z-10 flex items-center" style={{ animationDelay: '0.15s' }}>
           <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
             बर्सत खड्का
-          </span>
-          <span className="text-[10.5px] sm:text-[11px] tracking-[0.34em] uppercase" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
-            Hattiesburg, Mississippi
           </span>
         </div>
 
@@ -599,9 +596,6 @@ export default function Home() {
             <p className="mb-6 flex items-center gap-3 text-[12.5px] tracking-[0.26em] uppercase" style={{ color: VERMILLION, fontFamily: LABEL }}>
               <span aria-hidden="true" style={{ width: 28, height: 1, background: VERMILLION, display: 'inline-block' }} />
               News
-              <span className="ml-auto normal-case tracking-normal" style={{ color: 'var(--muted)', fontSize: 11 }}>
-                Latest updates
-              </span>
             </p>
             <ol
               aria-label="Latest news"
@@ -611,10 +605,10 @@ export default function Home() {
             >
               {news.map((item, i) => (
                 <li key={i} className="news-entry relative flex flex-col pl-4">
-                  <span className="text-[11px] tracking-[0.2em] uppercase mb-1.5" style={{ color: 'var(--muted)', fontFamily: LABEL }}>
+                  <span className="text-[11.5px] mb-1" style={{ color: 'var(--faint)', fontFamily: UI }}>
                     {item.date}
                   </span>
-                  <span className="text-[16px] lg:text-[17px] leading-[1.5]" style={{ color: 'var(--text)' }}>
+                  <span className="text-[14.5px] lg:text-[15px] leading-[1.55]" style={{ color: 'var(--text)', fontFamily: UI }}>
                     {item.href ? (
                       <a href={item.href} target="_blank" rel="noopener noreferrer" className="link-slide" style={{ color: 'var(--accent)' }}>
                         {item.text}
@@ -626,10 +620,6 @@ export default function Home() {
                 </li>
               ))}
             </ol>
-            <p className="news-scroll-hint mb-0 mt-4 pt-3 text-[11px] flex items-center justify-between" style={{ color: 'var(--muted)', fontFamily: UI }}>
-              <span>Scroll for earlier updates</span>
-              <span aria-hidden="true">↓</span>
-            </p>
           </aside>
         </div>
 
@@ -659,15 +649,6 @@ export default function Home() {
               );
             })}
           </nav>
-          <button
-            type="button"
-            onClick={() => scrollToSection('about')}
-            className="flex items-center gap-3 text-[10.5px] sm:text-[11px] tracking-[0.3em] uppercase"
-            style={{ color: 'var(--muted)', fontFamily: UI }}
-          >
-            <span className="hero-scrollline" aria-hidden="true" />
-            Scroll
-          </button>
         </div>
       </header>
 
@@ -896,7 +877,7 @@ export default function Home() {
             className="relative pt-10 lg:pt-14 mb-16 lg:mb-24 px-4 lg:px-8"
           >
             <Folio numeral="i" />
-            <Head kicker="at the moment">Currently</Head>
+            <Head>Currently</Head>
             <Rule />
 
             {/* Roles */}
@@ -1355,7 +1336,7 @@ export default function Home() {
             <p className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: 'var(--muted)' }}>
               Formerly
             </p>
-            <ol className="list-none p-0 m-0 space-y-4">
+            <ol className="list-none p-0 m-0 space-y-[18px]">
               {[
                 { role: 'AI/ML Fellow', org: 'Break Through Tech AI', detail: 'Summer 2026 · Machine Learning Foundations' },
                 { role: 'Software Engineering Intern', org: 'Sports Media (Dakdan Worldwide)' },
@@ -1363,12 +1344,12 @@ export default function Home() {
                 { role: 'Computer Hardware Intern', org: 'Namo Buddha Service Center' },
               ].map((x, i) => (
                 <li key={i}>
-                  <p className="font-medium tracking-tight leading-[1.2]" style={{ fontSize: 14.5, color: 'var(--text)' }}>
+                  <p className="m-0 font-medium tracking-tight leading-[1.3]" style={{ fontSize: 13.5, color: 'var(--text)' }}>
                     {x.role}
                   </p>
-                  <p className="text-[12px] leading-[1.2]" style={{ color: 'var(--muted)' }}>{x.org}</p>
+                  <p className="m-0 mt-[2px] text-[11.5px] leading-[1.35]" style={{ color: 'var(--muted)' }}>{x.org}</p>
                   {x.detail && (
-                    <p className="text-[11px] leading-[1.35] mt-[3px]" style={{ color: 'var(--faint)' }}>{x.detail}</p>
+                    <p className="m-0 mt-[2px] text-[10.5px] leading-[1.4]" style={{ color: 'var(--faint)' }}>{x.detail}</p>
                   )}
                 </li>
               ))}
