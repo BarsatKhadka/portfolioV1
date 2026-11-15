@@ -210,7 +210,6 @@ const SERIF = "'Source Serif 4', 'Iowan Old Style', Georgia, serif";
 const DISPLAY = SERIF;
 const NAME = SERIF;
 const UI = "'Archivo', ui-sans-serif, system-ui, sans-serif";
-const LABEL = UI;
 const DEVANAGARI = "'Noto Serif Devanagari', 'Tiro Devanagari Sanskrit', 'Mukta', 'Kohinoor Devanagari', serif";
 const VERMILLION = '#B5341F';
 
